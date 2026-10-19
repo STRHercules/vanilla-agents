@@ -1,5 +1,13 @@
 # HANDOFF (current state, newest first)
 
+## 2026-10-19 - demo seating, gnome on the table, barmaid, idle freeze fix
+- Demo (demo.cmd now runs `demo_feed.py --barmaid` and the server with `--demo`; the snapshot then carries `demo: true`): every helper takes a laptop seat at a table and stays there typing (no errands, no standing up when idle); one barmaid (role "barmaid", a woman, human when the roster has one) walks from helper to helper, stops for a few seconds, bows or asks, moves on, and never takes a chair.
+- A gnome at a laptop sits on the table (sitground) with the laptop pushed further in, facing him; everywhere, not only in the demo.
+- Idle freeze: when a one-off Stand variation ended and the same variation was picked again, play() returned without restarting it, so the character (often the human hero) froze on the last frame. It now restarts it (the same holds for repeating the same emote twice).
+- Files: app/web/workshop3d/inn.js, vanilla_agents/app/server.py (--demo), scripts/demo_feed.py (--barmaid), demo.cmd.
+- Verified: `node --check`, full suite (only the 7 failures the untouched tree has here: baked art), demo feed writes the barmaid.
+- Not verified: the 3D look (gnome height on the table, the laptop position, the barmaid's stops) on a real GPU with baked assets.
+
 ## 2026-10-19 - action bar fitted to the rack, number keys 1-6 (V-052)
 - The bar now has six game-style buttons inside the rack's dark channel, each with its key in the corner and its name under it: Verify now (1), Pause/Resume (2), Needs you (3: next helper with a gold "!", count + gold pulse while helpers wait), Quest log (4), Changes (5: Inspect), Hearth (6, two presses). V, Z, L and N still work. It centres in the free gap between the chat and the backpack when the middle of the screen would cover them (fits the default 1280x800 window).
 - Files: js/panels/actionbar.js, css/skin.css (fonts.css overrides removed), config/panels/action_bar.json, strings ui/tooltips, schema.py (slot `key`, ACTION_SLOTS, text nobody), check_app.py (known ids, digit keys, no duplicates), docs/CHANGE-GUIDE.md, guide strings + docs/GUIDE.md (make_guide), DECISION_LOG V-052, tests/test_app_check.py.

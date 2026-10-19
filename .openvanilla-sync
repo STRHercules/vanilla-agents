@@ -1,5 +1,5 @@
 source: vanilla-agents
-commit: e6f93f6514d2ef9104bcfc2b683954b85f2a088e
-subject: Merge feat-s: action bar fitted to the rack, names and number keys 1-6, Needs you / Quest log / Changes buttons (V-052)
+commit: fb1cf0c485b1f3f74be7507971bbdc57ec42675c
+subject: Merge feat-t: demo helpers stay at laptops, barmaid, gnome on the table, idle freeze fix
 paths: .
 Made by dev/sync_repos.py. Edit the source, not this copy.

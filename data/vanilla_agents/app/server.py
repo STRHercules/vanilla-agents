@@ -198,7 +198,10 @@ class Ctx:
         s = worker_level.annotate_agents(s)
         if st is None or st is self.state:
             s.update(self.integ.view(s["tasks"]))      # V-044: imported bounty proposals, the CI line, integration status (never settings or secrets)
-        return {**s, "auras": auras.compute(s, self.cfg["panels"]["raid_frames"]["options"]["max_frames"]), "party": self.party.view()}
+        out = {**s, "auras": auras.compute(s, self.cfg["panels"]["raid_frames"]["options"]["max_frames"]), "party": self.party.view()}
+        if getattr(self, "demo", False):
+            out["demo"] = True        # demo.cmd: the inn seats every helper at a laptop and keeps them there
+        return out
 
     def projects(self):
         out = []
@@ -616,6 +619,7 @@ def main(argv=None):
     ap.add_argument("--settings", help="file for your own sound choices (default from app.json settings_path)")
     ap.add_argument("--port", type=int, help="port (default from app.json)")
     ap.add_argument("--fake-verify", action="store_true", help="demo: Verify now runs a pretend check (no cargo) so you can see the cast bar and toast")
+    ap.add_argument("--demo", action="store_true", help="demo: every helper sits at a laptop in the inn and stays there; a barmaid walks between the tables")
     ap.add_argument("--open", action="store_true", help="open the chromeless program window (it receives the window key; without --open the buttons that change things do not work)")
     ap.add_argument("--show-key", action="store_true", help="print a link carrying the window key (for opening the page by hand; the key lets whoever holds it approve things)")
     a = ap.parse_args(argv)
@@ -632,6 +636,7 @@ def main(argv=None):
     if a.fake_verify:
         cfg["app"]["verify_check_seconds"], cfg["app"]["verify_default_seconds"] = {}, cfg["app"]["verify_fake_seconds"]
     ctx = Ctx(cfg, a.feed or default_feed(cfg["app"]), a.project, settings_file=a.settings, verifier=fake_verifier(cfg) if a.fake_verify else None)
+    ctx.demo = a.demo
     srv = make_server(ctx, cfg["app"]["host"], a.port if a.port is not None else cfg["app"]["port"])
     ctx.port = srv.server_address[1]
     ctx.start_background()

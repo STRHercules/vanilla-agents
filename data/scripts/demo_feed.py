@@ -13,7 +13,7 @@ from vanilla_agents.events.feed import Feed  # noqa: E402
 B, R, S = "builder", "reviewer", "scribe"
 
 
-def script(agents=3):
+def script(agents=3, barmaid=False):
     """[(seconds_since_previous, type, task, agent, data)] - data uses only fields the event schema allows."""
     t1, t2, t3, t4, t5 = "t-move", "t-login", "t-save", "t-combat", "t-docs"
     return [
@@ -70,12 +70,13 @@ def script(agents=3):
         (2, "agent_idle", None, S, {"note": "Docs are tidy for now."}),
     ] + [x for k in range(4, agents + 1) for x in (
         (1, "agent_started", None, "helper%d" % k, {"role": "builder"}),
-        (1, "agent_working", t5, "helper%d" % k, {"activity": "helping with the docs"}))]
+        (1, "agent_working", t5, "helper%d" % k, {"activity": "helping with the docs"}))] + (
+        [(1, "agent_started", None, "barmaid", {"role": "barmaid"})] if barmaid else [])
 
 
-def write(path, clock_end=None, live=False, speed=1.0, sleep=time.sleep, agents=3):
+def write(path, clock_end=None, live=False, speed=1.0, sleep=time.sleep, agents=3, barmaid=False):
     """Append the whole script to the feed at `path`. Backfilled events get past timestamps ending at clock_end (default now)."""
-    s = script(agents)
+    s = script(agents, barmaid)
     total = sum(x[0] for x in s)
     now = [(clock_end or time.time()) - total]
     feed = Feed(path, clock=lambda: now[0])
@@ -95,9 +96,10 @@ def main(argv=None):
     ap.add_argument("--live", action="store_true", help="play events in real time")
     ap.add_argument("--agents", type=int, default=3, help="number of agents (3 = the usual story, more adds extra workers)")
     ap.add_argument("--speed", type=float, default=1.0)
+    ap.add_argument("--barmaid", action="store_true", help="add a barmaid who walks between the tables (the inn, with the server's --demo)")
     a = ap.parse_args(argv)
     out = a.out or os.path.join(tempfile.mkdtemp(prefix="vanilla-demo-"), "feed.jsonl")
-    n = write(out, live=a.live, speed=a.speed, agents=a.agents)
+    n = write(out, live=a.live, speed=a.speed, agents=a.agents, barmaid=a.barmaid)
     print("wrote %d demo events to %s" % (n, out))
     print("view:  python -m vanilla_agents.app.server --feed %s --open" % out)
     return 0

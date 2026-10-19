@@ -322,9 +322,15 @@ export function initInn(ctx) {
     if (roster === null) roster = await fetch('/assets/models/workers/manifest.json').then((r) => (r.ok ? r.json() : [])).catch(() => []);
     if (!roster.length) return { file: c.models.character, scale: 1 };
     if (id === 'hero') { let k = window.__heroPick; try { if (k === undefined) { const v = localStorage.getItem('innHero'); if (v !== null) k = +v; } } catch (e) { /* storage off */ } if (roster[k]) return roster[k]; }
+    if (barmaid(id)) { const f = roster.filter((r) => r.sex === 'f'), h = f.filter((r) => r.race === 'human'), pool = h.length ? h : f.length ? f : roster; return pool[hash(id) % pool.length]; }
     const pool = roster; return pool[hash(id) % pool.length];
   }
   const villagers = new Map(), stations = new Map();
+  // the demo (demo.cmd, server --demo): every helper sits at a laptop and stays there; one barmaid (role "barmaid") walks between the tables
+  const roleOf = (id) => (((state && state.agents) || []).find((a) => a.id === id) || {}).role || '';
+  const barmaid = (id) => /barmaid/i.test(roleOf(id));
+  const atWork = (a) => !!a && (a.state === 'working' || (!!(state && state.demo) && !barmaid(a.id)));
+  const onTable = (p) => !!(p && p.look && p.look.race === 'gnome');      // a gnome is too short for the chairs: he sits on the table at his laptop
   async function makePerson(id) {
     const look = await workerFile(id), gltf = await loadModel(look.file), g = new THREE.Group();
     gltf.scene.scale.setScalar(look.scale || 1); g.add(gltf.scene);
@@ -370,7 +376,11 @@ export function initInn(ctx) {
     if (list && list.length) pick = name === 'stand' ? pickStand(list) : list[0]; else if (p.acts[name]) pick = { act: p.acts[name] };
     if (!pick) return;
     const next = pick.act;
-    if (next === p.curAct) { p.cur = name; return; }
+    if (next === p.curAct && next.isRunning()) { p.cur = name; return; }
+    if (next === p.curAct) {      // the same one-off Stand variation picked again after it ended: restart it (else the hero stands frozen on its last frame)
+      next.reset(); next.setLoop(ONCE.has(name) || (name === 'stand' && pick.var > 0) ? THREE.LoopOnce : THREE.LoopRepeat, Infinity); next.clampWhenFinished = ONCE.has(name); next.play();
+      p.cur = name; return;
+    }
     next.reset(); next.setLoop(ONCE.has(name) || (name === 'stand' && pick.var > 0) ? THREE.LoopOnce : THREE.LoopRepeat, Infinity); next.clampWhenFinished = ONCE.has(name); next.play();
     const f = pick.info && pick.info.blend != null ? pick.info.blend / 1000 : fade;   // M2 blendTimeIn of the sequence we fade into
     if (p.curAct) p.curAct.crossFadeTo(next, f, false);
@@ -415,10 +425,11 @@ export function initInn(ctx) {
       if (cursor) { g.fillStyle = '#1d1b18'; const last = lines.length ? lines[lines.length - 1].text.replace(/^[$>] /, '') : ''; g.fillRect(12 + Math.min(g.measureText(last.slice(0, 30)).width + 3, W - 24), y - 40, 10, 3); }
     };
   }
-  function makeLaptop(seat, agentId) {
+  function makeLaptop(seat, agentId, sitOnTable) {
     const t = seat.table, g = new THREE.Group(); g.position.set(seat.x, seat.y, seat.z); g.rotation.y = seat.yaw;      // +z points at the table
-    const dist = Math.min(LAP.reach, Math.hypot(t.x - seat.x, t.z - seat.z) * 0.62), top = (t.top || seat.y + 0.75) - seat.y;
-    const lap = new THREE.Group(); lap.position.set(0, top + 0.004, dist); g.add(lap);
+    const reach = Math.hypot(t.x - seat.x, t.z - seat.z), dist = Math.min(LAP.reach, reach * 0.62), top = (t.top || seat.y + 0.75) - seat.y;
+    const lapZ = sitOnTable ? Math.min(dist + 0.42, reach + 0.25) : dist;     // a gnome sits where the laptop would be; it goes further in, facing him
+    const lap = new THREE.Group(); lap.position.set(0, top + 0.004, lapZ); g.add(lap);
     const base = new THREE.Mesh(new THREE.BoxGeometry(LAP.w, LAP.base_h, LAP.d), lapMat); base.position.y = LAP.base_h / 2; lap.add(base);
     const keys = new THREE.Mesh(new THREE.PlaneGeometry(LAP.w * 0.86, LAP.d * 0.5), lapKeys); keys.rotation.x = -Math.PI / 2; keys.position.set(0, LAP.base_h + 0.001, -LAP.d * 0.12); lap.add(keys);
     const hinge = new THREE.Group(); hinge.position.set(0, LAP.base_h, LAP.d / 2); lap.add(hinge);       // at the far edge; the lid swings up toward the helper
@@ -430,7 +441,7 @@ export function initInn(ctx) {
     scene.add(g);
     const paint = pagePainter(canvas);
     return { id: agentId, group: g, laptop: true, hinge, lid: 0, spot: seat, shown: 0, sig: '', amount: 0,
-      char: { pos: [0, 0.02, 0], rot: 180 }, mon: { paint: (h, l, c2) => { paint(h, l, c2); tex.needsUpdate = true; } } };
+      char: sitOnTable ? { pos: [0, top + 0.006, Math.max(0.12, dist - 0.08)], rot: 180, onTable: true } : { pos: [0, 0.02, 0], rot: 180 }, mon: { paint: (h, l, c2) => { paint(h, l, c2); tex.needsUpdate = true; } } };
   }
   const shutting = new Set();
   function dropLaptop(st) {
@@ -448,6 +459,15 @@ export function initInn(ctx) {
   const R = rng(7);
   function pickIdle(v, a) {
     const r = R();
+    if (barmaid(v.id)) {
+      const busy = [...villagers.values()].filter((o) => o !== v && o.p && o.st && o.st.laptop && o.stage === 'work' && o !== v.served);
+      const o = busy.length ? busy[Math.floor(R() * busy.length)] : null;
+      if (o) {
+        const sp = o.st.spot, side = R() < 0.5 ? 1 : -1, x = sp.x + Math.cos(sp.yaw) * 0.75 * side, z = sp.z - Math.sin(sp.yaw) * 0.75 * side;
+        const n = nearestFree(x, z, sp.y, 8);
+        if (n >= 0) { const [gx, gz] = cellXZ(n); v.served = o; v.goal = { x: gx, z: gz, y: nav.y[n], kind: 'chat', with: o, serve: true }; v.path = findPath(v.p.g.position, v.goal); v.stage = v.path ? 'go' : 'wait'; v.timer = 4 + R() * 4; return; }
+      }
+    }
     v.activity = null; v.anvilSlot = null;
     if (v.checking && !ws.reducedMotion()) {   // V-043: the checker is testing its quest: hammer at the anvil (none here: right where it stands)
       const at = nearProp(props.anvil, v.p.g.position), n = at ? anvilSpot(v, at, gy(at.x, at.z, v.p.g.position.y)) : -1;
@@ -461,10 +481,10 @@ export function initInn(ctx) {
     }
     if (v.contestQ && !outranks(v, a)) {     // V-047: competing on a quest: to the contest table, laptop open, until the owner picks or stops
       const s = contestSeat(v);
-      if (s) { s.taken = v.id; v.st = makeLaptop(s, v.id); v.st.contest = v.contestQ; v.wantDesk = true; v.goal = { x: s.x, z: s.z, y: s.y, kind: 'contest' }; v.path = findPath(v.p.g.position, v.goal); v.stage = v.path ? 'togo' : 'arrive'; v.timer = 1e9; return; }
+      if (s) { s.taken = v.id; v.st = makeLaptop(s, v.id, onTable(v.p)); v.st.contest = v.contestQ; v.wantDesk = true; v.goal = { x: s.x, z: s.z, y: s.y, kind: 'contest' }; v.path = findPath(v.p.g.position, v.goal); v.stage = v.path ? 'togo' : 'arrive'; v.timer = 1e9; return; }
     }
     const seat = seats.filter((s) => !s.taken);
-    if (r < 0.5 && seat.length) { const s = seat[Math.floor(R() * seat.length)]; s.taken = v.id; v.seat = s; v.goal = { x: s.x, z: s.z, kind: 'sit', y: s.y }; }
+    if (r < 0.5 && seat.length && !barmaid(v.id)) { const s = seat[Math.floor(R() * seat.length)]; s.taken = v.id; v.seat = s; v.goal = { x: s.x, z: s.z, kind: 'sit', y: s.y }; }
     else if (r < 0.62 && fire) v.goal = { x: fire.x + (R() - 0.5) * 2, z: fire.z + (R() - 0.5) * 2, y: 0, kind: 'stand' };
     else {
       const others = [...villagers.values()].filter((o) => o !== v && o.p);
@@ -476,7 +496,7 @@ export function initInn(ctx) {
   function leaveSeat(v) { if (v.seat) { v.seat.taken = null; v.seat = null; } }
   function toStation(v, st) { // reparent into the desk group at the character's layout spot (a laptop seat: in the chair, facing the table)
     const L = st.char || c.layout.character; st.group.add(v.p.g); v.p.g.position.set(...L.pos); v.p.g.rotation.set(0, THREE.MathUtils.degToRad(L.rot), 0); v.station = st; v.stage = 'work';
-    play(v.p, 'sit', 0.2); v.typing = makeTyping(v.p.model, c.typing, hash(v.id) % 97 + 1);
+    v.p.cur = null; play(v.p, L.onTable ? 'sitground' : 'sit', 0.2); v.typing = makeTyping(v.p.model, c.typing, hash(v.id) % 97 + 1);
   }
   function fromStation(v) {
     const wp = v.p.g.getWorldPosition(new THREE.Vector3()); scene.add(v.p.g); v.p.g.position.copy(wp); v.p.g.rotation.set(0, 0, 0);
@@ -718,10 +738,10 @@ export function initInn(ctx) {
     if (cq !== (v.contestQ || null)) { const was = v.contestQ; v.contestQ = cq; if (was) contestOver(v, was); }
     setMark(v, a && a.needs ? 'needs' : a && a.stunned ? 'stunned' : null, t);
     if (a && a.stunned && v.stage !== 'work' && p.cur !== 'stun' && v.stage !== 'go' && v.stage !== 'togo') { p.cur = null; p.after = null; play(p, 'stun'); }
-    const working = a && a.state === 'working';
+    const working = atWork(a);
     if (a) setGhost(v, !working && !v.checking && !!a.seen && (Date.now() / 1000 - (typeof a.seen === 'number' ? a.seen : Date.parse(a.seen) / 1000)) > GHOST_S);
     if (!working && v.errand) { fromStation(v); v.errand = null; }
-    if (working && v.stage === 'work' && v.st && !ws.reducedMotion()) { const k = errandFor(v, a, t); if (k) startErrand(v, k, t); }
+    if (working && v.stage === 'work' && v.st && !ws.reducedMotion() && !state.demo) { const k = errandFor(v, a, t); if (k) startErrand(v, k, t); }
     if (working && v.errand && v.stage === 'stay' && a.activity !== v.errandAct && v.errand.kind === 'fire') backToDesk(v);   // got going again
     if (working && v.errand && v.stage === 'stay' && v.errand.kind === 'anvil' && !testing(v, t) && !(p.cur === 'cheer' && p.after)) backToDesk(v);   // no test command for a while: back to the laptop
     else if (working && v.errand && v.stage === 'stay' && v.errand.kind !== 'anvil' && v.st && testing(v, t) && t - (v.backAt ?? -99) > TK.back_s && !ws.reducedMotion()) {   // tests started while reading / thinking: straight to the anvil
@@ -738,7 +758,7 @@ export function initInn(ctx) {
       const seat = cs || seats.filter((q) => !q.taken && q.table).sort((x, y) => Math.hypot(x.x - p.g.position.x, x.z - p.g.position.z) - Math.hypot(y.x - p.g.position.x, y.z - p.g.position.z))[0];
       let spot = seat ? null : deskSpots.find((d) => !d.used);
       if (seat) {
-        seat.taken = v.id; v.st = makeLaptop(seat, v.id); if (cs) v.st.contest = v.contestQ;
+        seat.taken = v.id; v.st = makeLaptop(seat, v.id, onTable(p)); if (cs) v.st.contest = v.contestQ;
         v.path = findPath(p.g.position, { x: seat.x, z: seat.z, y: seat.y }); v.stage = v.path ? 'togo' : 'arrive'; v.wantDesk = true;
       } else if (spot) {
         spot.used = v.id; if (!stations.has(spot)) stations.set(spot, null);
@@ -781,7 +801,7 @@ export function initInn(ctx) {
       else if (v.goal && v.goal.kind === 'anvil') { const at = v.goal.at; if (at) face(p, Math.atan2(at.x - p.g.position.x, at.z - p.g.position.z)); v.stage = 'stay'; p.cur = null; p.after = null; play(p, 'work'); }
       else if (v.wantDesk) { if (v.st) toStation(v, v.st); }   // else the desk is still being built: wait here
       else if (v.goal && v.goal.kind === 'sit' && v.seat) { p.g.position.set(v.seat.x, v.seat.y + 0.02, v.seat.z); face(p, v.seat.yaw); play(p, 'sit'); v.stage = 'stay'; }
-      else if (v.goal && v.goal.kind === 'chat' && v.goal.with && v.goal.with.p) { const o = v.goal.with.p.g.position; face(p, Math.atan2(o.x - p.g.position.x, o.z - p.g.position.z)); play(p, p.byId[ANIM.talk] ? 'talk' : 'stand'); v.stage = 'stay'; v.chatting = true; }
+      else if (v.goal && v.goal.kind === 'chat' && v.goal.with && v.goal.with.p) { const o = v.goal.with.p.g.position; face(p, Math.atan2(o.x - p.g.position.x, o.z - p.g.position.z)); play(p, p.byId[ANIM.talk] ? 'talk' : 'stand'); v.stage = 'stay'; v.chatting = true; if (v.goal.serve) { v.timer = 3 + R() * 3; emote(p, R() < 0.5 ? 'bow' : 'question', 'talk'); } }
       else { play(p, 'stand'); v.stage = 'stay'; }
     }
     if (v.stage === 'stay' && v.chatting && R() < dt * 0.12) emote(p, ['laugh', 'yes', 'no', 'point', 'exclaim', 'question', 'shy', 'applaud'][Math.floor(R() * 8)], 'talk');      // a chat is not a statue
@@ -1246,7 +1266,7 @@ export function initInn(ctx) {
     if (ready) stepScreens(t);
     if (ready) lights.update(t, dt, heroAt.set(hero.x, hero.y + 1.2, hero.z));
     for (const [, v] of villagers) if (v.st) {
-      const a = now.find((x) => x.id === v.id), working = a && a.state === 'working';
+      const a = now.find((x) => x.id === v.id), working = atWork(a);
       v.st.amount += ((working && v.stage === 'work' ? 1 : 0) - v.st.amount) * Math.min(1, dt * 8);
       if (v.st.laptop) { const want = v.stage === 'work' ? LAP.open : 0; v.st.lid += (want - v.st.lid) * Math.min(1, dt * 4); v.st.hinge.rotation.x = v.st.lid; }   // opens when seated, shuts on an errand
       if (t - v.st.shown >= 0.33) { v.st.shown = t; const x = screenText({ id: v.id, level: v.p && v.p.level }, a), blink = x.cursor && Math.floor(t * 2) % 2 === 0, sig = x.head + x.lines.map((l) => l.text).join('|') + blink; if (sig !== v.st.sig) { v.st.sig = sig; v.st.mon.paint(x.head, x.lines, blink); } }

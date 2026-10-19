@@ -50,6 +50,6 @@ MIT: see [LICENSE](LICENSE).
 
 ## About this repository
 
-This repository is published from **vanilla-agents** (commit `e6f93f6514`: Merge feat-s: action bar fitted to the rack, names and number keys 1-6, Needs you / Quest log / Changes buttons (V-052)). Changes are made there and arrive here with each release, so please open issues and pull requests on [Open Vanilla](https://github.com/orionopenwow/OpenVanilla/issues).
+This repository is published from **vanilla-agents** (commit `fb1cf0c485`: Merge feat-t: demo helpers stay at laptops, barmaid, gnome on the table, idle freeze fix). Changes are made there and arrive here with each release, so please open issues and pull requests on [Open Vanilla](https://github.com/orionopenwow/OpenVanilla/issues).
 
 World of Warcraft is a trademark of Blizzard Entertainment, Inc. Open Vanilla is an independent fan project, not affiliated with or endorsed by Blizzard Entertainment. No Blizzard game files are included: you need your own.
