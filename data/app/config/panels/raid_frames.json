@@ -1,0 +1,48 @@
+{
+ "title": "raid.title",
+ "frame": "metal",
+ "anchor": {
+  "right": 12,
+  "top": 430
+ },
+ "size": {
+  "w": 290,
+  "h": 162
+ },
+ "visible": true,
+ "text": {
+  "empty": "raid.empty",
+  "quests": "raid.quests",
+  "no_quests": "raid.no_quests",
+  "working": "raid.working",
+  "idle": "raid.idle",
+  "more": "raid.more",
+  "group": "raid.group",
+  "mana": "raid.mana",
+  "needs_permission": "raid.needs_permission",
+  "needs_question": "raid.needs_question",
+  "needs_input": "raid.needs_input",
+  "stunned": "raid.stunned",
+  "clash": "raid.clash",
+  "place": "raid.place",
+  "place_wt": "raid.place_wt",
+  "left": "raid.left",
+  "resurrect": "raid.resurrect",
+  "resurrect_ok": "gossip.resurrect_ok",
+  "resurrect_fail": "gossip.resurrect_fail",
+  "menu_talk": "raid.menu_talk",
+  "menu_hint": "raid.menu_hint",
+  "contest": "raid.contest"
+ },
+ "tips": {
+  "frame": "raid_frame",
+  "group": "raid_group",
+  "menu_talk": "raid_menu_talk",
+  "resurrect": "raid_resurrect",
+  "left": "raid_left"
+ },
+ "options": {
+  "columns": 1,
+  "max_frames": 8
+ }
+}

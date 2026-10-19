@@ -1,0 +1,23 @@
+{
+ "_about": "Zones for the Zones window (V-042). map = the folder under Interface\\WorldMap (the zone's own map picture, 12 tiles); light = the sky and light outside the inn's windows (inn.js PLACE_LIGHT); continent picks the loading screen. map_id + pos (V-046) = the continent (Map.dbc id: 0 Eastern Kingdoms, 1 Kalimdor) and where the inn's town is in world coordinates [x north, y west]: the town's spot on the zone map (u, v from 0 to 1) turned into the world with the zone's WorldMapArea.dbc bounds, x = top - v * (top - bottom), y = left - u * (left - right); the bake picks the game light there (Light.dbc), approximate is fine. Buildings point here with their \"zone\" (buildings.json).",
+ "zones": [
+  {"id": "elwynn", "name": "Elwynn Forest", "continent": "ek", "map": "Elwynn", "map_id": 0, "pos": [-9462, 15], "light": "forest", "faction": "alliance"},
+  {"id": "stormwind", "name": "Stormwind City", "continent": "ek", "map": "Stormwind", "fallback_map": "Elwynn", "map_id": 0, "pos": [-8867, 673], "light": "forest", "faction": "alliance"},
+  {"id": "westfall", "name": "Westfall", "continent": "ek", "map": "Westfall", "map_id": 0, "pos": [-10628, 1037], "light": "plains", "faction": "alliance"},
+  {"id": "redridge", "name": "Redridge Mountains", "continent": "ek", "map": "Redridge", "map_id": 0, "pos": [-9222, -2155], "light": "mountain", "faction": "alliance"},
+  {"id": "duskwood", "name": "Duskwood", "continent": "ek", "map": "Duskwood", "map_id": 0, "pos": [-10515, -1160], "light": "gloom", "faction": "alliance"},
+  {"id": "dunmorogh", "name": "Dun Morogh", "continent": "ek", "map": "DunMorogh", "map_id": 0, "pos": [-5601, -531], "light": "snow", "faction": "alliance"},
+  {"id": "lochmodan", "name": "Loch Modan", "continent": "ek", "map": "LochModan", "map_id": 0, "pos": [-5378, -2972], "light": "mountain", "faction": "alliance"},
+  {"id": "wetlands", "name": "Wetlands", "continent": "ek", "map": "Wetlands", "map_id": 0, "pos": [-3825, -835], "light": "swamp", "faction": "alliance"},
+  {"id": "tirisfal", "name": "Tirisfal Glades", "continent": "ek", "map": "Tirisfal", "map_id": 0, "pos": [2260, 290], "light": "gloom", "faction": "horde"},
+  {"id": "wplaguelands", "name": "Western Plaguelands", "continent": "ek", "map": "WesternPlaguelands", "map_id": 0, "pos": [1340, -1590], "light": "plague", "faction": "contested"},
+  {"id": "stranglethorn", "name": "Stranglethorn Vale", "continent": "ek", "map": "Stranglethorn", "map_id": 0, "pos": [-12380, 180], "light": "jungle", "faction": "contested"},
+  {"id": "teldrassil", "name": "Teldrassil", "continent": "kalimdor", "map": "Teldrassil", "map_id": 1, "pos": [9800, 980], "light": "enchanted", "faction": "alliance"},
+  {"id": "darkshore", "name": "Darkshore", "continent": "kalimdor", "map": "Darkshore", "map_id": 1, "pos": [6407, 520], "light": "moonlit", "faction": "alliance"},
+  {"id": "durotar", "name": "Durotar", "continent": "kalimdor", "map": "Durotar", "map_id": 1, "pos": [340, -4686], "light": "desert", "faction": "horde"},
+  {"id": "barrens", "name": "The Barrens", "continent": "kalimdor", "map": "Barrens", "map_id": 1, "pos": [-956, -3754], "light": "savanna", "faction": "contested"},
+  {"id": "mulgore", "name": "Mulgore", "continent": "kalimdor", "map": "Mulgore", "map_id": 1, "pos": [-2365, -345], "light": "plains", "faction": "horde"},
+  {"id": "tanaris", "name": "Tanaris", "continent": "kalimdor", "map": "Tanaris", "map_id": 1, "pos": [-7160, -3840], "light": "desert", "faction": "contested"}
+ ],
+ "loading": {"ek": "Interface\\Glues\\LoadingScreens\\LoadScreenEasternKingdom.blp", "kalimdor": "Interface\\Glues\\LoadingScreens\\LoadScreenKalimdor.blp"}
+}

@@ -1,0 +1,48 @@
+{
+ "title": "meter.title",
+ "frame": "metal",
+ "anchor": {
+  "right": 310,
+  "top": 60
+ },
+ "size": {
+  "w": 390,
+  "h": 300
+ },
+ "visible": false,
+ "hotkey": "meters",
+ "text": {
+  "tab_rate": "meter.tab_rate",
+  "tab_total": "meter.tab_total",
+  "tab_passed": "meter.tab_passed",
+  "tab_log": "meter.tab_log",
+  "empty": "meter.empty",
+  "log_empty": "meter.log_empty",
+  "rate": "meter.rate",
+  "total": "meter.total",
+  "passed": "meter.passed",
+  "bar_body": "meter.bar_body",
+  "tab_cost": "meter.tab_cost",
+  "cost": "meter.cost",
+  "cost_rate": "meter.cost_rate",
+  "cost_empty": "meter.cost_empty",
+  "cost_body": "meter.cost_body",
+  "tab_tokens": "meter.tab_tokens",
+  "tokens": "meter.tokens",
+  "tokens_empty": "meter.tokens_empty",
+  "tokens_body": "meter.tokens_body"
+ },
+ "tips": {
+  "tab_rate": "meter_tab_rate",
+  "tab_total": "meter_tab_total",
+  "tab_passed": "meter_tab_passed",
+  "tab_log": "meter_tab_log",
+  "tab_cost": "meter_tab_cost",
+  "tab_tokens": "meter_tab_tokens"
+ },
+ "options": {
+  "window_seconds": 300,
+  "max_bars": 10,
+  "max_log": 120
+ }
+}

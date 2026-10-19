@@ -1,0 +1,26 @@
+{
+ "title": "sound.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 50
+ },
+ "size": {
+  "w": 620,
+  "h": 440
+ },
+ "visible": false,
+ "text": {
+  "master": "sound.master",
+  "mute": "sound.mute",
+  "enabled": "sound.enabled",
+  "test": "sound.test",
+  "saved": "sound.saved",
+  "error": "sound.error",
+  "back": "sound.back",
+  "helpers": "sound.helpers",
+  "helpers_off": "sound.helpers_off",
+  "helpers_ask": "sound.helpers_ask",
+  "helpers_on": "sound.helpers_on"
+ }
+}

@@ -1,0 +1,412 @@
+[
+ {
+  "key": "goldshire_c",
+  "label": "Lion's Pride Inn, Goldshire",
+  "zone": "elwynn",
+  "town": "Goldshire",
+  "inn": "Lion's Pride Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\GoldshireInn\\GoldshireInn.wmo",
+  "sets": [
+   0,
+   2
+  ],
+  "start": [
+   -3,
+   7.3
+  ],
+  "desk_y": [
+   5,
+   8.5
+  ],
+  "music": [
+   "TavernAlliance",
+   "DayForest"
+  ]
+ },
+ {
+  "key": "goldshire_a",
+  "label": "Lion's Pride Inn, Goldshire (quiet night)",
+  "zone": "elwynn",
+  "town": "Goldshire",
+  "inn": "Lion's Pride Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\GoldshireInn\\GoldshireInn.wmo",
+  "sets": [
+   0,
+   3
+  ],
+  "start": [
+   -3,
+   7.3
+  ],
+  "desk_y": [
+   5,
+   8.5
+  ],
+  "music": [
+   "TavernAlliance",
+   "NightForest"
+  ]
+ },
+ {
+  "key": "goldshire_b",
+  "label": "Lion's Pride Inn, Goldshire (busy)",
+  "zone": "elwynn",
+  "town": "Goldshire",
+  "inn": "Lion's Pride Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\GoldshireInn\\GoldshireInn.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "start": [
+   -3,
+   7.3
+  ],
+  "desk_y": [
+   5,
+   8.5
+  ],
+  "music": [
+   "TavernAlliance",
+   "stormwind"
+  ]
+ },
+ {
+  "key": "darkshire",
+  "label": "Scarlet Raven Tavern, Darkshire",
+  "zone": "duskwood",
+  "town": "Darkshire",
+  "inn": "Scarlet Raven Tavern",
+  "root": "World\\wmo\\Azeroth\\Buildings\\Duskwood_Inn\\Duskwood_Inn.wmo",
+  "sets": [
+   0,
+   2
+  ],
+  "music": [
+   "EvilForest",
+   "haunted",
+   "spooky",
+   "TavernAlliance"
+  ]
+ },
+ {
+  "key": "lakeshire",
+  "label": "Lakeshire Inn, Lakeshire",
+  "zone": "redridge",
+  "town": "Lakeshire",
+  "inn": "Lakeshire Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\RedRidge_Inn\\RedRidge_Inn.wmo",
+  "sets": [
+   0,
+   2
+  ],
+  "music": [
+   "Mountain",
+   "TavernAlliance"
+  ]
+ },
+ {
+  "key": "sentinel_hill",
+  "label": "Sentinel Hill Inn, Sentinel Hill",
+  "zone": "westfall",
+  "town": "Sentinel Hill",
+  "inn": "Sentinel Hill Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\Westfall_Inn\\Westfall_Inn.wmo",
+  "sets": [
+   0,
+   2
+  ],
+  "music": [
+   "Plains",
+   "TavernAlliance"
+  ]
+ },
+ {
+  "key": "moonbrook",
+  "label": "Moonbrook Inn (abandoned)",
+  "zone": "westfall",
+  "town": "Moonbrook",
+  "inn": "Moonbrook Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\Moonbrook_Inn\\Moonbrook_Inn.wmo",
+  "sets": [
+   0
+  ],
+  "music": [
+   "CursedLand",
+   "gloomy",
+   "GhostMusic"
+  ]
+ },
+ {
+  "key": "town_hall",
+  "label": "Town Hall (office)",
+  "zone": "stormwind",
+  "town": "Stormwind",
+  "inn": "Town Hall",
+  "root": "World\\wmo\\Azeroth\\Buildings\\TownHall\\TownHall.wmo",
+  "sets": [
+   0,
+   2
+  ],
+  "music": [
+   "stormwind"
+  ]
+ },
+ {
+  "key": "guild_house",
+  "label": "Guild House (office)",
+  "zone": "stormwind",
+  "town": "Stormwind",
+  "inn": "Guild House",
+  "root": "World\\wmo\\Azeroth\\Buildings\\GuildHouses\\GuildHouseA.wmo",
+  "sets": [
+   0
+  ],
+  "music": [
+   "IronForge",
+   "stormwind",
+   "TavernAlliance"
+  ]
+ },
+ {
+  "key": "mage_tower",
+  "label": "Mage Tower",
+  "zone": "stormwind",
+  "town": "Stormwind",
+  "inn": "Mage Tower",
+  "root": "World\\wmo\\Azeroth\\Buildings\\Magetower\\magetower.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "music": [
+   "magic",
+   "mystery"
+  ]
+ },
+ {
+  "key": "orc_inn",
+  "label": "Razor Hill Inn, Razor Hill",
+  "zone": "durotar",
+  "town": "Razor Hill",
+  "inn": "Razor Hill Inn",
+  "root": "World\\wmo\\Kalimdor\\Buildings\\OrcInn\\OrcInn.wmo",
+  "sets": [
+   0
+  ],
+  "music": [
+   "TavernHorde",
+   "orgrimmar",
+   "Barren"
+  ]
+ },
+ {
+  "key": "night_elf_inn",
+  "label": "Dolanaar Inn, Dolanaar",
+  "zone": "teldrassil",
+  "town": "Dolanaar",
+  "inn": "Dolanaar Inn",
+  "root": "World\\wmo\\Kalimdor\\Buildings\\NightElfInn\\NightElfInn.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "music": [
+   "Darnassus",
+   "EnchantedForest"
+  ]
+ },
+ {
+  "key": "ratchet",
+  "label": "Ratchet Inn, Ratchet",
+  "zone": "barrens",
+  "town": "Ratchet",
+  "inn": "Ratchet Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\Stranglethorn_BootyBay\\Ratchet_Inn.wmo",
+  "sets": [
+   0
+  ],
+  "music": [
+   "TavernHorde",
+   "Jungle",
+   "Desert"
+  ]
+ },
+ {
+  "key": "kharanos",
+  "label": "Thunderbrew Distillery, Kharanos",
+  "zone": "dunmorogh",
+  "town": "Kharanos",
+  "inn": "Thunderbrew Distillery",
+  "root": "World\\wmo\\KhazModan\\Buildings\\Dwarven_Tavern\\snow_tavern\\Snow_Tavern.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "music": [
+   "Ironforge",
+   "TavernAlliance",
+   "Mountain"
+  ]
+ },
+ {
+  "key": "dun_morogh_inn",
+  "label": "Dwarven Inn, Dun Morogh",
+  "zone": "dunmorogh",
+  "town": "Dun Morogh",
+  "inn": "Dwarven Inn",
+  "root": "World\\wmo\\KhazModan\\Buildings\\Dwarven_Inn\\snow_Inn\\Snow_Inn.wmo",
+  "sets": [
+   0,
+   2
+  ],
+  "music": [
+   "Mountain",
+   "Ironforge",
+   "TavernAlliance"
+  ]
+ },
+ {
+  "key": "anvilmar",
+  "label": "Anvilmar, Coldridge Valley",
+  "zone": "dunmorogh",
+  "town": "Coldridge Valley",
+  "inn": "Anvilmar",
+  "root": "World\\wmo\\KhazModan\\Buildings\\Anvilmar\\AnvilMar.wmo",
+  "sets": [
+   0
+  ],
+  "music": [
+   "Ironforge",
+   "Mountain"
+  ]
+ },
+ {
+  "key": "thelsamar",
+  "label": "Stoutlager Inn, Thelsamar",
+  "zone": "lochmodan",
+  "town": "Thelsamar",
+  "inn": "Stoutlager Inn",
+  "root": "World\\wmo\\KhazModan\\Buildings\\Dwarven_Inn\\wetlands_Inn\\wet_Inn.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "music": [
+   "Mountain",
+   "TavernAlliance"
+  ]
+ },
+ {
+  "key": "menethil",
+  "label": "Deepwater Tavern, Menethil Harbor",
+  "zone": "wetlands",
+  "town": "Menethil Harbor",
+  "inn": "Deepwater Tavern",
+  "root": "World\\wmo\\KhazModan\\Buildings\\Dwarven_Tavern\\wetlands_tavern\\wet_Tavern.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "music": [
+   "SoggyPlace",
+   "TavernAlliance"
+  ]
+ },
+ {
+  "key": "brill",
+  "label": "Gallows' End Tavern, Brill",
+  "zone": "tirisfal",
+  "town": "Brill",
+  "inn": "Gallows' End Tavern",
+  "root": "World\\wmo\\Azeroth\\Buildings\\DuskwoodAbandoned_Inn\\DuskwoodAbandoned_Inn.wmo",
+  "sets": [
+   0
+  ],
+  "music": [
+   "Undercity",
+   "CursedLand",
+   "TavernHorde"
+  ]
+ },
+ {
+  "key": "andorhal",
+  "label": "Andorhal Inn (abandoned)",
+  "zone": "wplaguelands",
+  "town": "Andorhal",
+  "inn": "Andorhal Inn",
+  "root": "World\\wmo\\Azeroth\\Buildings\\DuskwoodAbandoned_Inn\\AndorhalAbandoned_Inn.wmo",
+  "sets": [
+   0
+  ],
+  "music": [
+   "CursedLand",
+   "GhostMusic",
+   "gloomy"
+  ]
+ },
+ {
+  "key": "troll_inn",
+  "label": "Troll Inn, Stranglethorn",
+  "zone": "stranglethorn",
+  "town": "Stranglethorn",
+  "inn": "Troll Inn",
+  "root": "World\\wmo\\Kalimdor\\Buildings\\TrollHotel\\troll_hotel01.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "music": [
+   "Jungle",
+   "TavernHorde"
+  ]
+ },
+ {
+  "key": "auberdine",
+  "label": "Auberdine Inn, Auberdine",
+  "zone": "darkshore",
+  "town": "Auberdine",
+  "inn": "Auberdine Inn",
+  "root": "World\\wmo\\Kalimdor\\Buildings\\NightElfInn\\DSNightElfInn.wmo",
+  "sets": [
+   0,
+   1
+  ],
+  "music": [
+   "EnchantedForest",
+   "Darnassus"
+  ]
+ },
+ {
+  "key": "bloodhoof",
+  "label": "Bloodhoof Village Inn, Mulgore",
+  "zone": "mulgore",
+  "town": "Bloodhoof Village",
+  "inn": "Bloodhoof Village Inn",
+  "root": "World\\wmo\\Kalimdor\\Buildings\\TaurenLonghouse\\TaurenLonghouse.wmo",
+  "sets": [
+   0,
+   3
+  ],
+  "music": [
+   "Thunderbluff",
+   "Plains",
+   "TavernHorde"
+  ]
+ },
+ {
+  "key": "gadgetzan",
+  "label": "Gadgetzan Inn, Gadgetzan",
+  "zone": "tanaris",
+  "town": "Gadgetzan",
+  "inn": "Gadgetzan Inn",
+  "root": "World\\wmo\\Kalimdor\\Buildings\\GoblinHut\\KL_Tanaris_GoblinBld_B.wmo",
+  "sets": [
+   1
+  ],
+  "music": [
+   "Desert",
+   "TavernHorde"
+  ]
+ }
+]

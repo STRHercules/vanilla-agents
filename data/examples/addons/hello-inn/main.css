@@ -1,0 +1,4 @@
+/* Loaded automatically because it is called main.css. Only this addon's sign, at the top in the middle: */
+.addon-panel:has(.hello-inn) { left: 50%; top: 14px; transform: translateX(-50%); min-width: 200px; text-align: center; }
+.hello-inn { color: #ffffff; font-size: 13px; line-height: 18px; }
+.hello-inn-quests { color: #1eff00; }

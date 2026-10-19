@@ -1,0 +1,160 @@
+{
+  "host": "127.0.0.1",
+  "port": 8766,
+  "assets_dir": "~/.vanilla-agents/assets",
+  "data_dir": "",
+  "feed_path": "",
+  "project_roots": [
+    "~"
+  ],
+  "chat_max_lines": 200,
+  "sse_check_seconds": 0.5,
+  "sse_keepalive_seconds": 15,
+  "window": {
+    "width": 1280,
+    "height": 800
+  },
+  "browser_profile_dir": "~/.vanilla-agents/work/chrome-profile",
+  "settings_path": "~/.vanilla-agents/work/settings.json",
+  "transcripts_dir": "",
+  "transcript_offsets_path": "~/.vanilla-agents/work/transcript-offsets.json",
+  "transcript_poll_seconds": 2,
+  "transcript_idle_minutes": 10,
+  "transcript_recent_minutes": 120,
+  "transcript_max_agents": 8,
+  "transcript_context_tokens": 250000,
+  "projects_path": "~/.vanilla-agents/work/projects.json",
+  "trusted_root": "~/.vanilla-agents/trusted",
+  "ideas_root": "~/.vanilla-agents/work/projects",
+  "verify_work_root": "~/.vanilla-agents/work/verify",
+  "verify_min_free_bytes": 8589934592,
+  "verify_check_seconds": {
+    "cargo_test": 900
+  },
+  "verify_default_seconds": 120,
+  "verify_fake_seconds": 8,
+  "runs_path": "~/.vanilla-agents/work/runs.jsonl",
+  "runs_max_bytes": 262144,
+  "runs_api_limit": 60,
+  "route": {
+    "max_fast_files": 5,
+    "max_fast_lines": 200,
+    "full_paths": [
+      "Cargo.toml",
+      "Cargo.lock",
+      "rust-toolchain*",
+      ".cargo/**",
+      "build.rs"
+    ],
+    "trusted_paths": [
+      "vanilla_agents/verify/**",
+      "vanilla_agents/audit.py",
+      "vanilla_agents/contracts.py",
+      "vanilla_agents/__init__.py",
+      "vanilla_agents/onboard/**",
+      "docs/TRUSTED_SETUP.md"
+    ]
+  },
+  "approvals_path": "~/.vanilla-agents/work/approvals.json",
+  "approvals_max_tasks": 200,
+  "approvals_max_projects": 8,
+  "plan_approval_required": false,
+  "tiers": {
+    "enabled": true,
+    "ask_sizes": [
+      "medium",
+      "big"
+    ],
+    "risky_words": [
+      "security",
+      "auth",
+      "password",
+      "secret",
+      "credential",
+      "token",
+      "delete",
+      "remove",
+      "wipe",
+      "reset",
+      "migrate",
+      "migration",
+      "rewrite",
+      "overwrite",
+      "authentication",
+      "authorization",
+      "login",
+      "encryption"
+    ],
+    "never": {
+      "push": [
+        "push",
+        "force-push",
+        "upload the code",
+        "send the code"
+      ],
+      "publish": [
+        "publish",
+        "go public",
+        "make it public",
+        "public hosting",
+        "host publicly",
+        "public server",
+        "deploy publicly",
+        "release publicly"
+      ],
+      "spend": [
+        "real money",
+        "payment",
+        "purchase",
+        "subscription",
+        "billing",
+        "credit card",
+        "paypal"
+      ],
+      "delete": [
+        "delete",
+        "erase",
+        "wipe",
+        "rm -rf",
+        "remove all"
+      ]
+    }
+  },
+  "daily": {
+    "enabled": false,
+    "quests": [
+      {
+        "title": "Morning check: run the tests and list anything broken",
+        "why": "A daily look so problems are found early.",
+        "at": "09:00",
+        "days": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri"
+        ]
+      }
+    ]
+  },
+  "background_sessions": {
+    "enabled": true,
+    "poll_seconds": 15,
+    "timeout_seconds": 10
+  },
+  "integrations": {
+    "timeout_seconds": 15,
+    "max_items": 100,
+    "max_file_bytes": 2000000,
+    "refresh_minutes": 10,
+    "ci_seconds": 120,
+    "excerpt_chars": 240
+  },
+  "addons": {
+    "workshop_index_url": "https://openvanilla.app/community/workshop/index.json",
+    "timeout_seconds": 15,
+    "max_zip_bytes": 2097152,
+    "max_files": 200,
+    "max_unpacked_bytes": 8388608
+  }
+}

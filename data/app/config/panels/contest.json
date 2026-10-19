@@ -1,0 +1,68 @@
+{
+ "title": "contest.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 48
+ },
+ "size": {
+  "w": 600,
+  "h": 440
+ },
+ "visible": false,
+ "text": {
+  "head": "contest.head",
+  "empty": "contest.empty",
+  "by": "contest.by",
+  "branch": "contest.branch",
+  "worktree": "contest.worktree",
+  "files": "contest.files",
+  "verdict_none": "contest.verdict_none",
+  "verdict_pass": "contest.verdict_pass",
+  "verdict_fail": "contest.verdict_fail",
+  "verdict_running": "contest.verdict_running",
+  "check": "contest.check",
+  "show": "contest.show",
+  "need": "contest.need",
+  "pass": "contest.pass",
+  "confirm": "contest.confirm",
+  "yes": "contest.yes",
+  "no": "contest.no",
+  "need_roll": "contest.need_roll",
+  "greed_roll": "contest.greed_roll",
+  "won": "contest.won",
+  "told": "contest.told",
+  "winner": "contest.winner",
+  "stopped": "contest.stopped",
+  "stop": "contest.stop",
+  "error": "contest.error",
+  "passed": "contest.passed",
+  "pick_quest": "contest.pick_quest"
+ },
+ "tips": {
+  "item": "contest_item",
+  "row": "contest_row",
+  "check": "contest_check",
+  "show": "contest_show",
+  "need": "contest_need",
+  "pass": "contest_pass",
+  "stop": "contest_stop",
+  "log": "contest_log"
+ },
+ "icons": {
+  "item_unknown": "interface/icons/inv_misc_note_01.png",
+  "item_small": "interface/icons/inv_letter_15.png",
+  "item_medium": "interface/icons/inv_scroll_03.png",
+  "item_big": "interface/icons/inv_scroll_05.png",
+  "need": "interface/buttons/ui-grouploot-dice-up.png",
+  "need_down": "interface/buttons/ui-grouploot-dice-down.png",
+  "need_hl": "interface/buttons/ui-grouploot-dice-highlight.png",
+  "pass": "interface/buttons/ui-grouploot-pass-up.png",
+  "pass_down": "interface/buttons/ui-grouploot-pass-down.png",
+  "pass_hl": "interface/buttons/ui-grouploot-pass-highlight.png",
+  "swords": "interface/icons/ability_dualwield.png"
+ },
+ "options": {
+  "roll_ms": 1100
+ }
+}

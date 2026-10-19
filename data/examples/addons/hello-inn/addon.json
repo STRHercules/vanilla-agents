@@ -1,0 +1,11 @@
+{
+  "id": "hello-inn",
+  "name": "Hello, Inn",
+  "author": "Vanilla Agents",
+  "version": "1.0.0",
+  "summary": "A tiny sign by the door that counts the helpers in the inn and the quests done today.",
+  "description": "The example addon that ships with Vanilla Agents.\nIt adds a small framed sign to the window that says how many helpers are in the inn and how many quests are done, and greets you once with the gold banner.\nCopy this folder to start your own addon (see docs/ADDONS.md).",
+  "license": "MIT",
+  "homepage": "https://openvanilla.app/workshop.html",
+  "permissions": ["state", "panel"]
+}

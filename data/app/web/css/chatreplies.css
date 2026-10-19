@@ -1,0 +1,7 @@
+/* V-050 Options > Chat replies: answer from Discord, Slack or ntfy (js/chatreplies.js; shares the .integ / .vas-* look). */
+.chatr-commands { padding: 4px 8px; color: #d8d0b8; border-left: 3px solid var(--gold); background: rgba(255, 209, 0, 0.06); line-height: 1.4; }
+.chatr-opts { gap: 18px; flex-wrap: wrap; }
+.chatr-poll { display: flex; align-items: center; gap: 6px; color: #d8d0b8; }
+.chatr-status { line-height: 1.35; padding: 3px 6px; margin-top: 2px; background: rgba(0, 0, 0, 0.35); border: 1px solid #2a2218; border-radius: 2px; }
+.chatr-status.orange { color: #ff9f40; }
+.chatr .vas-foot { flex-wrap: wrap; }

@@ -1,0 +1,21 @@
+/* Page basics. Colours and sizes come from theme.json via CSS variables set in theme.js. */
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0c0805; color: var(--white);
+  font-family: var(--font-body, serif); font-size: var(--text-px, 13px); user-select: none; }
+#workshop { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+#ui { position: fixed; inset: 0; pointer-events: none; }
+#ui > * { pointer-events: auto; }
+.icon { display: block; }
+.gold { color: var(--gold); }
+.grey { color: var(--grey); }
+.red { color: var(--red); }
+.green { color: var(--green); }
+.white { color: var(--white); }
+.small { font-size: var(--small-px, 11px); }
+.shadow { text-shadow: 1px 1px 0 #000; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #5a4630; border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+#toasts { position: fixed; top: 54px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none; z-index: 50; }
+.toast { padding: 10px 28px; font-size: 20px; text-shadow: 1px 1px 0 #000; animation: toast 4.5s ease-out forwards; }
+@keyframes toast { 0% { opacity: 0; transform: translateY(-14px); } 8% { opacity: 1; transform: none; } 80% { opacity: 1; } 100% { opacity: 0; } }

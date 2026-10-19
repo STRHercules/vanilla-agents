@@ -1,0 +1,45 @@
+{
+ "title": "help.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 50
+ },
+ "size": {
+  "w": 620,
+  "h": 600
+ },
+ "visible": false,
+ "hotkey": "help",
+ "text": {
+  "keys": "help.keys",
+  "moving": "help.moving",
+  "start": "help.start",
+  "start_1": "help.start_1",
+  "start_2": "help.start_2",
+  "start_3": "help.start_3",
+  "about": "help.about",
+  "version": "help.version",
+  "disclaimer": "help.disclaimer",
+  "licences": "help.licences",
+  "diag": "help.diag",
+  "diag_saved": "help.diag_saved",
+  "diag_error": "help.diag_error",
+  "diag_hint": "help.diag_hint",
+  "move_keys": "help.move_keys",
+  "move_mouse": "help.move_mouse",
+  "low_quality": "help.low_quality",
+  "phone": "help.phone",
+  "phone_text": "help.phone_text",
+  "phone_open": "help.phone_open",
+  "notify_open": "help.notify_open",
+  "guide": "guide.ui_button",
+  "guide_hint": "guide.ui_help_hint"
+ },
+ "tips": {
+  "diag": "help_diag",
+  "phone_open": "help_phone_open",
+  "notify_open": "help_notify_open",
+  "guide": "help_guide"
+ }
+}

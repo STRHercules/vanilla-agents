@@ -1,0 +1,44 @@
+/* Inspect (N): changed files as gear (left), the selected file's diff (right). Quality colours are the game's item colours. */
+.ins { --q-poor: #9d9d9d; --q-uncommon: #1eff00; --q-rare: #0070dd; --q-epic: #a335ee; }
+.ins > .panel-body { flex-direction: row; gap: 8px; }
+.ins-left { flex: 0 0 262px; display: flex; flex-direction: column; min-height: 0; padding: 6px; border-radius: 8px;
+  background: linear-gradient(#1a1a1e, #0e0e11); box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px #3a3a40; }
+.ins-head { display: flex; align-items: center; gap: 6px; min-height: 22px; padding: 0 2px 4px; border-bottom: 1px solid rgba(255, 209, 0, 0.25); margin-bottom: 4px; }
+.ins-filter { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ins-all { height: 20px; padding: 0 8px; font-size: 11px; }
+.ins-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 3px; padding-right: 2px; }
+.ins-row { display: flex; align-items: center; gap: 7px; width: 100%; padding: 3px 4px; border: 1px solid transparent; border-radius: 4px; background: rgba(0, 0, 0, 0.35);
+  font-family: inherit; color: var(--white); text-align: left; cursor: pointer; }
+.ins-row:hover { background: rgba(255, 255, 255, 0.07); }
+.ins-row.sel { border-color: rgba(255, 209, 0, 0.7); background: rgba(255, 209, 0, 0.1); box-shadow: 0 0 6px rgba(255, 209, 0, 0.25); }
+.ins-slot { position: relative; flex: none; width: 36px; height: 36px; border-radius: 4px; border: 2px solid var(--qc); background: #0b0b0d;
+  box-shadow: 0 0 5px color-mix(in srgb, var(--qc) 55%, transparent), inset 0 0 4px #000; }
+.ins-icon { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); border-radius: 2px; }
+.ins-letter { position: absolute; right: 1px; bottom: -1px; font-size: 12px; font-weight: bold; color: #fff; text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; }
+.ins-txt { flex: 1; min-width: 0; }
+.ins-name { color: var(--qc); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-shadow: 1px 1px 0 #000; }
+.ins-dir { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+.ins-bar { position: relative; height: 7px; margin-top: 2px; background: #111; border-radius: 3px; overflow: hidden; }
+.ins-fill { height: 100%; background: var(--ins-bar) 0 0 / 100% 100%, var(--qc); background-blend-mode: multiply; }
+.ins-bar::after { content: ''; position: absolute; inset: 0; background: var(--ins-bar-border) 0 0 / 100% 100% no-repeat; pointer-events: none; }
+.ins-num { flex: none; width: 38px; text-align: right; font-family: Consolas, 'DejaVu Sans Mono', monospace; font-size: 10px; line-height: 13px; }
+.ins-plus { color: #3fd13f; }
+.ins-minus { color: #ff5a4f; }
+.q-poor { --qc: var(--q-poor); } .q-uncommon { --qc: var(--q-uncommon); } .q-rare { --qc: var(--q-rare); } .q-epic { --qc: var(--q-epic); }
+.ins-right { flex: 1; min-width: 0; display: flex; flex-direction: column; min-height: 0; }
+.ins-dhead { display: flex; align-items: baseline; gap: 10px; min-height: 22px; padding: 0 4px 4px; border-bottom: 1px solid rgba(255, 209, 0, 0.25); margin-bottom: 4px;
+  overflow: hidden; white-space: nowrap; }
+.ins-trunc { margin-left: auto; }
+.ins-diff { flex: 1; overflow: auto; border-radius: 6px; background: #08080a; box-shadow: inset 0 0 0 1px #000, inset 0 2px 8px rgba(0, 0, 0, 0.9);
+  font-family: Consolas, 'DejaVu Sans Mono', 'Courier New', monospace; font-size: 11.5px; line-height: 16px; }
+.ins-ln { display: flex; min-width: max-content; white-space: pre; }
+.ins-no { flex: none; width: 36px; padding-right: 6px; text-align: right; color: #5c5c64; background: rgba(255, 255, 255, 0.03); user-select: none; }
+.ins-no + .ins-no { border-right: 1px solid #222; }
+.ins-code { padding: 0 10px 0 6px; color: #b8b8b8; }
+.ins-add { background: rgba(30, 255, 0, 0.09); } .ins-add .ins-code { color: #5be35b; }
+.ins-del { background: rgba(255, 50, 40, 0.1); } .ins-del .ins-code { color: #ff6b61; }
+.ins-hunk { background: rgba(0, 112, 221, 0.14); } .ins-hunk .ins-code { color: #6fb6ff; }
+.ins-meta .ins-code { color: #777; font-style: italic; }
+.ins-empty { padding: 14px 10px; font-family: var(--font-body, serif); font-size: 12px; white-space: normal; }
+.ins-pick { text-align: center; padding-top: 120px; }
+.ins-error { padding: 14px 10px; font-family: var(--font-body, serif); white-space: normal; }

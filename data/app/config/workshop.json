@@ -1,0 +1,313 @@
+{
+  "scene": {
+    "wall": "#3a2a1c",
+    "floor": "#5a4026",
+    "floor_line": "#4a3320",
+    "horizon": 0.42,
+    "window_glow": "#c88a3c",
+    "candle": "#ffb050"
+  },
+  "desks": [
+    {
+      "x": 0.5,
+      "y": 0.47
+    },
+    {
+      "x": 0.35,
+      "y": 0.66
+    },
+    {
+      "x": 0.65,
+      "y": 0.66
+    },
+    {
+      "x": 0.28,
+      "y": 0.47
+    },
+    {
+      "x": 0.72,
+      "y": 0.47
+    }
+  ],
+  "desk": {
+    "w": 150,
+    "h": 54,
+    "top": "#7a5330",
+    "front": "#5c3d22",
+    "edge": "#a67a45"
+  },
+  "monitor": {
+    "w": 78,
+    "h": 50,
+    "bezel": "#b08a3e",
+    "glass": "#10222a",
+    "glow": "#4ed0c0",
+    "text": "#9fe8dc",
+    "lines": 3
+  },
+  "roles": {
+    "default": {
+      "body": "#6b6b8a",
+      "skin": "#d9a679",
+      "hair": "#3b2a1a"
+    },
+    "builder": {
+      "body": "#a85a2a",
+      "skin": "#d9a679",
+      "hair": "#3b2a1a"
+    },
+    "reviewer": {
+      "body": "#2a6aa8",
+      "skin": "#c28f66",
+      "hair": "#d8d8d8"
+    },
+    "scribe": {
+      "body": "#4a8a4a",
+      "skin": "#e6bd96",
+      "hair": "#6a2a1a"
+    }
+  },
+  "animation": {
+    "typing_ms": 170,
+    "arm_swing_px": 5
+  },
+  "text": {
+    "empty": "workshop.empty",
+    "screen_idle": "workshop.screen_idle"
+  },
+  "agent_tip": "agent",
+  "renderer": "inn",
+  "scene3d": {
+    "wall_z": -6,
+    "camera": {
+      "pos": [
+        0,
+        3.6,
+        6.2
+      ],
+      "look": [
+        0,
+        1.15,
+        -0.2
+      ],
+      "fov": 40
+    },
+    "lights": {
+      "key": "#ffd2a0",
+      "key_pos": [
+        -2.5,
+        4.5,
+        3.5
+      ],
+      "key_intensity": 18,
+      "flicker": 0.04,
+      "ambient": "#6a7a9a",
+      "ambient_intensity": 1.1,
+      "fog": "#2a2018",
+      "fog_near": 9,
+      "fog_far": 24
+    },
+    "models": {
+      "character": "models/character.glb",
+      "chair": "models/chair.glb",
+      "desk": "models/desk.glb"
+    },
+    "layout": {
+      "desk": {
+        "pos": [
+          0,
+          0,
+          0.35
+        ],
+        "rot": 0,
+        "scale": 0.52
+      },
+      "chair": {
+        "pos": [
+          0,
+          0,
+          1.75
+        ],
+        "rot": 0,
+        "scale": 1
+      },
+      "character": {
+        "pos": [
+          0,
+          0.02,
+          1.6
+        ],
+        "rot": 0,
+        "scale": 1
+      },
+      "monitor": {
+        "pos": [
+          -0.5,
+          1.2,
+          0.4
+        ],
+        "rot": 162
+      }
+    },
+    "monitor": {
+      "h": 0.42,
+      "radius": 1.2,
+      "arc_deg": 38,
+      "bezel_w": 0.05,
+      "stand_h": 0.06,
+      "bezel": "#b08a3e",
+      "glass": "#0c2a30",
+      "glow": "#4ed0c0"
+    },
+    "clips": {
+      "sit": "sit",
+      "stand": "stand",
+      "walk": "walk"
+    },
+    "typing": [
+      {
+        "key": 0,
+        "child": 0,
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "deg": -5,
+        "hz": 3.1,
+        "phase": 0,
+        "rest_deg": 20,
+        "tap": true
+      },
+      {
+        "key": 1,
+        "child": 0,
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "deg": -5,
+        "hz": 2.7,
+        "phase": 0.5,
+        "rest_deg": 20,
+        "tap": true
+      },
+      {
+        "key": 0,
+        "child": 1,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "deg": 8,
+        "hz": 6.2,
+        "phase": 0.2,
+        "rest_deg": 0,
+        "tap": true
+      },
+      {
+        "key": 1,
+        "child": 1,
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "deg": 8,
+        "hz": 5.4,
+        "phase": 0.7,
+        "rest_deg": 0,
+        "tap": true
+      },
+      {
+        "key": 4,
+        "child": 0,
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "deg": 1.5,
+        "hz": 0.8,
+        "phase": 0,
+        "rest_deg": 0
+      }
+    ],
+    "fit": {
+      "max_agents": 8,
+      "spacing": 1.95,
+      "row_gap": 3.4,
+      "arc": 0.05,
+      "turn": 4,
+      "pad": 14
+    },
+    "arrival": {
+      "speed": 1.4,
+      "lane": 2.0,
+      "sit_fade_s": 0.5,
+      "door_u": 0.72
+    }
+  },
+  "inn": {
+    "tasks": {
+      "test": [
+        "\\bcargo\\s+(test|build|check|nextest|bench|clippy)\\b",
+        "\\b(npm|pnpm|yarn|bun)\\s+(test|t|run\\s+(test|build|lint|check|typecheck)[\\w:-]*|build)\\b",
+        "\\bnpx\\s+(jest|vitest|mocha|tsc|playwright\\s+test)\\b",
+        "\\b(jest|vitest|mocha|tsc|tox|nox|ctest|phpunit|rspec)\\b",
+        "\\bpytest\\b",
+        "\\s-m\\s+(pytest|unittest|tox|nose2)\\b",
+        "\\bgo\\s+(test|build|vet)\\b",
+        "\\b(make|ninja|bazel|bazelisk)\\b",
+        "\\bcmake\\s+--build\\b",
+        "\\b(gradle|gradlew|mvn|mvnw|sbt)\\b",
+        "\\bdotnet\\s+(test|build)\\b",
+        "\\b(swift|deno|mix|zig)\\s+(test|build)\\b",
+        "\\bbundle\\s+exec\\s+(rake|rspec)\\b"
+      ],
+      "ship": [
+        "\\bgit\\s+(commit|push|tag)\\b",
+        "\\b(npm|pnpm|yarn)\\s+publish\\b",
+        "\\bcargo\\s+publish\\b",
+        "\\btwine\\s+upload\\b",
+        "\\bgh\\s+release\\s+create\\b",
+        "\\bdocker\\s+push\\b",
+        "\\bzip\\s",
+        "\\btar\\s+-?[a-z]*c[a-z]*\\s",
+        "\\b7z\\s+a\\b"
+      ],
+      "hold_s": 20,
+      "back_s": 8,
+      "anvil": "anvil|forge|blacksmith",
+      "drop": "crate|barrel|keg|mailbox|chest|trunk|sack",
+      "ask_every_s": 14
+    },
+    "lights": {
+      "names": "candle|lantern|lamp|brazier|torch|chandelier|bonfire|fireplace|campfire",
+      "max": [
+        0,
+        3,
+        6,
+        6
+      ],
+      "merge": 1.6,
+      "color": "#ffa04a",
+      "intensity": 5,
+      "distance": 10,
+      "flicker": 0.16,
+      "pick_s": 3,
+      "time": {
+        "day": 0.45,
+        "dusk": 0.85,
+        "night": 1.25
+      },
+      "fill": {
+        "day": 0.3,
+        "dusk": 0.22,
+        "night": 0.28
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+ "_comment": "DEV ONLY demo data for the integration hub (V-044). Start the server with VANILLA_INTEGRATIONS_FAKE=scripts/demo_integrations.json and switch GitHub import on in Options > Integrations: GitHub then answers from this file instead of gh or the network.",
+ "login": "octo-owner",
+ "repo": "goldshire/inn-ledger",
+ "branch": "main",
+ "issues": [
+  {"number": 128, "title": "Ledger total is off by one copper after a refund", "body": "Steps: buy a Light Ale, refund it, buy again. The ledger shows 1 copper too much.\n<!-- please fill in the template -->\nExpected: the total matches the receipts.", "labels": [{"name": "bug"}, {"name": "good first issue"}], "url": "https://github.com/goldshire/inn-ledger/issues/128"},
+  {"number": 131, "title": "Add a dark parchment theme for night shifts", "body": "The bright parchment is hard on the eyes after dusk. A darker variant with the same gold accents would help.", "labels": [{"name": "enhancement"}], "url": "https://github.com/goldshire/inn-ledger/issues/131"},
+  {"number": 135, "title": "Export the guest book as CSV", "body": "Innkeepers want to open the guest book in a spreadsheet. One row per guest, with arrival date and room.", "labels": [{"name": "enhancement"}, {"name": "help wanted"}], "url": "https://github.com/goldshire/inn-ledger/issues/135"}
+ ],
+ "prs": [
+  {"number": 140, "title": "Speed up the nightly stock count", "body": "Counts kegs in one pass instead of three. Needs a review of the rounding change in stock.rs.", "labels": [{"name": "performance"}], "url": "https://github.com/goldshire/inn-ledger/pull/140"}
+ ],
+ "runs": [
+  {"workflowName": "build", "name": "build", "status": "completed", "conclusion": "success", "headBranch": "main", "url": "https://github.com/goldshire/inn-ledger/actions/runs/9001", "ago_seconds": 240},
+  {"workflowName": "lint", "name": "lint", "status": "completed", "conclusion": "success", "headBranch": "main", "url": "https://github.com/goldshire/inn-ledger/actions/runs/9002", "ago_seconds": 300}
+ ]
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "vanilla-agents": {
+      "command": "python",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/../scripts/vanilla_mcp.py"
+      ]
+    }
+  }
+}

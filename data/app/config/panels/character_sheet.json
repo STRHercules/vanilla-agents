@@ -1,0 +1,50 @@
+{
+ "title": "char.title",
+ "frame": "metal",
+ "anchor": {
+  "right": 12,
+  "top": 12
+ },
+ "size": {
+  "w": 290,
+  "h": 402
+ },
+ "visible": true,
+ "hotkey": "character_sheet",
+ "text": {
+  "none": "char.none",
+  "role": "char.role",
+  "work_done": "char.work_done",
+  "pass_rate": "char.pass_rate",
+  "pass_rate_none": "char.pass_rate_none",
+  "tools": "char.tools",
+  "tools_none": "char.tools_none",
+  "doing": "char.doing",
+  "idle": "char.idle",
+  "level": "char.level",
+  "xp": "char.xp",
+  "rate": "char.rate",
+  "rate_none": "char.rate_none",
+  "past": "char.past",
+  "current": "char.current",
+  "next": "char.next",
+  "next_none": "char.next_none",
+  "force": "char.force",
+  "back": "char.back",
+  "forward": "char.forward"
+ },
+ "tips": {
+  "portrait": "portrait",
+  "pass_rate": "pass_rate",
+  "tools": "tools",
+  "xp": "char_xp",
+  "rate": "char_rate",
+  "timeline": "timeline",
+  "force": "force_play",
+  "back": "step_back",
+  "forward": "step_forward"
+ },
+ "icons": {
+  "portrait": "interface/icons/inv_sword_04.png"
+ }
+}

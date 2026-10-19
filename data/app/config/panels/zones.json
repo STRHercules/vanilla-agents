@@ -1,0 +1,48 @@
+{
+ "title": "zones.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 40
+ },
+ "size": {
+  "w": 900,
+  "h": 600
+ },
+ "visible": false,
+ "hotkey": "zones",
+ "text": {
+  "ek": "zones.ek",
+  "kalimdor": "zones.kalimdor",
+  "own": "zones.own",
+  "own_zone": "zones.own_zone",
+  "own_empty": "zones.own_empty",
+  "inns": "zones.inns",
+  "here": "zones.here",
+  "travel": "zones.travel",
+  "travelling": "zones.travelling",
+  "no_photo": "zones.no_photo",
+  "not_baked": "zones.not_baked",
+  "no_inns": "zones.no_inns",
+  "remember": "zones.remember",
+  "remember_none": "zones.remember_none",
+  "faction_alliance": "zones.faction_alliance",
+  "faction_horde": "zones.faction_horde",
+  "faction_contested": "zones.faction_contested",
+  "count": "zones.count",
+  "error": "zones.error",
+  "tour": "zones.tour"
+ },
+ "tips": {
+  "travel": "zones_travel",
+  "remember": "zones_remember",
+  "photo": "zones_photo",
+  "tour": "zones_tour"
+ },
+ "icons": {
+  "alliance": "interface/icons/inv_bannerpvp_02.png",
+  "horde": "interface/icons/inv_bannerpvp_01.png",
+  "contested": "interface/icons/inv_misc_map_01.png",
+  "own": "interface/icons/inv_misc_gear_01.png"
+ }
+}

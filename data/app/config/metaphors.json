@@ -1,0 +1,326 @@
+{
+ "events": {
+  "task_created": {
+   "channel": "system",
+   "task_status": "new"
+  },
+  "task_ready": {
+   "channel": "system",
+   "task_status": "ready"
+  },
+  "agent_started": {
+   "channel": "agent",
+   "agent_state": "idle"
+  },
+  "agent_working": {
+   "channel": "agent",
+   "agent_state": "working",
+   "task_status": "progress",
+   "only_from": [
+    "new"
+   ]
+  },
+  "agent_idle": {
+   "channel": "agent",
+   "agent_state": "idle"
+  },
+  "tool_use": {
+   "channel": "agent",
+   "agent_state": "working",
+   "task_status": "progress",
+   "only_from": [
+    "new"
+   ]
+  },
+  "check_started": {
+   "channel": "verifier"
+  },
+  "route_chosen": {
+   "channel": "verifier"
+  },
+  "plan_approved": {
+   "channel": "system"
+  },
+  "done_elsewhere": {
+   "channel": "system",
+   "task_status": "complete"
+  },
+  "quest_auto_approved": {
+   "channel": "system"
+  },
+  "quest_vetoed": {
+   "channel": "system"
+  },
+  "explain_requested": {
+   "channel": "system"
+  },
+  "change_requested": {
+   "channel": "system"
+  },
+  "explain_answered": {
+   "channel": "system"
+  },
+  "change_answered": {
+   "channel": "system"
+  },
+  "sent_back": {
+   "channel": "verifier"
+  },
+  "check_finished": {
+   "channel": "verifier"
+  },
+  "task_verified": {
+   "channel": "verifier",
+   "task_status": "complete",
+   "toast": "complete"
+  },
+  "task_failed": {
+   "channel": "verifier",
+   "task_status": "failed",
+   "toast": "failed"
+  },
+  "task_blocked": {
+   "channel": "verifier",
+   "task_status": "blocked",
+   "toast": "blocked"
+  },
+  "lease_acquired": {
+   "channel": "system"
+  },
+  "lease_expired": {
+   "channel": "system"
+  },
+  "usage_update": {
+   "channel": "system"
+  },
+  "message_sent": {
+   "channel": "whisper"
+  },
+  "message_answered": {
+   "channel": "whisper"
+  },
+  "quest_claimed": {
+   "channel": "agent"
+  },
+  "agent_waiting": {
+   "channel": "agent",
+   "agent_state": "idle"
+  },
+  "agent_stunned": {
+   "channel": "agent",
+   "agent_state": "idle"
+  },
+  "agent_left": {
+   "channel": "agent",
+   "agent_state": "idle"
+  },
+  "agent_place": {
+   "channel": "system"
+  },
+  "session_stats": {
+   "channel": "system"
+  },
+  "tool_failed": {
+   "channel": "agent",
+   "agent_state": "working"
+  },
+  "agent_rested": {
+   "channel": "agent"
+  },
+  "todo_update": {
+   "channel": "agent"
+  },
+  "contest_opened": {
+   "channel": "system"
+  },
+  "fix_proposed": {
+   "channel": "agent"
+  },
+  "fix_checked": {
+   "channel": "verifier"
+  },
+  "fix_picked": {
+   "channel": "system"
+  },
+  "contest_closed": {
+   "channel": "system"
+  }
+ },
+ "task_states": {
+  "new": {
+   "marker": "new",
+   "color": "gold",
+   "word": "quest.word_new",
+   "tip": "quest_new"
+  },
+  "progress": {
+   "marker": "progress",
+   "color": "grey",
+   "word": "quest.word_progress",
+   "tip": "quest_progress"
+  },
+  "ready": {
+   "marker": "ready",
+   "color": "gold",
+   "word": "quest.word_ready",
+   "tip": "quest_ready"
+  },
+  "complete": {
+   "marker": "",
+   "color": "green",
+   "word": "quest.word_complete",
+   "tip": "quest_done"
+  },
+  "failed": {
+   "marker": "",
+   "color": "red",
+   "word": "quest.word_failed",
+   "tip": "quest_failed"
+  },
+  "blocked": {
+   "marker": "",
+   "color": "grey",
+   "word": "quest.word_blocked",
+   "tip": "quest_blocked"
+  }
+ },
+ "agent_states": {
+  "working": {
+   "pose": "typing"
+  },
+  "idle": {
+   "pose": "resting"
+  }
+ },
+ "toasts": {
+  "complete": {
+   "text": "toast.complete",
+   "color": "gold"
+  },
+  "failed": {
+   "text": "toast.failed",
+   "color": "red"
+  },
+  "blocked": {
+   "text": "toast.blocked",
+   "color": "grey"
+  }
+ },
+ "item_quality": {
+  "VERIFIED": {
+   "border": "green",
+   "color": "green",
+   "word": "item.word_verified",
+   "outcomes": [
+    "VERIFIED"
+   ]
+  },
+  "FAILED": {
+   "border": "grey",
+   "color": "red",
+   "word": "item.word_failed",
+   "outcomes": [
+    "FAILED",
+    "FLAKY"
+   ]
+  },
+  "BLOCKED": {
+   "border": "grey",
+   "color": "grey",
+   "word": "item.word_blocked",
+   "outcomes": []
+  },
+  "RUNNING": {
+   "border": "white",
+   "color": "white",
+   "word": "item.word_running",
+   "outcomes": []
+  },
+  "FILE": {
+   "border": "white",
+   "color": "white",
+   "word": "item.word_file",
+   "outcomes": []
+  }
+ },
+ "spell_marks": {
+  "VERIFIED": {
+   "mark": "✓",
+   "color": "green",
+   "word": "spellbook.word_ok"
+  },
+  "FAILED": {
+   "mark": "✗",
+   "color": "red",
+   "word": "spellbook.word_failed"
+  },
+  "BLOCKED": {
+   "mark": "?",
+   "color": "grey",
+   "word": "spellbook.word_blocked"
+  },
+  "NEVER": {
+   "mark": "•",
+   "color": "grey",
+   "word": "spellbook.word_never"
+  }
+ },
+ "work_products": {
+  "file_tools": [
+   "Edit",
+   "Write",
+   "MultiEdit",
+   "NotebookEdit"
+  ]
+ },
+ "auras": {
+  "running": {
+   "icon": "interface/icons/spell_holy_renew.png",
+   "kind": "buff",
+   "word": "aura.running",
+   "tip": "aura_running"
+  },
+  "paused": {
+   "icon": "interface/icons/spell_frost_chainsofice.png",
+   "kind": "debuff",
+   "word": "aura.paused",
+   "tip": "aura_paused"
+  },
+  "failed": {
+   "icon": "interface/icons/spell_shadow_curse.png",
+   "kind": "debuff",
+   "word": "aura.failed",
+   "tip": "aura_failed"
+  },
+  "blocked": {
+   "icon": "interface/icons/spell_nature_slow.png",
+   "kind": "debuff",
+   "word": "aura.blocked",
+   "tip": "aura_blocked"
+  },
+  "approved": {
+   "icon": "interface/icons/inv_scroll_02.png",
+   "kind": "buff",
+   "word": "aura.approved",
+   "tip": "aura_approved"
+  },
+  "auto": {
+   "icon": "interface/icons/spell_holy_heal.png",
+   "kind": "buff",
+   "word": "aura.auto",
+   "tip": "aura_auto"
+  },
+  "verified": {
+   "icon": "interface/icons/spell_holy_powerwordshield.png",
+   "kind": "buff",
+   "word": "aura.verified",
+   "tip": "aura_verified"
+  },
+  "lease": {
+   "icon": "interface/icons/inv_misc_pocketwatch_01.png",
+   "kind": "buff",
+   "word": "aura.lease",
+   "tip": "aura_lease"
+  }
+ }
+}

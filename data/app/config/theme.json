@@ -1,0 +1,122 @@
+{
+ "fonts": {
+  "body": {
+   "family": "Friz Quadrata",
+   "file": "fonts/frizqt__.ttf"
+  }
+ },
+ "sizes": {
+  "text_px": 13,
+  "title_px": 15,
+  "small_px": 12
+ },
+ "colors": {
+  "gold": "#ffd100",
+  "white": "#ffffff",
+  "grey": "#9d9d9d",
+  "red": "#ff2020",
+  "green": "#1eff00",
+  "panel_dark": "rgba(16, 16, 20, 0.9)",
+  "health": "#1fb81f",
+  "cast": "#e6b800",
+  "mana": "#2a5bff",
+  "bar_back": "#101010",
+  "chat_system": "#ffff00",
+  "chat_agent": "#aaaaff",
+  "chat_verifier": "#ff8c3c",
+  "xp": "#e2a72b",
+  "plate": "#1b1b1f",
+  "metal": "#6d6d72",
+  "btn_green": "#2f9a2f",
+  "btn_orange": "#c2791c",
+  "btn_red": "#9c1f1a",
+  "btn_blue": "#2f63c7",
+  "ink": "#2a1a08",
+  "chat_whisper": "#ff80ff",
+  "chat_community": "#aaaaff"
+ },
+ "frames": {
+  "dialog": {
+   "edge": "interface/dialogframe/ui-dialogbox-border.png",
+   "cell": 32,
+   "width": 18,
+   "background": "interface/dialogframe/ui-dialogbox-background.png",
+   "bg_tile": 64,
+   "inset": 5,
+   "bg_color": "rgba(0, 0, 0, 0)"
+  },
+  "gold": {
+   "edge": "interface/dialogframe/ui-dialogbox-gold-border.png",
+   "cell": 32,
+   "width": 18,
+   "background": "interface/dialogframe/ui-dialogbox-background.png",
+   "bg_tile": 64,
+   "inset": 5,
+   "bg_color": "rgba(8, 6, 4, 0.94)"
+  },
+  "tooltip": {
+   "edge": "interface/tooltips/ui-tooltip-border.png",
+   "cell": 16,
+   "width": 10,
+   "background": "interface/tooltips/ui-tooltip-background.png",
+   "bg_tile": 64,
+   "inset": 3,
+   "bg_color": "#14142a"
+  },
+  "metal": {
+   "edge": "skin/frame_metal.png",
+   "nine": true,
+   "cell": 14,
+   "width": 12,
+   "inset": 6,
+   "bg_tile": 0,
+   "bg_color": "rgba(18, 18, 22, 0.92)"
+  },
+  "parchment": {
+   "edge": "skin/frame_metal.png",
+   "nine": true,
+   "cell": 14,
+   "width": 12,
+   "inset": 6,
+   "background": "skin/scroll_body.png",
+   "bg_tile": 0,
+   "bg_color": "rgba(20, 16, 10, 0.95)"
+  },
+  "scroll": {
+   "rolls": {
+    "top": "skin/scroll_top.png",
+    "bottom": "skin/scroll_bottom.png"
+   },
+   "cell": 0,
+   "width": 0,
+   "inset": 0,
+   "background": "skin/scroll_body.png",
+   "bg_tile": 0,
+   "bg_color": "rgba(0, 0, 0, 0)"
+  }
+ },
+ "buttons": {
+  "up": "interface/buttons/ui-panel-button-up.png",
+  "down": "interface/buttons/ui-panel-button-down.png",
+  "highlight": "interface/buttons/ui-panel-button-highlight.png"
+ },
+ "bar_texture": "interface/targetingframe/ui-statusbar.png",
+ "slot_texture": "interface/buttons/ui-quickslot2.png",
+ "markers": {
+  "new": "interface/gossipframe/availablequesticon.png",
+  "ready": "interface/gossipframe/activequesticon.png",
+  "progress": "interface/gossipframe/activequesticon.png"
+ },
+ "skin": {
+  "banner": "skin/banner.png",
+  "portrait_ring": "skin/portrait_ring.png",
+  "round_button": "skin/round_button.png",
+  "slot": "skin/slot.png",
+  "orb_left": "skin/orb_left.png",
+  "orb_rail": "skin/orb_rail.png",
+  "orb_right": "skin/orb_right.png",
+  "loading_screen": "interface/glues/loadingscreens/loadscreeneasternkingdom.png",
+  "loading_border": "interface/glues/loadingbar/loading-barborder.png",
+  "loading_fill": "interface/glues/loadingbar/loading-barfill.png"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "frame": "metal",
+ "anchor": {
+  "bottom": 114,
+  "center_x": true
+ },
+ "size": {
+  "w": 268,
+  "h": 72
+ },
+ "visible": false,
+ "hotkey": "replay",
+ "text": {
+  "play": "replay.play",
+  "pause": "replay.pause",
+  "speed": "replay.speed",
+  "live": "replay.live",
+  "live_now": "replay.live_now",
+  "at": "replay.at",
+  "empty": "replay.empty",
+  "error": "replay.error"
+ },
+ "tips": {
+  "slider": "replay_slider",
+  "play": "replay_play",
+  "speed": "replay_speed",
+  "live": "replay_live",
+  "when": "replay_when"
+ },
+ "icons": {
+  "watch": "interface/icons/inv_misc_pocketwatch_01.png",
+  "track": "interface/paperdollinfoframe/ui-character-skills-bar.png",
+  "track_border": "interface/paperdollinfoframe/ui-character-skills-barborder.png"
+ },
+ "options": {
+  "tick_ms": 700
+ }
+}

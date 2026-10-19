@@ -1,0 +1,207 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "TaskCreated": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\" || python \"${CLAUDE_PLUGIN_ROOT}/../scripts/claude_hook.py\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+/* AddOns window (V-051): toolbar, addon list with checkboxes, details pane, package result, Workshop browser, message line */
+.ad-top { display: flex; align-items: center; gap: 8px; padding: 2px 4px 8px; border-bottom: 1px solid rgba(255, 209, 0, 0.25); }
+.ad-spacer { flex: 1; }
+.ad-file { display: none; }
+.ad-glow { box-shadow: 0 0 8px rgba(255, 209, 0, 0.8); }
+.ad-body { display: flex; gap: 12px; height: calc(100% - 82px); padding-top: 8px; }
+.ad-list { width: 390px; flex: none; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; padding-right: 4px; }
+.ad-body.shop .ad-list { width: auto; flex: 1; }
+.ad-body.shop .ad-side { display: none; }
+.ad-count { padding: 0 2px 2px; }
+.ad-row { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid #3c3220; border-radius: 4px; background: rgba(0, 0, 0, 0.4); cursor: pointer; }
+.ad-row:hover { border-color: #7a6638; }
+.ad-row.on { border-color: var(--gold); background: rgba(90, 70, 25, 0.5); }
+.ad-row.bad .ad-name { color: #c0c0c0; }
+.ad-check { width: 16px; height: 16px; flex: none; accent-color: #d4a017; cursor: pointer; }
+.ad-icon { width: 30px; height: 30px; flex: none; border: 1px solid #000; border-radius: 3px; }
+.ad-text { flex: 1; min-width: 0; }
+.ad-head { display: flex; align-items: baseline; gap: 8px; }
+.ad-name { color: var(--gold); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ad-ver { color: #b8ad90; white-space: nowrap; }
+.ad-meta { color: #a89c7c; }
+.ad-sum { color: #e8e0cc; margin-top: 2px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.ad-more { height: 20px; padding: 0 8px; font-size: 11px; flex: none; }
+.ad-empty { padding: 18px 6px; text-align: center; }
+.ad-side { flex: 1; overflow-y: auto; padding: 4px 10px 4px 12px; border-left: 1px solid rgba(255, 209, 0, 0.18); }
+.ad-pick { padding: 40px 10px; text-align: center; }
+.ad-title { font-size: 20px; margin-bottom: 2px; }
+.ad-sub { color: #b8ad90; margin-bottom: 8px; }
+.ad-h { margin: 12px 0 4px; font-size: 14px; }
+.ad-para { color: #eee6d2; margin: 3px 0; line-height: 1.35; }
+.ad-perms { margin: 2px 0 6px; padding-left: 18px; color: #eee6d2; }
+.ad-perm { margin: 3px 0; line-height: 1.3; }
+.ad-pname { display: inline-block; min-width: 58px; padding: 0 5px; border: 1px solid #5a4a2a; border-radius: 3px; background: #241c10; color: var(--gold); font-size: 11px; text-align: center; }
+.ad-trust { margin: 6px 0 8px; padding: 6px 8px; border-left: 3px solid #b33; background: rgba(120, 20, 20, 0.25); color: #ffb4a8; }
+.ad-links { display: flex; gap: 14px; margin: 6px 0; }
+.ad-link { color: #6fb7ff; }
+.ad-link:hover { color: #a8d4ff; }
+.ad-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.ad-mono { font-family: Consolas, "Courier New", monospace; word-break: break-all; }
+.ad-steps { margin: 4px 0 8px; padding-left: 20px; color: #eee6d2; line-height: 1.35; }
+.ad-steps li { margin: 3px 0; }
+.ad-yaml { max-height: 150px; overflow: auto; margin: 6px 0 0; padding: 6px 8px; border: 1px solid #3c3220; border-radius: 3px; background: rgba(0, 0, 0, 0.55); color: #d8d0b8; font: 11px/1.35 Consolas, "Courier New", monospace; white-space: pre-wrap; }
+.ad-shop { display: flex; flex-direction: column; gap: 6px; }
+.ad-shop .ad-row { cursor: default; }
+.ad-shop-empty { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 30px 10px; }
+.ad-big-icon { width: 56px; height: 56px; border: 1px solid #000; border-radius: 4px; opacity: 0.9; }
+.ad-shop-empty .ad-empty { max-width: 420px; padding: 6px; color: #e8e0cc; }
+.ad-have { flex: none; }
+.ad-foot { display: flex; align-items: center; gap: 8px; min-height: 30px; padding: 6px 4px 0; border-top: 1px solid rgba(255, 209, 0, 0.25); }
+.ad-msg { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ad-msg.green { color: #4cff4c; }
+.ad-msg.red { color: #ff5a4a; }
+/* the box an addon gets from api.panel(title) (position: skin.css .addon-panel; an addon's own main.css may move it) */
+.addon-panel { background: linear-gradient(rgba(30, 24, 16, 0.94), rgba(12, 10, 7, 0.94)); border: 2px solid #6b5a30; border-radius: 6px; box-shadow: 0 0 0 1px #000, 0 4px 14px rgba(0, 0, 0, 0.6); }
+section[data-panel="addons"] .panel-body { background: rgba(8, 6, 4, 0.6); border-radius: 4px; }

@@ -1,0 +1,38 @@
+{
+ "title": "flight.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 60
+ },
+ "size": {
+  "w": 452,
+  "h": 580
+ },
+ "visible": false,
+ "hotkey": "flight_map",
+ "text": {
+  "none": "flight.none",
+  "count": "flight.count",
+  "here": "flight.here",
+  "pick": "flight.pick",
+  "ask": "flight.ask",
+  "fly": "flight.fly",
+  "cancel": "flight.cancel",
+  "flying": "flight.flying",
+  "error": "flight.error",
+  "error_list": "flight.error_list",
+  "zones": "flight.zones"
+ },
+ "tips": {
+  "point": "flight_point",
+  "here": "flight_here"
+ },
+ "icons": {
+  "map": "interface/taxiframe/taximap0.png",
+  "point": "interface/taxiframe/ui-taxi-icon-green.png",
+  "here": "interface/taxiframe/ui-taxi-icon-yellow.png",
+  "highlight": "interface/taxiframe/ui-taxi-icon-highlight.png",
+  "line": "interface/taxiframe/ui-taxi-line.png"
+ }
+}

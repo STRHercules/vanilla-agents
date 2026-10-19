@@ -1,0 +1,40 @@
+{
+ "title": "mail.title",
+ "frame": "metal",
+ "anchor": {
+  "left": 336,
+  "top": 60
+ },
+ "size": {
+  "w": 360,
+  "h": 452
+ },
+ "visible": false,
+ "hotkey": "mailbox",
+ "text": {
+  "empty": "mail.empty",
+  "count": "mail.count",
+  "back": "mail.back",
+  "delete": "mail.delete"
+ },
+ "tips": {
+  "button": "mail_button",
+  "letter": "mail_letter",
+  "back": "mail_back",
+  "delete": "mail_delete"
+ },
+ "icons": {
+  "button": "interface/mailframe/mail-icon.png",
+  "ring": "interface/minimap/minimap-trackingborder.png",
+  "run_ok": "interface/icons/inv_letter_15.png",
+  "run_failed": "interface/icons/inv_letter_09.png",
+  "verified": "interface/icons/inv_letter_06.png",
+  "failed": "interface/icons/inv_letter_02.png",
+  "elsewhere": "interface/icons/inv_letter_17.png",
+  "whisper": "interface/icons/inv_letter_03.png",
+  "daily": "interface/icons/inv_letter_04.png"
+ },
+ "options": {
+  "max_letters": 80
+ }
+}

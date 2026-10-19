@@ -1,0 +1,56 @@
+/* Feature guide (V-037, js/panels/guide.js): a two-page parchment book. Left the search box and the chapter / topic list, right the topic.
+   Every text colour here is checked against the light end of the parchment (#d9c79f) at WCAG AA 4.5:1 by tests/test_guide.py. */
+.gd { display: flex; flex-direction: column; height: 100%; color: #2a1a08; }
+.gd-top { display: flex; align-items: center; gap: 8px; padding: 2px 4px 8px; border-bottom: 1px solid rgba(90, 60, 20, 0.45); }
+.gd-book { width: 28px; height: 28px; border: 1px solid #5a4630; border-radius: 3px; flex: none; }
+.gd-search { flex: 1; height: 28px; padding: 0 8px; font: 700 14px var(--font-text); color: #2a1a08; background: rgba(255, 248, 228, 0.6);
+  border: 1px solid #7a5a30; border-radius: 3px; user-select: text; }
+.gd-search::placeholder { color: #614f33; opacity: 1; }
+.gd-panes { flex: 1; display: flex; min-height: 0; gap: 0; margin-top: 6px; }
+.gd-nav { width: 252px; flex: none; overflow-y: auto; padding: 0 8px 8px 2px; border-right: 1px solid rgba(90, 60, 20, 0.45); }
+.gd-count { color: #614f33; margin: 4px 4px 2px; }
+.gd-chapter { display: block; width: 100%; margin-top: 10px; padding: 2px 4px; text-align: left; background: none; border: 0;
+  border-bottom: 1px solid rgba(90, 60, 20, 0.3); font: normal 14.5px var(--font-body); color: #6a2200; cursor: pointer; }
+.gd-chapter:first-child, .gd-count + .gd-chapter { margin-top: 4px; }
+.gd-topic { display: block; width: 100%; padding: 3px 8px 3px 14px; text-align: left; background: none; border: 0; border-radius: 2px;
+  font: 700 13px var(--font-text); color: #2a1a08; cursor: pointer; }
+.gd-topic:hover { background: rgba(90, 60, 20, 0.12); }
+.gd-topic.on { background: rgba(120, 80, 20, 0.2); box-shadow: inset 3px 0 0 #7a3f00; color: #1e1204; font-weight: 800; }
+.gd-page { flex: 1; min-width: 0; overflow-y: auto; padding: 2px 16px 12px 18px; }
+.gd-crumb { margin-top: 4px; color: #614f33; text-transform: uppercase; letter-spacing: 1px; }
+.gd-title { margin: 2px 0 12px; padding-bottom: 6px; font: normal 23px var(--font-body); color: #3b1a00; border-bottom: 1px solid rgba(90, 60, 20, 0.4); }
+.gd-p { margin: 0 0 11px; font-size: 14.5px; line-height: 1.55; color: #2a1a08; max-width: 62ch; }
+.gd-sub { margin: 14px 0 6px; font: normal 15px var(--font-body); color: #6a2200; }
+.gd-keys { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px 18px; max-width: 520px; }
+.gd-key { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.gd-key-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13.5px; }
+.frame-parchment .panel-body .gd-kbd { min-width: 38px; padding: 2px 7px; text-align: center; font: 800 12px var(--font-text); color: #ffd100;
+  background: linear-gradient(#3d3428, #1b160f); border: 1px solid #6b5638; border-bottom-width: 3px; border-radius: 4px; text-shadow: none; }
+.gd-acts { display: flex; gap: 10px; margin-top: 18px; }
+.gd-btn { height: 28px; padding: 0 16px; font-size: 13px; }
+.frame-parchment .panel-body .gd-btn { text-shadow: 0 1px 1px #000; }
+.gd-note { margin-top: 10px; color: #8a1a10; }
+.gd-mark { background: rgba(255, 209, 0, 0.6); color: inherit; border-radius: 2px; padding: 0 1px; }
+/* the window an "Open it" button opened glows for a moment */
+.gd-flash { animation: gd-flash 1.6s ease-out; }
+@keyframes gd-flash { 0%, 55% { box-shadow: 0 0 0 3px #ffd100, 0 0 26px rgba(255, 209, 0, 0.9); } 100% { box-shadow: none; } }
+.va-reduced-motion .gd-flash { animation: none; outline: 3px solid #ffd100; }
+@media (prefers-reduced-motion: reduce) { .gd-flash { animation: none; outline: 3px solid #ffd100; } }
+
+/* Help (F1): the big Feature guide button */
+.hp-guide { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; height: auto; margin: 2px 0 12px; padding: 9px 14px; text-align: left; }
+.hp-guide-name { font: normal 18px var(--font-body); color: #fff; }
+.hp-guide-hint { font-size: 12.5px; font-weight: 700; color: #e6ecff; }
+
+/* Options window: a line under each of our own options, the game options' note, the ? that opens the guide, the "Show in Options" mark */
+.ws-main { position: relative; }
+.ws-help { position: absolute; top: 0; right: 4px; width: 30px; min-width: 0; height: 26px; padding: 0; font-size: 15px; }
+.ws-opt { border-radius: 2px; transition: background 0.4s; }
+.ws-desc { padding: 0 10px 6px 34px; font-size: 12px; font-weight: 700; line-height: 1.35; color: #cdbf9f; }
+.ws-opt > .ws-btn + .ws-desc { padding-left: 12px; margin-top: -2px; }
+.ws-note { margin: 2px 0 8px; padding: 6px 8px; font-size: 12px; line-height: 1.4; color: #cdbf9f; background: rgba(255, 209, 0, 0.07); border-left: 3px solid #8a6a2a; }
+.ws-flash { background: rgba(255, 209, 0, 0.22); box-shadow: inset 3px 0 0 var(--gold); }
+
+/* the scroll texture has see-through side margins (7% each); on this wide window they would show as dark bands behind the text,
+   so the guide stretches the paper a little wider than the window (the scorched edge then sits under the frame) */
+.frame-parchment[data-panel="guide"] { background-size: 120% 100%; background-position: 50% 0; background-repeat: no-repeat; }

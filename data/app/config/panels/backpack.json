@@ -1,0 +1,36 @@
+{
+ "title": "backpack.title",
+ "frame": "metal",
+ "anchor": {
+  "right": 12,
+  "bottom": 12
+ },
+ "size": {
+  "w": 250,
+  "h": 190
+ },
+ "visible": true,
+ "hotkey": "backpack",
+ "text": {
+  "empty": "backpack.empty",
+  "count": "backpack.count",
+  "running_name": "item.running_name",
+  "file_name": "item.file_name",
+  "more": "backpack.more"
+ },
+ "tips": {
+  "empty_slot": "item_empty"
+ },
+ "icons": {
+  "run": "interface/icons/inv_scroll_03.png",
+  "run_failed": "interface/icons/inv_scroll_02.png",
+  "running": "interface/icons/inv_misc_pocketwatch_01.png",
+  "file": "interface/icons/inv_misc_note_01.png"
+ },
+ "options": {
+  "columns": 5,
+  "slots": 15,
+  "max_runs": 12,
+  "max_files": 12
+ }
+}

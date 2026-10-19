@@ -1,0 +1,19 @@
+{
+  "grid": {"cols": 6, "rows": 4},
+  "zone_max": 24,
+  "split_dirs": ["src"],
+  "git_timeout_seconds": 20,
+  "git_max_bytes": 20000000,
+  "read_tools": ["Read", "Grep", "Glob", "NotebookRead"],
+  "edit_tools": ["Edit", "Write", "MultiEdit", "NotebookEdit"],
+  "activity_path": "~/.vanilla-agents/work/zone-activity.json",
+  "activity_keep_days": 30,
+  "activity_max_zones": 200,
+  "activity_max_projects": 8,
+  "refresh_seconds": 3,
+  "states": {
+    "UNDISCOVERED": {"word": "map.state_undiscovered", "color": "grey", "fill": "rgba(8, 6, 4, 0.82)"},
+    "EXPLORED": {"word": "map.state_explored", "color": "gold", "fill": "rgba(255, 209, 0, 0.10)"},
+    "CLEARED": {"word": "map.state_cleared", "color": "green", "fill": "rgba(30, 255, 0, 0.14)"}
+  }
+}

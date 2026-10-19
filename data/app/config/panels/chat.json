@@ -1,0 +1,57 @@
+{
+ "title": "chat.title",
+ "frame": "scroll",
+ "anchor": {
+  "left": 16,
+  "bottom": 20
+ },
+ "size": {
+  "w": 440,
+  "h": 184
+ },
+ "visible": true,
+ "hotkey": "chat",
+ "text": {
+  "empty": "chat.empty",
+  "offline": "status.offline",
+  "filter": "chat.filter",
+  "filter_all": "chat.filter_all",
+  "filter_agents": "chat.filter_agents",
+  "filter_system": "chat.filter_system",
+  "filter_checker": "chat.filter_checker",
+  "cmd_placeholder": "chat.cmd_placeholder",
+  "cmd_unknown": "chat.cmd_unknown",
+  "cmd_no_helper": "chat.cmd_no_helper",
+  "cmd_empty": "chat.cmd_empty",
+  "cmd_error": "chat.cmd_error",
+  "search": "chat.search",
+  "filter_helper": "chat.filter_helper",
+  "no_match": "chat.no_match",
+  "tab_general": "chat.tab_general",
+  "tab_community": "chat.tab_community",
+  "tabs": "chat.tabs",
+  "community_none": "chat.community_none",
+  "community_empty": "chat.community_empty",
+  "community_placeholder": "chat.community_placeholder",
+  "community_join": "chat.community_join",
+  "community_leave": "chat.community_leave",
+  "community_removed": "chat.community_removed",
+  "community_announce": "chat.community_announce",
+  "community_unread": "chat.community_unread",
+  "community_delete": "chat.community_delete",
+  "community_need_party": "chat.community_need_party"
+ },
+ "tips": {
+  "window": "chat",
+  "filter": "chat_filter",
+  "input": "chat_input",
+  "search": "chat_search",
+  "tab_general": "chat_tab_general",
+  "tab_community": "chat_tab_community",
+  "community_delete": "chat_community_delete"
+ },
+ "options": {
+  "community_sound": 1,
+  "community_volume_pct": 40
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "title": "gamesettings.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 40
+ },
+ "size": {
+  "w": 940,
+  "h": 660
+ },
+ "visible": false,
+ "text": {
+  "guide": "guide.ui_q",
+  "game_note": "ws.game_note"
+ },
+ "tips": {
+  "guide": "settings_guide"
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "title": "esc.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 150
+ },
+ "size": {
+  "w": 320,
+  "h": 400
+ },
+ "visible": false,
+ "hotkey": "esc_menu",
+ "text": {
+  "project": "esc.project",
+  "resume": "esc.resume",
+  "quit": "esc.quit",
+  "quit_hint": "esc.quit_hint",
+  "character": "esc.character",
+  "character_title": "esc.character_title",
+  "project_title": "esc.project_title",
+  "project_empty": "esc.project_empty",
+  "project_path": "esc.project_path",
+  "project_open": "esc.project_open",
+  "project_error": "esc.project_error",
+  "project_add": "esc.project_add",
+  "project_adding": "esc.project_adding",
+  "project_added": "esc.project_added",
+  "project_add_error": "esc.project_add_error",
+  "back": "esc.back",
+  "settings": "esc.settings",
+  "sound": "esc.sound",
+  "options": "esc.options",
+  "support": "esc.support",
+  "macros": "esc.macros",
+  "logout": "esc.logout",
+  "unavailable": "esc.unavailable",
+  "guide": "guide.ui_menu",
+  "zones": "esc.zones",
+  "addons": "esc.addons"
+ },
+ "tips": {
+  "project_add": "esc_project_add",
+  "guide": "esc_guide"
+ }
+}

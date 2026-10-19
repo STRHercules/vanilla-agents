@@ -1,0 +1,20 @@
+[
+ {"name": "chair", "m2": "GeneralMedChair01.m2"},
+ {"name": "desk", "m2": "FancyDesk01.m2"},
+ {"name": "character", "look": {"race": 1, "sex": 0, "skin": 1, "face": 2, "hair": 4, "hair_color": 2, "beard": 1}},
+ {"name": "character_f", "look": {"race": 1, "sex": 1, "skin": 1, "face": 1, "hair": 3, "hair_color": 4, "beard": 0}},
+ {"name": "character_dwarf", "look": {"race": 3, "sex": 0, "skin": 2, "face": 1, "hair": 2, "hair_color": 3, "beard": 4}},
+ {"name": "prop_rug", "m2": "StormwindRug01.m2"},
+ {"name": "prop_bookshelf", "m2": "DuskwoodBookshelf01.m2"},
+ {"name": "prop_crate", "m2": "StormwindCrate01.m2"},
+ {"name": "prop_barrel", "m2": "InnBarrel.m2"},
+ {"name": "prop_banner", "m2": "KulTirasBanner01.m2"},
+ {"name": "prop_brazier", "m2": "StormwindBrazier01.m2"},
+ {"name": "prop_anvil", "m2": "Anvil.m2"},
+ {"name": "prop_mug", "m2": "Mug01.m2"},
+ {"name": "prop_muffin", "m2": "Muffin01.m2"},
+ {"name": "prop_sack", "m2": "Sack01_01.m2"},
+ {"name": "prop_door", "m2": "ShadowFangDoor01.m2"},
+ {"name": "prop_jukebox", "m2": "GnomeMachine01.m2"},
+ {"name": "prop_questboard", "m2": "Helpwantedposter.m2"}
+]

@@ -1,0 +1,59 @@
+{
+ "title": "inspect.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 64
+ },
+ "size": {
+  "w": 760,
+  "h": 480
+ },
+ "visible": false,
+ "hotkey": "inspect",
+ "text": {
+  "count": "inspect.count",
+  "empty": "inspect.empty",
+  "empty_agent": "inspect.empty_agent",
+  "filtered": "inspect.filtered",
+  "show_all": "inspect.show_all",
+  "pick": "inspect.pick",
+  "loading": "inspect.loading",
+  "added": "inspect.added",
+  "removed": "inspect.removed",
+  "no_diff": "inspect.no_diff",
+  "truncated": "inspect.truncated",
+  "error": "inspect.error",
+  "status_m": "inspect.status_m",
+  "status_a": "inspect.status_a",
+  "status_d": "inspect.status_d",
+  "status_r": "inspect.status_r",
+  "status_u": "inspect.status_u",
+  "place": "inspect.place",
+  "place_wt": "inspect.place_wt",
+  "other_checkout": "inspect.other_checkout",
+  "branch_head": "inspect.branch_head"
+ },
+ "tips": {
+  "slot": "inspect_slot",
+  "filter": "inspect_filter",
+  "show_all": "inspect_show_all",
+  "diff": "inspect_diff",
+  "place": "inspect_place"
+ },
+ "icons": {
+  "modified": "interface/icons/inv_scroll_05.png",
+  "added": "interface/icons/inv_misc_note_01.png",
+  "deleted": "interface/icons/inv_misc_bone_06.png",
+  "renamed": "interface/icons/inv_scroll_04.png",
+  "untracked": "interface/icons/inv_misc_questionmark.png",
+  "bar": "interface/paperdollinfoframe/ui-character-skills-bar.png",
+  "bar_border": "interface/paperdollinfoframe/ui-character-skills-barborder.png"
+ },
+ "options": {
+  "max_files": 200,
+  "medium": 10,
+  "large": 60,
+  "huge": 250
+ }
+}

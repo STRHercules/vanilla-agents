@@ -1,0 +1,188 @@
+{
+ "zones": [
+  {
+   "id": ".",
+   "eli5": "The loose files at the very top of the project: the build recipe, the readme and the launch scripts."
+  },
+  {
+   "id": "src/bin",
+   "eli5": "The small programs you can run on their own, like the tools that read game files and the test clients."
+  },
+  {
+   "id": "src/opcodes.rs",
+   "eli5": "The big list of every message the game and the server can send each other, with a name for each."
+  },
+  {
+   "id": "src/update.rs",
+   "eli5": "Reads the news from the server about what changed in the world (a creature moved, a player's health changed)."
+  },
+  {
+   "id": "tests",
+   "eli5": "The automatic tests that try the game code and say yes or no."
+  },
+  {
+   "id": "docs",
+   "eli5": "The written notes: plans, findings and how things work."
+  },
+  {
+   "id": "scripts",
+   "eli5": "Little helper scripts that do chores for the project."
+  },
+  {
+   "id": "src/quest.rs",
+   "eli5": "How quests work: what you can accept, what you must do, and what you get."
+  },
+  {
+   "id": "src/vmap.rs",
+   "eli5": "The invisible walls and floors the game uses to know where you can stand."
+  },
+  {
+   "id": "src/world.rs",
+   "eli5": "The game world itself: where things are and how the world loads."
+  },
+  {
+   "id": "src/gateway.rs",
+   "eli5": "The front door that connects the game to the server."
+  },
+  {
+   "id": "src/bnet.rs",
+   "eli5": "The login conversation with the account server."
+  },
+  {
+   "id": "src/m2.rs",
+   "eli5": "Reads the game's character and creature models."
+  },
+  {
+   "id": "src/db2.rs",
+   "eli5": "Reads the game's big data tables (spells, creatures, items)."
+  },
+  {
+   "id": "src/adt.rs",
+   "eli5": "Reads the ground tiles that make up the land."
+  },
+  {
+   "id": "src/spellfail.rs",
+   "eli5": "Explains why a spell did not work (not enough mana, out of range)."
+  },
+  {
+   "id": "src/assetsvc.rs",
+   "eli5": "Finds and hands out the game's pictures and models when they are needed."
+  },
+  {
+   "id": ".serena",
+   "eli5": "Notes kept by a code-reading helper tool. Not game code."
+  },
+  {
+   "id": "src/creature.rs",
+   "eli5": "Creatures: how they are described and drawn."
+  },
+  {
+   "id": "src/model.rs",
+   "eli5": "Turns a model file into something the screen can draw."
+  },
+  {
+   "id": "web",
+   "eli5": "The web page parts, so the game can run inside a browser."
+  },
+  {
+   "id": "src/charlist.rs",
+   "eli5": "The character selection list."
+  },
+  {
+   "id": "src/casc.rs",
+   "eli5": "Opens the game's packed data files."
+  },
+  {
+   "id": "src/terrain.rs",
+   "eli5": "Draws the ground."
+  },
+  {
+   "id": "src/wmo.rs",
+   "eli5": "Reads big buildings and caves."
+  },
+  {
+   "id": "src/blp.rs",
+   "eli5": "Reads the game's pictures."
+  },
+  {
+   "id": "src/lib.rs",
+   "eli5": "The front page of the code: lists all the other parts."
+  },
+  {
+   "id": "src/stream.rs",
+   "eli5": "Loads parts of the world as you walk so nothing waits."
+  },
+  {
+   "id": "src/wire.rs",
+   "eli5": "Packs and unpacks the bytes sent over the network."
+  },
+  {
+   "id": "src/tvfs.rs",
+   "eli5": "Looks up where each game file lives inside the packed data."
+  },
+  {
+   "id": "src/vendor.rs",
+   "eli5": "Shops: what a seller offers and what it costs."
+  },
+  {
+   "id": "src/aura.rs",
+   "eli5": "Buffs and debuffs on a character, and their timers."
+  },
+  {
+   "id": "src/loot.rs",
+   "eli5": "What drops from a defeated creature."
+  },
+  {
+   "id": "src/tile.rs",
+   "eli5": "One square of the world map at a time."
+  },
+  {
+   "id": "src/root.rs",
+   "eli5": "The root of a building or model file."
+  },
+  {
+   "id": "src/light.rs",
+   "eli5": "Sky colour and light: day, night and weather."
+  },
+  {
+   "id": "src/main.rs",
+   "eli5": "The start button of the main program."
+  },
+  {
+   "id": "src/config.rs",
+   "eli5": "Reads the settings file."
+  },
+  {
+   "id": "src/webnet.rs",
+   "eli5": "Network talking for the browser version."
+  },
+  {
+   "id": "src/replay_tests.rs",
+   "eli5": "Replays recorded server messages to check the game reads them correctly."
+  },
+  {
+   "id": "scenarios",
+   "eli5": "Recorded situations used to test the game."
+  },
+  {
+   "id": "src/webfetch.rs",
+   "eli5": "Downloads game files for the browser version."
+  },
+  {
+   "id": "src/chat.rs",
+   "eli5": "The chat messages."
+  },
+  {
+   "id": "src/spell.rs",
+   "eli5": "Spells: the basics of casting."
+  },
+  {
+   "id": "src/terrain.wgsl",
+   "eli5": "The graphics-card recipe for painting the ground."
+  },
+  {
+   "id": ".cargo",
+   "eli5": "A tiny settings folder for the build tool."
+  }
+ ]
+}

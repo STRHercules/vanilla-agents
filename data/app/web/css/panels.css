@@ -1,0 +1,167 @@
+/* Panel contents. Look-and-feel numbers that the owner may want to change live in app/config; this file only lays things out. */
+.panel { position: absolute; }
+.panel[hidden] { display: none; }
+.panel-title { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); padding: 1px 18px; z-index: 2;
+  color: var(--gold); font-size: var(--title-px); background: rgba(0, 0, 0, 0.85); border: 1px solid #5a4630; border-radius: 3px; white-space: nowrap; }
+.panel-body { height: 100%; overflow: hidden; display: flex; flex-direction: column; gap: 6px; }
+.empty { padding: 6px 2px; line-height: 1.35; }
+
+/* unit frames */
+.unit-row { display: flex; gap: 8px; align-items: center; }
+.unit-portrait { width: 46px; height: 46px; border: 2px solid #000; border-radius: 50%; background: #000; object-fit: cover; }
+.unit-col { flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.unit-name { font-size: var(--title-px); line-height: 1; }
+.bar { position: relative; height: 15px; background: var(--bar-back); border: 1px solid #000; border-radius: 2px; overflow: hidden; }
+.bar-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0; background-image: var(--bar-texture); background-size: 100% 100%; background-blend-mode: multiply; transition: width 0.4s; }
+.bar-text { position: absolute; inset: 0; text-align: center; line-height: 14px; font-size: var(--small-px); text-shadow: 1px 1px 0 #000; }
+.unit-target { display: flex; gap: 6px; align-items: center; margin-top: 2px; padding: 2px 4px; border-top: 1px solid #3a2e20; }
+.unit-target-icon { width: 20px; height: 20px; border: 1px solid #000; }
+.unit-target-name { font-size: var(--text-px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* quest log */
+.quest-head { padding-bottom: 3px; border-bottom: 1px solid #3a2e20; }
+.quest-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 7px; padding-right: 3px; }
+.quest { display: flex; gap: 6px; align-items: flex-start; }
+.quest-mark { width: 18px; flex: none; padding-top: 1px; }
+.quest-info { flex: 1; min-width: 0; line-height: 1.25; }
+.quest-title { font-size: var(--text-px); }
+.quest-approve { height: 22px; margin-top: 3px; padding: 0 8px; font-size: var(--small-px); }
+.quest-decide { display: flex; flex-wrap: wrap; gap: 4px; }
+.quest-approved .aura-icon { display: inline-block; width: 14px; height: 14px; vertical-align: -3px; margin-right: 4px; }
+.idea-summary { margin-bottom: 6px; }
+.quest-approved { padding-top: 2px; }
+.objective { display: flex; gap: 5px; padding-left: 8px; color: #d8d0bc; }
+.obj-mark { width: 10px; text-align: center; font-family: "Segoe UI Symbol", sans-serif; }
+
+/* character sheet */
+.char { display: flex; flex-direction: column; gap: 7px; }
+.char-top { display: flex; gap: 10px; align-items: center; }
+.char-who { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.char-name { font-size: var(--title-px); }
+.char-line { padding: 3px 2px; border-bottom: 1px solid #3a2e20; }
+.char-tools { display: flex; flex-direction: column; gap: 2px; }
+
+/* slots (portrait, action bar) */
+.slot { position: relative; width: 56px; height: 56px; padding: 0; border: 0; background: var(--slot-texture) center / 100% 100% no-repeat; cursor: default; font-family: inherit; color: var(--white); }
+.slot-big { width: 72px; height: 72px; flex: none; }
+.slot-icon { position: absolute; left: 50%; top: 50%; width: 62%; height: 62%; transform: translate(-50%, -50%); }
+.slot-btn { cursor: pointer; }
+.slot-btn:hover .slot-icon { filter: brightness(1.3); }
+.slot-btn:active .slot-icon { transform: translate(-50%, -48%); }
+.slot-label { position: absolute; left: -12px; right: -12px; bottom: -14px; text-align: center; white-space: nowrap; }
+.slot-wrap { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.actionbar { display: flex; gap: 16px; justify-content: center; align-items: center; height: 100%; padding-bottom: 6px; }
+
+/* chat */
+.chat-log { flex: 1; overflow-y: auto; line-height: 1.3; font-size: var(--small-px); padding-right: 3px; user-select: text; }
+.chat-line { margin-bottom: 2px; text-shadow: 1px 1px 0 #000; }
+.chat-time { opacity: 0.6; }
+
+/* esc menu */
+.esc { display: flex; flex-direction: column; gap: 8px; align-items: stretch; padding: 8px 18px; }
+.wow-btn { height: 32px; padding: 0 10px; border: 0; background: var(--btn-up) 0 0 / 160% 145% no-repeat; color: var(--gold);
+  font-family: inherit; font-size: var(--text-px); text-shadow: 1px 1px 0 #000; cursor: pointer; }
+.wow-btn:hover { background-image: var(--btn-highlight), var(--btn-up); background-size: 160% 145%; }
+.wow-btn:active { background-image: var(--btn-down); }
+.wow-btn { background-clip: padding-box; border-radius: 3px; }
+.esc-note { text-align: center; }
+.esc-input { height: 26px; padding: 0 6px; background: #000; color: var(--white); border: 1px solid #5a4630; font-family: inherit; user-select: text; }
+
+/* tooltip */
+#tooltip { position: fixed; z-index: 100; max-width: 270px; pointer-events: none; line-height: 1.3; }
+#tooltip[hidden] { display: none; }
+.tip-title { color: var(--gold); font-size: var(--title-px); margin-bottom: 2px; }
+.tip-body { color: var(--white); white-space: pre-line; }
+.tip-last { margin-top: 4px; }
+.tip-use { color: var(--green); margin-top: 4px; }
+
+/* sound settings */
+.snd { display: flex; flex-direction: column; gap: 7px; padding: 10px 14px; overflow-y: auto; }
+.snd-row { display: flex; gap: 8px; align-items: center; }
+.snd-label { width: 170px; flex: none; line-height: 1.15; }
+.snd-select { width: 170px; flex: none; height: 24px; background: #000; color: var(--white); border: 1px solid #5a4630; font-family: inherit; font-size: var(--small-px); }
+.snd-range { width: 80px; flex: none; accent-color: var(--gold); }
+.snd-check { accent-color: var(--gold); margin: 0; }
+.snd-on { width: 18px; }
+.snd-test { height: 24px; padding: 0 10px; }
+.snd-master { padding-bottom: 6px; border-bottom: 1px solid #3a2e20; }
+.snd-msg { min-height: 14px; }
+.unit-paused { font-size: var(--small-px); letter-spacing: 1px; margin-top: 2px; }
+.unit-paused[hidden] { display: none; }
+.slot-off { opacity: 0.55; }
+.cast-bar { height: 22px; margin-top: 2px; }
+.cast-bar .bar-text { line-height: 21px; }
+
+/* spellbook and backpack */
+.book-head { padding-bottom: 3px; border-bottom: 1px solid #3a2e20; min-height: 16px; }
+.book-note { min-height: 14px; padding: 0 2px; }
+.spell-grid { flex: 1; display: grid; gap: 12px 10px; align-content: start; padding: 6px 2px; overflow: hidden auto; }
+.spell { display: flex; gap: 8px; align-items: center; min-width: 0; cursor: pointer; }
+.spell-empty { cursor: default; }
+.spell-slot { flex: none; width: 48px; height: 48px; cursor: inherit; }
+.spell-empty .slot { opacity: 0.6; }
+.spell:not(.spell-off):not(.spell-empty):hover .slot-icon { filter: brightness(1.3); }
+.spell-off { opacity: 0.55; cursor: default; }
+.spell-info { min-width: 0; line-height: 1.25; }
+.spell-name { color: var(--gold); font-size: var(--text-px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.spell-mark { display: inline-block; width: 12px; font-family: "Segoe UI Symbol", sans-serif; }
+.cooldown { position: absolute; left: 50%; top: 50%; width: 62%; height: 62%; transform: translate(-50%, -50%); --p: 0deg;
+  background: conic-gradient(from 0deg, transparent var(--p), rgba(0, 0, 0, 0.72) var(--p)); pointer-events: none; }
+.cooldown-left { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--gold); pointer-events: none; }
+.cooldown[hidden], .cooldown-left[hidden] { display: none; }
+.bag-grid { display: grid; gap: 4px; justify-content: center; align-content: start; padding: 6px 0; }
+.bag-slot { width: 40px; height: 40px; }
+.bag-border { position: absolute; left: 50%; top: 50%; width: 72%; height: 72%; transform: translate(-50%, -50%); border: 2px solid transparent; border-radius: 2px; box-sizing: border-box; pointer-events: none; }
+
+/* buff/debuff icons and raid frames */
+.aura-row { display: flex; gap: 2px; min-height: 20px; flex-wrap: wrap; }
+.aura { position: relative; width: 20px; height: 20px; border: 1px solid #000; box-sizing: border-box; background: #000; }
+.aura-buff { outline: 1px solid var(--green); }
+.aura-debuff { outline: 1px solid var(--red); }
+.aura-icon { width: 100%; height: 100%; display: block; }
+.aura-time { position: absolute; left: 0; right: 0; bottom: -11px; text-align: center; font-size: var(--small-px); line-height: 1; color: var(--white); }
+.aura-count { position: absolute; right: 1px; bottom: -1px; font-size: var(--small-px); line-height: 1; color: var(--white); }
+.raid-grid { display: grid; gap: 6px; align-content: start; }
+.raid-frame { display: flex; flex-direction: column; gap: 2px; padding: 3px 4px; background: rgba(0, 0, 0, 0.35); border: 1px solid #3a2e20; cursor: pointer; min-width: 0; }
+.raid-frame:hover, .raid-selected { border-color: var(--gold); }
+/* compact raid card: name + small icons on one line, thin health bar under; the quest text is in the hover tip */
+.raid-grid { gap: 3px; }
+.raid-frame { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 4px; row-gap: 2px; padding: 2px 4px; }
+.raid-frame .raid-name { grid-column: 1; grid-row: 1; }
+.raid-frame .aura-row { grid-column: 2; grid-row: 1; min-height: 0; flex-wrap: nowrap; }
+.raid-frame .aura { width: 14px; height: 14px; }
+.raid-frame .aura-time, .raid-frame .aura-count, .raid-frame .bar-text { display: none; }
+.raid-frame .bar { grid-column: 1 / -1; grid-row: 2; height: 5px; }
+.raid-name { font-size: var(--small-px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.idea-head { display: flex; align-items: center; gap: 8px; min-height: 22px; padding-bottom: 3px; border-bottom: 1px solid #3a2e20; }
+.idea-icon { width: 20px; height: 20px; }
+.idea-section { padding: 4px 2px; }
+.idea-line { padding-left: 4px; line-height: 1.3; }
+.idea-btn { height: 24px; margin: 6px 2px 2px; padding: 0 10px; }
+.idea-body { flex: 1; overflow-y: auto; }
+
+/* Game Menu spacing and the Options window (assets/ui/wow_settings.json) */
+.esc-gap { height: 14px; }
+.wow-btn:disabled { opacity: 0.45; cursor: default; filter: grayscale(0.6); }
+.ws { display: flex; height: 100%; gap: 14px; padding: 10px 14px 8px; box-sizing: border-box; }
+.ws-nav { width: 210px; flex: none; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; padding-right: 6px; }
+.ws-search { height: 26px; margin-bottom: 8px; padding: 0 6px; background: #000; color: var(--white); border: 1px solid #5a4630; font-family: inherit; user-select: text; }
+.ws-group { margin: 10px 0 2px; font-size: 15px; }
+.ws-cat { text-align: left; padding: 3px 12px; background: transparent; border: 0; color: var(--white); font-family: inherit; font-size: 13px; cursor: pointer; border-radius: 2px; }
+.ws-cat:hover { background: rgba(255, 209, 0, 0.12); }
+.ws-cat.on { color: var(--gold); background: rgba(255, 209, 0, 0.22); }
+.ws-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.ws-title { font-size: 18px; padding: 2px 0 6px; border-bottom: 1px solid #5a4630; margin-bottom: 6px; }
+.ws-list { flex: 1; overflow-y: auto; padding-right: 8px; }
+.ws-header { margin: 14px 0 4px; font-size: 14px; border-bottom: 1px solid rgba(255, 209, 0, 0.25); }
+.ws-row { display: flex; align-items: center; gap: 12px; padding: 4px 6px; min-height: 26px; border-radius: 2px; }
+.ws-row:hover { background: rgba(255, 255, 255, 0.06); }
+.ws-label { flex: 0 0 46%; color: var(--white); font-size: 13px; }
+.ws-check .ws-label { flex: 1; }
+.ws-range { flex: 1; accent-color: var(--gold); }
+.ws-value { width: 52px; text-align: right; font-size: 12px; color: var(--gold); }
+.ws-select { flex: 1; max-width: 300px; height: 24px; background: #120d08; color: var(--white); border: 1px solid #5a4630; font-family: inherit; }
+.ws-box { accent-color: var(--gold); width: 16px; height: 16px; }
+.ws-pair { padding-left: 0; }
+.ws-btn { margin: 4px 6px; }
+.ws-foot { display: flex; justify-content: space-between; padding-top: 8px; border-top: 1px solid #5a4630; }

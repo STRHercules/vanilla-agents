@@ -1,0 +1,49 @@
+{
+ "title": "idea.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 96
+ },
+ "size": {
+  "w": 400,
+  "h": 380
+ },
+ "visible": false,
+ "hotkey": "idea",
+ "text": {
+  "none": "idea.none",
+  "missing": "idea.missing",
+  "draft": "idea.draft",
+  "goal": "idea.goal",
+  "non_goals": "idea.non_goals",
+  "done_means": "idea.done_means",
+  "out_of_scope": "idea.out_of_scope",
+  "nothing": "idea.nothing",
+  "approved": "idea.approved",
+  "unapproved": "idea.unapproved",
+  "changed": "idea.changed",
+  "approve": "idea.approve",
+  "approve_error": "idea.approve_error",
+  "draft_error": "idea.draft_error",
+  "needs_plain": "idea.needs_plain"
+ },
+ "tips": {
+  "goal": "idea_goal",
+  "non_goals": "idea_non_goals",
+  "done_means": "idea_done_means",
+  "out_of_scope": "idea_out_of_scope",
+  "approved": "idea_approved",
+  "unapproved": "idea_unapproved",
+  "changed": "idea_changed",
+  "approve": "idea_approve",
+  "draft": "idea_draft",
+  "needs_plain": "idea_needs_plain"
+ },
+ "icons": {
+  "scroll": "interface/icons/inv_scroll_03.png"
+ },
+ "options": {
+  "max_lines": 8
+ }
+}

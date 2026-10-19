@@ -1,0 +1,44 @@
+/* V-044 integration hub: Options > Integrations, the Bounty Board's Imported tab, the CI line (quest log, system monitor). */
+.integ .vas-ch { gap: 4px; }
+.integ-head { display: flex; align-items: center; gap: 8px; }
+.integ-head .vas-chhead { flex: 1; }
+.integ-icon { flex: none; width: 22px; height: 22px; border: 1px solid #000; box-shadow: 0 0 0 1px #6a5a30; border-radius: 2px; }
+.integ-title { font-size: 14px; }
+.integ-flabel { flex-basis: 150px; }
+.integ-select { flex: 1; min-width: 0; }
+.integ-num { width: 70px; font-size: 12px; }
+.integ-forget { flex: none; height: 22px; padding: 0 8px; font-size: 11px; }
+.integ-check { padding: 1px 0 1px 2px; }
+.integ-pair { gap: 14px; }
+.integ .ws-row[hidden] { display: none; }
+.integ .vas-foot { flex-wrap: wrap; }
+.integ .vas-result { flex: 1 1 200px; line-height: 1.3; }
+
+/* Bounty Board: Imported tab */
+.ah-filter { flex: none; display: flex; align-items: center; gap: 4px; padding: 0 2px; }
+.ah-filter[hidden] { display: none; }
+.ah-chip { display: flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; font-size: 12px; color: #d8d0b8; cursor: pointer;
+  background: linear-gradient(180deg, #2a2620, #141210); border: 1px solid #4a3e28; border-radius: 10px; }
+.ah-chip:hover { border-color: #8a7440; color: var(--white); }
+.ah-chip-on { color: var(--gold); border-color: var(--gold); box-shadow: 0 0 4px rgba(255, 209, 0, 0.45); }
+.ah-chip-icon { width: 16px; height: 16px; border-radius: 2px; }
+.ah-settings { margin-left: auto; height: 22px; padding: 0 10px; font-size: 11.5px; }
+.ah-imported .ah-cols { display: none; }
+.ah-imported .ah-row.ah-imp { grid-template-columns: 1fr auto; gap: 6px; }
+.ah-acts { display: flex; gap: 4px; align-items: center; overflow: visible; }
+.ah-btn { height: 24px; padding: 0 8px; font-size: 11.5px; white-space: nowrap; }
+.ah-hide { padding: 0 6px; }
+.ah-src-github { --q: #e6cc80; } .ah-src-jira { --q: #3d9bff; } .ah-src-linear { --q: #a335ee; }
+.ah-imp .ah-sub { max-width: 100%; }
+.ah-imsg:empty { display: none; }
+.ah-slot { position: relative; }
+.ah-badge { position: absolute; right: -4px; bottom: -4px; width: 16px; height: 16px; border: 1px solid #000; border-radius: 2px; box-shadow: 0 0 2px #000; }
+
+/* CI line */
+.quest-ci { margin-top: 1px; }
+.quest-ci-failed { border-left: 2px solid var(--red); padding-left: 3px; background: rgba(255, 48, 48, 0.07); }
+[data-panel="monitor"].mon-has-ci { height: 132px !important; }
+.mon-has-ci .mon-box { gap: 2px; padding: 4px 8px; }
+.mon-has-ci .mon-pill { height: 14px; }
+.mon-has-ci .mon-val { line-height: 13px; }
+.mon-row[hidden] { display: none; }

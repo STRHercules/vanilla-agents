@@ -1,0 +1,296 @@
+--- a/tools/workshop_lib.py
++++ b/tools/workshop_lib.py
+@@ -2,6 +2,11 @@
+ 
+ The Workshop lists vanilla 1.12 addons. It *hosts* only addons whose licence allows
+ redistribution (the allow-list below); every other addon is a link to its author's page.
++
++It also lists Vanilla Agents addons (`kind: vanilla-agents-addon`, category "agents"): JavaScript
++for the Vanilla Agents window (a folder with addon.json + main.js), not game addons. They are never
++scanned in the fake 1.12 client; their packages come from the upstream repo or from a zip committed
++with the catalogue entry in workshop/agents/.
+ """
+ import os
+ import re
+@@ -12,6 +17,8 @@
+ CATALOG_DIR = os.path.join(ROOT, "workshop", "catalog")
+ ADDONS_DIR = os.path.join(ROOT, "Data", "Interface", "AddOns")
+ OUT_DIR = os.path.join(ROOT, "www", "community", "workshop")
++AGENTS_DIR = os.path.join(ROOT, "workshop", "agents")    # submitted Vanilla Agents addon zips (<id>-<version>.zip)
++KIND_AGENTS = "vanilla-agents-addon"
+ 
+ # SPDX ids we may rehost (redistribution allowed, with the licence and credit kept).
+ ALLOWED_LICENSES = {
+@@ -47,11 +54,17 @@
+     "tooltips": "Tooltips",
+     "utility": "Utility",
+     "classicplus": "Classic+",
++    "agents": "Vanilla Agents addons",
+ }
+ 
+ ID_RE = re.compile(r"^(?!(con|prn|aux|nul|com[1-9]|lpt[1-9])$)[a-z0-9][a-z0-9-]{1,47}$")  # no Windows device names
+ 
+ 
++def is_agents(entry):
++    """A Vanilla Agents addon (JavaScript for the Vanilla Agents window), not a game addon."""
++    return (entry or {}).get("kind") == KIND_AGENTS
++
++
+ def norm_license(value):
+     """SPDX id for a licence string (None / '' -> 'NOASSERTION')."""
+     if not value:
+@@ -141,7 +154,7 @@
+ 
+ FIELD_ORDER = ("id", "name", "author", "summary", "description", "category", "license", "rehost",
+                "source_url", "homepage", "version", "added", "files", "screenshots", "tags", "compat",
+-               "ours", "folders", "verified", "upstream", "scan")
++               "ours", "folders", "verified", "upstream", "scan", "kind", "permissions")
+ 
+ 
+ def dump_entry(entry):
+--- a/tools/workshop_build.py
++++ b/tools/workshop_build.py
+@@ -20,6 +20,11 @@
+     entry sets `compat_locked: true` (a person checked it in the game).
+   * Entries with `listed: false` (new indexer finds nobody has reviewed yet) are left out.
+   * Packages larger than --max-mb (default 8) are not mirrored; the entry stays a link-out.
++  * `kind: vanilla-agents-addon` entries (category "agents") are JavaScript for the Vanilla Agents
++    window, not game addons: no Lua/.toc scan (compat stays "unknown" unless compat_locked), the
++    folder holding addon.json (from the upstream repo, or from the zip committed as
++    workshop/agents/<files[0].name>, checked against its sha256) is packed as <id>/ with the credits
++    file, and the card carries `kind`, `permissions` and `files` so Vanilla Agents can install it.
+ 
+ index.json  {"updated", "base", "categories": [...], "addons": [card], "collections": [...],
+              "creators": [...], "badges": {...}}
+@@ -59,7 +64,11 @@
+                 "tip": "Not scanned yet (only rehostable addons are scanned)."},
+     "ours": {"label": "Ours", "icon": "assets/workshop/badge_ours.webp",
+              "tip": "Made by Open Vanilla for Classic+; ships with the client."},
++    "agents": {"label": "Vanilla Agents", "icon": "assets/workshop/badge_unknown.webp",
++               "tip": "An addon for the Vanilla Agents window (JavaScript), not for the game client. Install it from Vanilla Agents' AddOns window."},
+ }
++AGENTS_MAX_FILES = 200
++AGENTS_MAX_UNPACKED = 8 * 1024 * 1024
+ 
+ 
+ def now_iso():
+@@ -98,7 +107,7 @@
+             for f in sorted(files):
+                 full = os.path.join(dp, f)
+                 rel = os.path.relpath(full, src).replace(os.sep, "/")
+-                if os.path.islink(full):
++                if os.path.islink(full) or f"{name}/{rel}" in extra:      # extra (credits) replaces a file of the same name
+                     continue
+                 entries.append((f"{name}/{rel}", full, None))
+     for zp, text in extra.items():
+@@ -162,8 +171,76 @@
+ LICENSE_NAMES = ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENCE", "COPYING", "COPYING.txt", "license.txt")
+ 
+ 
++def _agents_folder(root, addon_id):
++    """The folder with addon.json: the root itself, <root>/<id>/, or the only sub-folder that has one."""
++    for cand in (root, os.path.join(root, addon_id)):
++        if os.path.isfile(os.path.join(cand, "addon.json")):
++            return cand
++    subs = [os.path.join(root, d) for d in sorted(os.listdir(root)) if os.path.isfile(os.path.join(root, d, "addon.json"))]
++    if len(subs) == 1:
++        return subs[0]
++    raise RuntimeError("no addon.json (Vanilla Agents addon) in the source")
++
++
++def _extract_agents_zip(path, dest):
++    """Unpack a submitted Vanilla Agents zip safely (no absolute paths, '..', links, devices; size and count limits)."""
++    with zipfile.ZipFile(path) as z:
++        infos = z.infolist()
++        if len(infos) > AGENTS_MAX_FILES or sum(i.file_size for i in infos) > AGENTS_MAX_UNPACKED:
++            raise RuntimeError("the submitted zip is too big")
++        for i in infos:
++            name = i.filename
++            parts = name.rstrip("/").split("/")
++            mode = i.external_attr >> 16
++            if (name.startswith("/") or "\\" in name or ":" in name or "\x00" in name or any(p in ("", ".", "..") for p in parts)
++                    or (mode and (mode & 0o170000) not in (0, 0o100000, 0o040000)) or i.flag_bits & 0x1):
++                raise RuntimeError(f"unsafe entry in the submitted zip: {name[:80]!r}")
++            if i.is_dir():
++                continue
++            target = os.path.join(dest, *parts)
++            os.makedirs(os.path.dirname(target), exist_ok=True)
++            with z.open(i) as src, open(target, "wb") as out:
++                out.write(src.read(i.file_size + 1)[:i.file_size])
++
++
++def agents_source(e, cache, tmp):
++    """The addon folder of a Vanilla Agents entry: upstream repo (pinned commit) or the zip in workshop/agents/."""
++    if (e.get("upstream") or {}).get("repo"):
++        return _agents_folder(fetch_source(e, cache), e["id"])
++    sub = e.get("submitted") or (e.get("files") or [{}])[0]      # `submitted` remembers the zip once files[] holds the built package
++    name, want = sub.get("name") or "", sub.get("sha256") or ""
++    if not re.fullmatch(re.escape(e["id"]) + r"-[0-9A-Za-z.+-]{1,32}\.zip", name):
++        raise RuntimeError("no upstream repo and no submitted zip named <id>-<version>.zip in files")
++    path = os.path.join(W.AGENTS_DIR, name)
++    if not os.path.isfile(path):
++        raise RuntimeError(f"workshop/agents/{name} is missing")
++    if want and sha256(path) != want:
++        raise RuntimeError(f"workshop/agents/{name} does not match the sha256 in the entry")
++    _extract_agents_zip(path, tmp)
++    e["submitted"] = {"name": name, "sha256": sha256(path)}
++    return _agents_folder(tmp, e["id"])
++
++
++def package_agents(e, out_dir, cache, tmp):
++    """(folders, extra, scan) for a Vanilla Agents addon: no Lua scan, the addon.json id must match the entry."""
++    folder = agents_source(e, cache, tmp)
++    with open(os.path.join(folder, "addon.json"), encoding="utf-8") as fh:
++        manifest = json.load(fh)
++    if manifest.get("id") != e["id"] or not os.path.isfile(os.path.join(folder, "main.js")):
++        raise RuntimeError("addon.json id does not match the entry, or main.js is missing")
++    scan = {"compat": "unknown", "findings": [], "addons": [], "note": "Vanilla Agents addon (JavaScript): not scanned in the game client"}
++    return [(folder, e["id"])], {f"{e['id']}/OPENVANILLA-CREDITS.txt": credits_text(e)}, scan
++
++
+ def package(e, out_dir, cache, known, max_mb, log):
+     """Build (or rebuild) the entry's zip; returns (files, scan, folders) or raises."""
++    if W.is_agents(e):
++        tmp = tempfile.mkdtemp(prefix="agents-")
++        try:
++            folders, extra, scan = package_agents(e, out_dir, cache, tmp)
++            return _write_package(e, out_dir, folders, extra, scan, max_mb)
++        finally:
++            shutil.rmtree(tmp, ignore_errors=True)
+     if e.get("ours"):
+         src_root = None
+         folders = [(os.path.join(W.ADDONS_DIR, f), f) for f in e.get("folders") or []]
+@@ -189,6 +266,10 @@
+         has_own = any(os.path.isfile(os.path.join(src, n)) for n in LICENSE_NAMES)
+         if license_text and not has_own:
+             extra[f"{name}/LICENSE-{e['id']}.txt"] = license_text
++    return _write_package(e, out_dir, folders, extra, scan, max_mb)
++
++
++def _write_package(e, out_dir, folders, extra, scan, max_mb):
+     os.makedirs(os.path.join(out_dir, "files"), exist_ok=True)
+     tmp = tempfile.NamedTemporaryFile(suffix=".zip", delete=False, dir=os.path.join(out_dir, "files"))
+     tmp.close()
+@@ -234,7 +315,8 @@
+     s = stats.get(e["id"], {})
+     installable = bool(e.get("files")) and (e.get("ours") or e.get("rehost"))
+     shots = e.get("screenshots") or []
+-    return {
++    extra = {"kind": W.KIND_AGENTS, "permissions": e.get("permissions") or [], "files": e.get("files") or []} if W.is_agents(e) else {}
++    return {**extra,
+         "id": e["id"], "name": e["name"], "author": e.get("author", ""), "creator": creator_id(e.get("author")),
+         "summary": e.get("summary", ""), "category": e.get("category", "utility"),
+         "compat": e.get("compat", "unknown"), "ours": bool(e.get("ours")), "rehost": bool(e.get("rehost")),
+@@ -268,6 +350,8 @@
+                 e["scan"] = scan_summary(scan)
+                 if not e.get("compat_locked"):
+                     e["compat"] = e["scan"]["compat"] if not e.get("ours") or e["scan"]["compat"] != "unknown" else "works"
++                if W.is_agents(e):
++                    e["scan"]["note"] = scan.get("note", "")
+                 log(f"  packaged {e['id']}: {files[0]['size'] / 1024:.0f} KB, {e['compat']}")
+             except Exception as ex:  # noqa: BLE001  (one bad repo must not stop the build)
+                 problems.append(f"{e['id']}: {ex}")
+@@ -298,7 +382,7 @@
+                         "source": e.get("source_url") or e.get("homepage"),
+                         "commit": (e.get("upstream") or {}).get("commit"),
+                         "text": credits_text(e) if e.get("rehost") else None},
+-            "install_url": f"openvanilla://workshop/install/{e['id']}" if c["install"] else None,
++            "install_url": f"openvanilla://workshop/install/{e['id']}" if c["install"] and not W.is_agents(e) else None,
+             "versions": [{"version": e.get("version") or "", "date": str(e.get("added") or ""),
+                           "sha256": f["sha256"], "size": f["size"]} for f in (e.get("files") or [])],
+         })
+--- a/docs/manual/14-workshop.md
++++ b/docs/manual/14-workshop.md
+@@ -1,7 +1,7 @@
+ slug: workshop
+ title: Publish to the Workshop
+ kicker: Chapter 14 · Share
+-summary: Install from the Workshop, then share your own: an addon, a Vanilla Remastered port, a collection, a fork of Open Vanilla, or a whole repo or project.
++summary: Install from the Workshop, then share your own: an addon, a Vanilla Agents addon, a Vanilla Remastered port, a collection, a fork of Open Vanilla, or a whole repo or project.
+ 
+ The **Workshop** is where players find addons for the Vanilla client: rated, reviewed, checked in a fake client before anyone installs them, and one click from the launcher. Bigger things (forks, clients, server projects, games) go in the **Projects** directory next to it.
+ 
+@@ -12,6 +12,7 @@
+ | An addon (UI, bags, maps, quest helpers, combat, social...) | **Workshop** | [Upload it](#upload) or [send a catalogue entry](#pull-request) |
+ | A port of an open addon into Vanilla Remastered | **Workshop** | [Port it](#port), then upload |
+ | A bundle of addons for a play style | **Workshop collection** | [Collections](#collections) |
++| An addon for the Vanilla Agents window (JavaScript) | **Workshop**, category *Vanilla Agents addons* | [Publish a Vanilla Agents addon](#vanilla-agents) |
+ | A fork of Open Vanilla, a client, a server, a repack, a game | **Projects** directory | [List a project](#directory) |
+ | An addon on GitHub you want found | **Workshop**, automatically | [Tag your repo](#github-topics) |
+ 
+@@ -66,7 +67,8 @@
+ description: |
+   What it does, how to open it (/mytheme), what to expect.
+ category: interface       # interface, unitframes, combat, raid, quests, bags, maps,
+-                          # social, economy, professions, macros, tooltips, utility, classicplus
++                          # social, economy, professions, macros, tooltips, utility, classicplus,
++                          # agents (Vanilla Agents addons only: see below)
+ tags: [theme, minimal]
+ license: MIT
+ rehost: true
+@@ -81,6 +83,18 @@
+ 
+ Maintainers run `python3 tools/workshop_build.py --fetch --only my-theme`, which pins your current commit, scans it, zips it with a credits file and records its fingerprint. New versions: the next index run picks up your newest commit and the build re-pins it.
+ 
++## Publish a Vanilla Agents addon {#vanilla-agents}
++
++**Vanilla Agents** shows AI coding sessions as heroes in an inn; its window takes small JavaScript addons. They are listed in the Workshop under **Vanilla Agents addons** (`category: agents`) and installed from Vanilla Agents' own **AddOns** window, not from the launcher: they are not game addons, so they get no `.toc`, no Lua rules and no scan in the fake client. Their card says **Vanilla Agents** instead of a Works / Not checked badge.
++
++1. **Make it a folder addon:** `<id>/addon.json` (id, name, author, version, summary, description, license, permissions, optional homepage and source_url), `main.js` and a `LICENSE` file. Vanilla Agents' `docs/ADDONS.md` has the details and an example.
++2. **Package it in Vanilla Agents:** AddOns window → pick the addon → **Package for the Workshop**. It writes `<id>-<version>.zip` and the catalogue entry `<id>.yml` (with `kind: vanilla-agents-addon`, `category: agents`, the zip's sha256 and `rehost` set from the licence list above) into `addons/.packages/`.
++3. **Send it:** a pull request that adds `workshop/catalog/<id>.yml` and the zip as `workshop/agents/<id>-<version>.zip`, or (with a public repo) leave the zip out and keep `source_url` / `upstream` pointing at it. [Uploads](#upload) take the zip too once they open.
++
++Maintainers run `python3 tools/workshop_build.py --fetch --only <id>`. For these entries it skips the client scan, checks the committed zip against the sha256 in the entry (or takes the pinned commit of the repo), checks that `addon.json` has the entry's id and a `main.js`, and packs the folder as `<id>/` with the credits file. The card in `index.json` carries `kind`, `permissions` and `files`, which Vanilla Agents' **Browse the Workshop** reads; it installs only packages whose sha256 matches.
++
++> **Warning:** A Vanilla Agents addon runs with the full power of that window (it can approve and start work there). Reviewers should read `main.js` before approving, and only hosted (allowed-licence) entries can be installed from Vanilla Agents.
++
+ ## Get found automatically {#github-topics}
+ 
+ Add one of these **topics** to your GitHub repo: `wow-vanilla-addon`, `vanilla-wow-addon` or `turtle-wow`. The indexer finds tagged repos, and a person reviews each before it's listed.
+--- a/www/workshop/workshop.js
++++ b/www/workshop/workshop.js
+@@ -99,20 +99,23 @@
+   }
+   var BADGES = {
+     works: ["Works", "badge_works"], partly: ["Partly", "badge_partly"], "needs-fixes": ["Needs fixes", "badge_needs"],
+-    unknown: ["Not checked", "badge_unknown"], ours: ["Ours", "badge_ours"]
++    unknown: ["Not checked", "badge_unknown"], ours: ["Ours", "badge_ours"], agents: ["Vanilla Agents", "badge_unknown"]
+   };
+   var TIPS = {
+     works: "Loaded and logged in clean in the 1.12 simulator.",
+     partly: "Loads; parts use client features the simulator does not model, or later-client code paths.",
+     "needs-fixes": "Errors on load or at login in the 1.12 simulator.",
+     unknown: "Not scanned (only addons we may host are scanned).",
+-    ours: "Made by Open Vanilla for Classic+; ships with the client."
++    ours: "Made by Open Vanilla for Classic+; ships with the client.",
++    agents: "An addon for the Vanilla Agents window (JavaScript), not for the game client. Install it from Vanilla Agents' AddOns window."
+   };
++  function isAgents(c) { return !!c && c.kind === "vanilla-agents-addon"; }
+   function badge(kind) {
+     var b = BADGES[kind] || BADGES.unknown;
+     return '<span class="badge ' + esc(kind) + '" title="' + esc(TIPS[kind] || "") + '"><img src="' + url("assets/workshop/" + b[1] + ".webp") + '" alt="">' + b[0] + "</span>";
+   }
+   function badges(c) {
++    if (isAgents(c)) return badge("agents");      // not a game addon: no client scan, so no Works / Not checked badge
+     return (c.ours ? badge("ours") : "") + badge(c.compat || "unknown");
+   }
+   function fmtNum(n) { n = Number(n) || 0; return n >= 10000 ? Math.round(n / 1000) + "k" : n >= 1000 ? (n / 1000).toFixed(1) + "k" : String(n); }
+@@ -130,7 +133,8 @@
+       '<div class="sum">' + esc(c.summary) + "</div>" +
+       '<div class="meta"><span>' + stars(s.rating) + " " + (s.votes ? esc(s.votes) : "") + "</span>" +
+       "<span>" + (s.installs ? esc(fmtNum(s.installs)) + " installs · " : "") +
+-      (c.install ? '<span class="chip hosted" title="Installs from the Workshop">Hosted</span>' : '<span class="chip" title="Download from the author">Link</span>') +
++      (isAgents(c) ? '<span class="chip" title="Install it from the AddOns window in Vanilla Agents">Vanilla Agents</span>' :
++        c.install ? '<span class="chip hosted" title="Installs from the Workshop">Hosted</span>' : '<span class="chip" title="Download from the author">Link</span>') +
+       "</span></div></div></a>";
+   }
+   function installHref(ids) { return "openvanilla://workshop/install/" + ids.map(encodeURIComponent).join(","); }
+@@ -145,7 +149,7 @@
+   window.OWW = {
+     ROOT: ROOT, API: API, SITE: SITE, esc: esc, url: url, page: page, q: q, safeHttp: safeHttp,
+     index: index, addon: addon, api: api, me: me, stats: stats, mergeStats: mergeStats,
+-    stars: stars, badge: badge, badges: badges, card: card, fmtNum: fmtNum, fmtSize: fmtSize, fmtDate: fmtDate,
++    stars: stars, badge: badge, badges: badges, card: card, isAgents: isAgents, fmtNum: fmtNum, fmtSize: fmtSize, fmtDate: fmtDate,
+     installHref: installHref, signInHref: signInHref, setMeta: setMeta,
+     isOnline: function () { return online; }
+   };

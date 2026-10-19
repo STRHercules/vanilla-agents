@@ -1,0 +1,54 @@
+/* Party window (js/panels/party.js) */
+.pt { display: flex; flex-direction: column; gap: 8px; height: 100%; min-height: 0; }
+.pt-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pt-card { display: flex; flex-direction: column; gap: 7px; padding: 10px; background: rgba(0, 0, 0, 0.35); border: 1px solid #4a3e24; border-radius: 4px; }
+.pt-h { font-size: 14px; }
+.pt-in { width: 100%; box-sizing: border-box; }
+.pt-in-party { display: flex; flex-direction: column; gap: 8px; height: 100%; min-height: 0; }
+.pt-head { display: flex; align-items: center; gap: 8px; }
+.pt-crown { width: 24px; height: 24px; border: 1px solid #000; border-radius: 3px; }
+.pt-name { font-size: 15px; white-space: nowrap; }
+.pt-invite { flex: 1; min-width: 0; font-size: 11.5px !important; }
+.pt-members { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.pt-member { display: flex; align-items: center; gap: 5px; padding: 2px 8px 2px 3px; background: rgba(0, 0, 0, 0.4); border: 1px solid #5a4a28; border-radius: 12px; }
+.pt-me { border-color: var(--gold); }
+.pt-away { opacity: 0.5; }
+.pt-micon { width: 18px; height: 18px; border-radius: 50%; }
+.pt-plan { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 4px; }
+.pt-items { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 3px; padding-right: 2px; }
+.pt-item { display: flex; gap: 8px; align-items: center; padding: 4px 8px; background: rgba(0, 0, 0, 0.35); border-left: 3px solid #1eff00; border-radius: 2px; }
+.pt-size-medium { border-left-color: #0070dd; } .pt-size-big { border-left-color: #a335ee; }
+.pt-ours { background: rgba(255, 209, 0, 0.08); }
+.pt-imain { flex: 1; min-width: 0; }
+.pt-ititle { font-size: 13px; }
+.pt-isub { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pt-iside { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.pt-take, .pt-x { height: 20px; padding: 0 8px; font-size: 11px; }
+.pt-st-complete { color: var(--green); } .pt-st-failed { color: var(--red); } .pt-st-progress, .pt-st-ready { color: var(--gold); } .pt-st-open, .pt-st-quest, .pt-st-blocked { color: var(--grey); }
+.pt-foot { display: flex; flex-direction: column; gap: 5px; }
+.pt-prow { display: grid; grid-template-columns: 1.4fr 1fr 82px auto; gap: 6px; }
+.pt-sel { max-width: none; }
+.pt-agree { align-self: flex-start; }
+.pt-unlock { align-self: flex-start; }
+.pt-log { max-height: 92px; overflow: hidden; }
+.pt-empty { padding: 10px; }
+.pt-err { padding: 4px 0; }
+
+/* Help window (js/panels/help.js) */
+.hp { display: flex; flex-direction: column; gap: 5px; height: 100%; overflow-y: auto; padding-right: 4px; }
+.hp-h { font-size: 14px; margin-top: 8px; }
+.hp-p { line-height: 1.4; }
+.hp-cmd { display: block; margin: 4px 0 10px; padding: 6px 8px; background: rgba(0,0,0,.45); border: 1px solid #5a4a2a; border-radius: 4px; font-family: Consolas, "Courier New", monospace; font-size: 12px; color: #f0e6c8; user-select: all; word-break: break-word; }
+.hp-keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 12px; }
+.hp-key { display: flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hp-kbd { min-width: 34px; padding: 1px 6px; text-align: center; font: 800 11px var(--font-text); color: #fff; background: linear-gradient(#3a3a40, #1c1c20); border: 1px solid #66666e; border-bottom-width: 2px; border-radius: 4px; text-shadow: none; }
+.hp-diag { margin-top: 4px; }
+
+/* Party safety (V-035): host options, invite expiry + New link, Remove member, plain-HTTP warning */
+.pt-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pt-opt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.pt-opt .pt-sel { width: 100%; max-width: none; height: 22px; }
+.pt-hostrow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 4px 8px; background: rgba(0, 0, 0, 0.3); border: 1px solid #4a3e24; border-radius: 3px; }
+.pt-renew { height: 20px; padding: 0 10px; font-size: 11px; }
+.pt-warn { flex-basis: 100%; color: #ffb35a; }
+.pt-kick { height: 18px; padding: 0 6px; font-size: 10.5px; margin-left: 2px; }

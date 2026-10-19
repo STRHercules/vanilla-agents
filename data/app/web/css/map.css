@@ -1,0 +1,23 @@
+/* world map panel (M) */
+.map-board { flex: 1; min-height: 0; display: grid; gap: 4px; padding: 6px; background-size: 256px 256px; border: 2px solid #3a2e20; border-radius: 3px; box-shadow: inset 0 0 40px rgba(60, 35, 10, 0.75); }
+.mz { position: relative; min-width: 0; min-height: 0; border: 2px solid; border-radius: 3px; overflow: hidden; cursor: pointer; background: rgba(20, 12, 4, 0.18); }
+.mz-tint, .mz-fog { position: absolute; inset: 0; pointer-events: none; }
+.mz-fog { background-size: 256px 256px; opacity: 0.55; mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, rgba(0, 0, 0, 0.5) 100%); mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, rgba(0, 0, 0, 0.5) 100%); }
+.mz-undiscovered { box-shadow: inset 0 0 28px 8px rgba(0, 0, 0, 0.85); }
+.mz-undiscovered .mz-name, .mz-undiscovered .mz-sub { opacity: 0.6; }
+.mz-explored { box-shadow: inset 0 0 14px rgba(255, 209, 0, 0.25); }
+.mz-cleared { box-shadow: inset 0 0 14px rgba(30, 255, 0, 0.28); }
+.mz-sel { outline: 2px solid var(--white); outline-offset: -4px; }
+.mz:hover .mz-tint { filter: brightness(1.8); }
+.mz-name { position: relative; padding: 4px 6px 0; line-height: 1.15; word-break: break-word; font-size: var(--small-px); }
+.mz-sub { position: relative; padding: 0 6px; color: var(--white); opacity: 0.8; }
+.mz-size { position: absolute; left: 0; bottom: 0; height: 3px; opacity: 0.7; }
+.mz-mark { position: absolute; right: 5px; bottom: 6px; font-family: "Segoe UI Symbol", sans-serif; }
+.mz-edit { position: absolute; right: 5px; top: 3px; font-family: "Segoe UI Symbol", sans-serif; }
+.mz-here { position: absolute; left: 50%; top: 50%; width: 30px; height: 30px; margin: -15px 0 0 -15px; text-align: center; line-height: 30px; font-size: 24px; font-family: "Segoe UI Symbol", sans-serif; animation: mzpulse 1.6s ease-in-out infinite; pointer-events: none; }
+@keyframes mzpulse { 0%, 100% { transform: scale(1); text-shadow: 0 0 3px #ffd100; } 50% { transform: scale(1.18); text-shadow: 0 0 9px #ffd100; } }
+.map-detail { min-height: 130px; max-height: 130px; overflow: hidden; padding: 4px 6px; border: 1px solid #3a2e20; line-height: 1.3; }
+.map-legend { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; padding: 0 2px; }
+.map-key { display: inline-flex; gap: 5px; align-items: center; }
+.map-swatch { width: 12px; height: 12px; border: 2px solid; border-radius: 2px; display: inline-block; }

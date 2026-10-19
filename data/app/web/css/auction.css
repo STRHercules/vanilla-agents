@@ -1,0 +1,49 @@
+/* Bounty Board (H): Auction House list with item-quality colours; loot roll frames above the action bar; raid frame group headers. */
+.q-grey { --q: #9d9d9d; } .q-green { --q: #1eff00; } .q-blue { --q: #0070dd; } .q-purple { --q: #a335ee; }
+.qt-grey { color: #9d9d9d; } .qt-green { color: #1eff00; } .qt-blue { color: #3d9bff; } .qt-purple { color: #c068ff; }
+[data-panel="auction"] .panel-body { gap: 4px; }
+.ah-cols { flex: none; display: grid; grid-template-columns: 1fr 70px 60px; height: 22px; align-items: center; padding: 0 6px; border-bottom: 1px solid #5a4a28; background: linear-gradient(180deg, rgba(90, 74, 40, 0.35), rgba(0, 0, 0, 0)); }
+.ah-post[hidden] { display: none; }
+.ah-taken .ah-cols, .ah-taken .ah-row { grid-template-columns: 1fr 64px 50px 90px 96px; }
+.ah-col { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ah-cols .ah-col { font-size: 12px; }
+.ah-list { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 3px; padding-right: 2px; }
+.ah-row { display: grid; grid-template-columns: 1fr 70px 60px; align-items: center; padding: 2px 6px; background: rgba(0, 0, 0, 0.35); border: 1px solid transparent; border-radius: 2px; }
+.ah-row:hover { border-color: #6a5a30; background: rgba(255, 209, 0, 0.06); }
+.ah-col-item { display: flex; align-items: center; gap: 6px; }
+.ah-slot { flex: none; width: 34px; height: 34px; border: 2px solid var(--q); border-radius: 3px; box-shadow: 0 0 0 1px #000, 0 0 5px var(--q); background: #000; }
+.ah-icon { width: 100%; height: 100%; display: block; }
+.ah-name { flex: 1; min-width: 0; height: 34px; display: flex; flex-direction: column; justify-content: center; padding: 0 8px; background-size: 100% 100%; }
+.ah-title, .ah-sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ah-title { font-size: 13px; }
+.ah-note { flex: none; text-align: center; }
+.ah-post { flex: none; display: flex; flex-direction: column; gap: 4px; padding: 6px 8px; border: 1px solid #3a3a40; background: rgba(0, 0, 0, 0.4); border-radius: 3px; }
+.ah-post-row { display: flex; gap: 6px; }
+.ah-in { flex: 1; min-width: 0; }
+.ah-why { flex: 1.6; }
+.ah-msg { min-height: 14px; }
+.ah-tabs { margin-top: 2px; }
+
+.loot-rolls { position: fixed; left: 50%; bottom: 214px; transform: translateX(-50%); display: flex; flex-direction: column-reverse; gap: 4px; pointer-events: none; }
+.loot-roll { width: 320px; pointer-events: auto; }
+.loot-more { text-align: center; pointer-events: none; }
+.loot-top { display: flex; align-items: center; gap: 6px; }
+.loot-slot { flex: none; width: 38px; height: 38px; border: 2px solid var(--q); border-radius: 3px; box-shadow: 0 0 0 1px #000, 0 0 6px var(--q); background: #000; }
+.loot-icon { width: 100%; height: 100%; display: block; }
+.loot-mid { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.loot-name { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.loot-sub { line-height: 1.1; }
+.loot-timer { position: relative; height: 7px; margin-top: 2px; background: rgba(0, 0, 0, 0.75); border: 1px solid #000; box-shadow: 0 0 0 1px #5a5a60; overflow: hidden; }
+.loot-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: linear-gradient(180deg, #ffd85a, #d09000); }
+.loot-btns { flex: none; display: flex; gap: 2px; }
+.loot-btn { width: 30px; height: 30px; padding: 0; border: 0; cursor: pointer; background: var(--up) center / 100% 100% no-repeat; }
+.loot-btn:hover { background-image: var(--hl), var(--up); }
+.loot-btn:active { background-image: var(--down); }
+.loot-btn:disabled { filter: grayscale(1) brightness(0.6); cursor: default; }
+.loot-note { display: flex; gap: 6px; margin-top: 5px; }
+.loot-note[hidden] { display: none; }
+.loot-input { flex: 1; min-width: 0; }
+.loot-send { height: 26px; }
+.loot-err:empty { display: none; }
+
+.raid-group { grid-column: 1 / -1; padding: 1px 4px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid rgba(255, 209, 0, 0.3); }

@@ -1,0 +1,56 @@
+{
+ "title": "ach.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 64
+ },
+ "size": {
+  "w": 584,
+  "h": 600
+ },
+ "visible": false,
+ "hotkey": "achievements",
+ "text": {
+  "count": "ach.count",
+  "earned": "ach.earned",
+  "locked": "ach.locked",
+  "toast": "ach.toast"
+ },
+ "tips": {
+  "player_title": "ach_player_title"
+ },
+ "icons": {
+  "first_blood": "interface/icons/inv_sword_04.png",
+  "first_report": "interface/icons/inv_scroll_03.png",
+  "green_streak": "interface/icons/spell_nature_bloodlust.png",
+  "clean_hands": "interface/icons/spell_holy_greaterheal.png",
+  "comeback": "interface/icons/spell_holy_resurrection.png",
+  "flawless": "interface/icons/spell_holy_sealofvalor.png",
+  "questmaster": "interface/icons/inv_banner_02.png",
+  "champion": "interface/icons/inv_crown_01.png",
+  "full_house": "interface/icons/spell_holy_divineintervention.png",
+  "party_of_five": "interface/icons/ability_warrior_battleshout.png",
+  "busy_bee": "interface/icons/spell_nature_insectswarm.png",
+  "toolsmith": "interface/icons/trade_engineering.png",
+  "scribe": "interface/icons/inv_misc_book_09.png",
+  "whisperer": "interface/icons/spell_shadow_soothingkiss.png",
+  "diplomat": "interface/icons/inv_misc_note_02.png",
+  "night_owl": "interface/icons/ability_hunter_pet_bat.png",
+  "early_bird": "interface/icons/inv_feather_05.png"
+ },
+ "options": {
+  "streak": 5,
+  "party": 5,
+  "busy_actions": 100,
+  "files": 10,
+  "whispers": 10,
+  "answers": 5,
+  "questmaster": 10,
+  "champion": 25,
+  "full_house": 3,
+  "tools": 5,
+  "flawless_checks": 3,
+  "max_toasts": 3
+ }
+}

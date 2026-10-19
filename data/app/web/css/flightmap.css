@@ -1,0 +1,17 @@
+/* Flight Master (F): TaxiFrame - a parchment map of the Eastern Kingdoms with flight point pins, a flight line and a Fly / Cancel bar. */
+[data-panel="flight_map"] .panel-body { gap: 6px; }
+.fly-top { flex: none; text-align: center; }
+.fly-map { position: relative; flex: none; width: 100%; aspect-ratio: 1 / 1; background-size: 100% 100%; border: 1px solid #000; box-shadow: 0 0 0 1px #5a5a60, inset 0 0 22px rgba(0, 0, 0, 0.75); overflow: hidden; }
+.fly-line { position: absolute; height: 14px; transform-origin: 0 50%; background-size: auto 100%; background-repeat: repeat-x; pointer-events: none; opacity: 0.95; }
+.fly-point { position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px; padding: 0; border: 0; background: none; cursor: pointer; z-index: 2; }
+.fly-pin { position: absolute; inset: 0; width: 16px; height: 16px; }
+.fly-glow { position: absolute; left: -8px; top: -8px; width: 32px; height: 32px; opacity: 0; transition: opacity 0.12s; pointer-events: none; }
+.fly-point:hover .fly-glow, .fly-picked .fly-glow, .fly-here .fly-glow { opacity: 1; }
+.fly-here { cursor: default; }
+.fly-name { position: absolute; left: 50%; top: 17px; transform: translateX(-50%); white-space: nowrap; font-size: 11px; color: var(--white); pointer-events: none; text-shadow: 1px 1px 1px #000, -1px -1px 1px #000; }
+.fly-point:hover .fly-name, .fly-picked .fly-name { color: var(--gold); }
+.fly-you { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); white-space: nowrap; font-size: 11px; color: var(--gold); pointer-events: none; text-shadow: 1px 1px 1px #000, -1px -1px 1px #000; }
+.fly-ask { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 4px; min-height: 0; }
+.fly-confirm { display: flex; align-items: center; gap: 8px; justify-content: center; }
+.fly-q { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fly-msg { text-align: center; line-height: 1.3; }

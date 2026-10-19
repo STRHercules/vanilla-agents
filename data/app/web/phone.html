@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Vanilla Agents</title>
+<style>
+  /* Compact view of the workshop (a small window, a second screen, or the owner's phone). Read-only, unless it was opened with the
+     window key (V-040: the link from Options > Phone): then Approve / Pause / Verify buttons appear. Over the network nothing shows without the key. */
+  :root { --bg: #0d0b08; --panel: #1b1610; --line: #3a2f20; --gold: #ffd100; --text: #e8e0cc; --grey: #9a9282; --green: #1eff00; --red: #ff3030; --pink: #ff80ff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.4 Georgia, "Times New Roman", serif; padding: 12px 16px 40px; }
+  h1 { font-size: 18px; color: var(--gold); margin: 0 0 4px; text-shadow: 0 1px 2px #000; }
+  h2 { font-size: 14px; color: var(--gold); margin: 18px 0 6px; text-transform: uppercase; letter-spacing: .06em; }
+  .sub { color: var(--grey); font-size: 13px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; margin: 6px 0; }
+  .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .name { font-weight: bold; }
+  .working { color: var(--gold); } .idle { color: var(--grey); } .ghost { color: #7fc8ff; }
+  .act { color: var(--grey); font-family: ui-monospace, Consolas, monospace; font-size: 12px; overflow-wrap: anywhere; }
+  .bar { height: 5px; background: #000; border-radius: 3px; margin-top: 5px; overflow: hidden; } .bar i { display: block; height: 100%; background: #3a7bff; }
+  .complete { color: var(--green); } .failed { color: var(--red); } .ready { color: var(--gold); } .progress, .new { color: var(--text); } .blocked { color: var(--grey); }
+  .chat div { font-size: 13px; padding: 2px 0; border-bottom: 1px solid #1f1a12; } .whisper { color: var(--pink); }
+  .off { color: var(--red); }
+  .owner { position: sticky; top: 0; z-index: 2; display: flex; gap: 8px; padding: 8px 0; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .btn { font: bold 15px Georgia, serif; color: #fff; border: 1px solid #000; border-radius: 5px; padding: 10px 14px; min-height: 44px; cursor: pointer;
+         text-shadow: 0 1px 1px #000; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px #000; }
+  .btn:disabled { opacity: .5; }
+  .b-green { background: linear-gradient(#3f9a2a, #1d5c12); } .b-orange { background: linear-gradient(#c77a14, #7a4306); } .b-blue { background: linear-gradient(#2f6bc0, #173a73); }
+  .owner[hidden] { display: none; }
+  .owner .btn { flex: 1; }
+  .qbtn { padding: 6px 12px; min-height: 36px; font-size: 14px; }
+  .msg { margin-top: 6px; font-size: 13px; } .msg.bad { color: var(--red); } .msg.ok { color: var(--green); }
+  .tag { font-size: 12px; color: var(--grey); }
+</style>
+</head>
+<body>
+<h1>Vanilla Agents</h1>
+<div class="sub" id="head" data-s="connecting">Connecting...</div>
+<div class="owner" id="owner" hidden>
+  <button class="btn b-orange" id="pause" type="button" data-s="pause">Pause</button>
+  <button class="btn b-blue" id="verify" type="button" data-s="verify">Verify</button>
+</div>
+<div class="msg" id="msg" aria-live="polite"></div>
+<h2 data-s="helpers">Helpers</h2><div id="agents"></div>
+<h2 data-s="quests">Quests</h2><div id="tasks"></div>
+<h2 data-s="chat">Chat</h2><div class="chat card" id="chat"></div>
+<script>
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // Words come from strings/ui.json (phone.*) via /api/phone/strings; these English ones are only used until that answers.
+  let S = { connecting: 'Connecting...', done_of: '{done} of {total} quests done', paused: 'paused', no_helpers: 'No helpers yet.', no_quests: 'No quests yet.', quiet: 'Quiet.',
+    away: 'away', waiting: 'waiting for you', unreachable: 'Not reachable ({error}). Is Vanilla Agents running?', need_key: 'Open the link from Options > Phone on your PC (it carries the key).',
+    pause: 'Pause', resume: 'Resume', verify: 'Verify', approve: 'Approve', approved: 'approved', approve_ask: 'Approve "{title}"?', sent: 'Done.', error: 'That did not work: {error}',
+    helpers: 'Helpers', quests: 'Quests', chat: 'Chat', memory: 'memory left' };
+  const t = (k, v) => String(S[k] || k).replace(/\{(\w+)\}/g, (m, n) => (v && v[n] !== undefined ? v[n] : m));
+  // V-040: the window key, only from this page's own address fragment (never sent anywhere but in the header of our own calls)
+  let key = '';
+  try {
+    const m = /[#&]k=([\w-]+)/.exec(location.hash);
+    if (m) { key = m[1]; try { sessionStorage.setItem('pk', key); } catch (e) { /* memory only */ } history.replaceState(null, '', location.pathname); }
+    else { try { key = sessionStorage.getItem('pk') || ''; } catch (e) { key = ''; } }
+  } catch (e) { key = ''; }
+  const headers = () => (key ? { 'X-Vanilla-Key': key } : {});
+  let last = null, busy = false;
+
+  function say(text, bad) { const m = $('msg'); m.textContent = text; m.className = 'msg ' + (bad ? 'bad' : 'ok'); }
+  async function act(path, body) {
+    if (busy) return;
+    busy = true;
+    try {
+      const r = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json', ...headers() }, body: JSON.stringify(body) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || r.status);
+      say(t('sent'));
+      if (d && d.agents) draw(d);
+    } catch (e) { say(t('error', { error: e.message }), true); }
+    busy = false;
+  }
+
+  function draw(s) {
+    last = s;
+    const c = s.counts || { done: 0, total: 0 };
+    const paused = !!(s.verify && s.verify.paused);
+    $('head').textContent = (s.project ? s.project.name + ' - ' : '') + t('done_of', c) + (paused ? ' - ' + t('paused') : '') + ' - ' + new Date().toLocaleTimeString();
+    $('owner').hidden = !key;
+    $('pause').textContent = t(paused ? 'resume' : 'pause');
+    $('pause').className = 'btn ' + (paused ? 'b-green' : 'b-orange');
+    $('verify').disabled = !!(s.verify && s.verify.running);
+    $('agents').innerHTML = (s.agents || []).map((a) => {
+      const ghost = a.state !== 'working' && a.seen && Date.now() - (typeof a.seen === 'number' ? a.seen * 1000 : Date.parse(a.seen)) > 15 * 60000;
+      const cls = ghost ? 'ghost' : a.state === 'working' ? 'working' : 'idle';
+      return '<div class="card"><div class="row"><span class="name ' + cls + '">' + esc(a.id) + (a.role ? ' (' + esc(a.role) + ')' : '') + '</span><span class="sub">' + esc(ghost ? t('away') : a.waiting ? t('waiting') : a.state) + '</span></div>'
+        + (a.branch ? '<div class="tag">' + esc(a.branch) + (a.worktree ? ' / ' + esc(a.worktree) : '') + '</div>' : '')
+        + (a.activity ? '<div class="act">' + esc(a.activity) + '</div>' : '') + (typeof a.mana === 'number' ? '<div class="bar" title="' + esc(t('memory')) + '"><i style="width:' + a.mana + '%"></i></div>' : '') + '</div>';
+    }).join('') || '<div class="sub">' + esc(t('no_helpers')) + '</div>';
+    $('tasks').innerHTML = (s.tasks || []).slice().reverse().slice(0, 30).map((q, i) => {
+      const can = key && !q.approved && !['complete', 'failed'].includes(q.status);
+      return '<div class="card row"><span>' + esc(q.title) + (q.approved ? ' <span class="tag">(' + esc(t('approved')) + ')</span>' : '') + '</span>'
+        + (can ? '<button class="btn b-green qbtn" type="button" data-q="' + esc(q.id) + '">' + esc(t('approve')) + '</button>' : '<span class="' + esc(q.status) + '">' + esc(q.status) + '</span>') + '</div>';
+    }).join('') || '<div class="sub">' + esc(t('no_quests')) + '</div>';
+    $('chat').innerHTML = (s.chat || []).slice(-25).reverse().map((l) => '<div class="' + (l.channel === 'whisper' ? 'whisper' : '') + '">' + esc(l.text || l) + '</div>').join('') || '<div class="sub">' + esc(t('quiet')) + '</div>';
+  }
+
+  $('tasks').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-q]');
+    if (!b || !last) return;
+    const q = (last.tasks || []).find((x) => x.id === b.dataset.q);
+    if (q && confirm(t('approve_ask', { title: q.title }))) act('/api/approve', { task: q.id });
+  });
+  $('pause').addEventListener('click', () => act('/api/pause', { paused: !(last && last.verify && last.verify.paused) }));
+  $('verify').addEventListener('click', () => act('/api/verify', {}));
+
+  async function poll() {
+    try {
+      const r = await fetch('/api/state', { cache: 'no-store', headers: headers() });
+      if (r.status === 403) { $('head').innerHTML = '<span class="off">' + esc(t('need_key')) + '</span>'; $('owner').hidden = true; }
+      else { if (!r.ok) throw new Error(r.status); draw(await r.json()); }
+    } catch (e) { $('head').innerHTML = '<span class="off">' + esc(t('unreachable', { error: e.message })) + '</span>'; }
+    setTimeout(poll, 4000);
+  }
+  fetch('/api/phone/strings', { cache: 'no-store' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})).then((d) => {
+    S = { ...S, ...d };
+    document.querySelectorAll('[data-s]').forEach((n) => { n.textContent = t(n.dataset.s); });
+    poll();
+  });
+</script>
+</body>
+</html>

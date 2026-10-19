@@ -1,0 +1,139 @@
+{
+  "master": {
+    "volume": 0.7,
+    "mute": false
+  },
+  "usage_low_pct": 80,
+  "sounds": [
+    {
+      "id": "peon_work_complete",
+      "label": "Orc peon: Work complete!",
+      "path": "sound/creature/peon/peonbuildingcomplete1.wav"
+    },
+    {
+      "id": "auction_bell",
+      "label": "Auction house bell",
+      "path": "sound/interface/auctionwindowopen.wav"
+    },
+    {
+      "id": "auction_close",
+      "label": "Auction house close",
+      "path": "sound/interface/auctionwindowclose.wav"
+    },
+    {
+      "id": "quest_failed",
+      "label": "Quest failed",
+      "path": "sound/interface/igquestfailed.wav"
+    },
+    {
+      "id": "quest_complete",
+      "label": "Quest complete fanfare",
+      "path": "sound/interface/iquestcomplete.wav"
+    },
+    {
+      "id": "quest_update",
+      "label": "Quest updated",
+      "path": "sound/interface/iquestupdate.wav"
+    },
+    {
+      "id": "objective_complete",
+      "label": "Quest accepted",
+      "path": "sound/interface/iquestactivate.wav"
+    },
+    {
+      "id": "world_quest_complete",
+      "label": "Hearthstone bound",
+      "path": "sound/interface/igplayerbind.wav"
+    },
+    {
+      "id": "level_up",
+      "label": "Level up",
+      "path": "sound/interface/levelup.wav"
+    },
+    {
+      "id": "level_up_2",
+      "label": "Level up (long)",
+      "path": "sound/interface/levelup2.wav"
+    },
+    {
+      "id": "coin_small",
+      "label": "Coins (few)",
+      "path": "sound/interface/lootcoinsmall.wav"
+    },
+    {
+      "id": "coin_large",
+      "label": "Coins (many)",
+      "path": "sound/interface/lootcoinlarge.wav"
+    },
+    {
+      "id": "jewelcrafting",
+      "label": "Crafting finished",
+      "path": "sound/spells/tradeskills/alchemycraftinga.wav"
+    },
+    {
+      "id": "tell",
+      "label": "Whisper received",
+      "path": "sound/interface/itellmessage.wav"
+    }
+  ],
+  "events": {
+    "agent_finished": {
+      "label": "A helper finished its job",
+      "sound": "peon_work_complete",
+      "volume": 1,
+      "enabled": true
+    },
+    "task_verified": {
+      "label": "A quest was checked and passed",
+      "sound": "auction_bell",
+      "volume": 0.8,
+      "enabled": true
+    },
+    "task_failed": {
+      "label": "A quest failed its check",
+      "sound": "quest_failed",
+      "volume": 0.8,
+      "enabled": true
+    },
+    "task_blocked": {
+      "label": "A quest is stuck",
+      "sound": "auction_close",
+      "volume": 0.7,
+      "enabled": true
+    },
+    "usage_low": {
+      "label": "Running low on mana (usage allowance)",
+      "sound": "coin_large",
+      "volume": 0.8,
+      "enabled": true
+    },
+    "agent_started": {
+      "label": "A helper sat down to work",
+      "sound": "coin_small",
+      "volume": 0.5,
+      "enabled": false
+    },
+    "quest_ready": {
+      "label": "A quest is ready to hand in",
+      "sound": "quest_update",
+      "volume": 0.7,
+      "enabled": true
+    },
+    "needs_you": {
+      "label": "A helper needs you (a permission or a question)",
+      "sound": "tell",
+      "volume": 0.9,
+      "enabled": true
+    }
+  },
+  "triggers": {
+    "agent_idle": "agent_finished",
+    "task_verified": "task_verified",
+    "task_failed": "task_failed",
+    "task_blocked": "task_blocked",
+    "usage_update": "usage_low",
+    "agent_started": "agent_started",
+    "task_ready": "quest_ready",
+    "agent_waiting": "needs_you"
+  }
+}

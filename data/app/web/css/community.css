@@ -1,0 +1,30 @@
+/* Chat tabs and the Community chat (V-036, js/panels/chat.js): small dark WoW-style tabs at the left of the chat bar, the active one
+   brighter with gold text; community lines in party blue (#aaaaff on dark, theme.json chat_community; a darker indigo on parchment,
+   see a11y.css); an unread count badge on the Community tab; the host's delete cross on hover. */
+.chat-tabs { display: flex; align-items: flex-end; gap: 2px; flex: none; align-self: stretch; margin-right: 2px; }
+.chat-tab { position: relative; display: flex; align-items: center; gap: 4px; height: 20px; padding: 0 8px; box-sizing: border-box; cursor: pointer;
+  background: linear-gradient(rgba(38, 36, 34, 0.78), rgba(14, 13, 12, 0.88)); color: #b9b2a2; border: 1px solid rgba(110, 100, 86, 0.9);
+  border-bottom-color: rgba(60, 52, 40, 0.9); border-radius: 5px 5px 0 0; font: 700 11.5px var(--font-text); text-shadow: 1px 1px 0 #000 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); opacity: 0.82; }
+.chat-tab:hover { opacity: 1; color: #fff; }
+.chat-tab.chat-tab-on { opacity: 1; color: var(--gold); border-color: #b39255; border-bottom-color: #2a2622;
+  background: linear-gradient(rgba(70, 62, 50, 0.95), rgba(26, 23, 20, 0.95)); box-shadow: inset 0 1px 0 rgba(255, 220, 140, 0.25), 0 0 4px rgba(255, 209, 0, 0.25); }
+.chat-badge { min-width: 14px; height: 14px; padding: 0 3px; box-sizing: border-box; border-radius: 7px; background: #b0201a; color: #fff;
+  font: 700 10px/14px var(--font-text); text-align: center; text-shadow: none !important; box-shadow: 0 0 0 1px #000; }
+.chat-badge[hidden] { display: none; }
+
+/* the bar holds the tabs too: keep the search box and filter compact so nothing wraps in the 440 px scroll */
+.chat-bar .chat-search { max-width: 120px; min-width: 60px; }
+.chat-bar .chat-filter { max-width: 118px; }
+.chat-bar .chat-filter-label { display: none; }      /* the list still has its name for screen readers (aria-label) */
+.chat-log[hidden] { display: none; }
+
+.chat-community { color: var(--chat-community, #aaaaff); position: relative; padding-right: 14px; }
+.chat-csys { font-style: italic; font-weight: 400; }
+.chat-cname.chat-me { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; color: #ccccff; }
+.frame-scroll .chat-cname.chat-me { color: #241a78; background: rgba(58, 42, 160, 0.13); border-radius: 2px; padding: 0 1px; margin-left: -1px; }
+.chat-cdel { position: absolute; right: 0; top: 0; width: 13px; height: 16px; padding: 0; border: 0; background: none; cursor: pointer;
+  color: #9b1b10; font: 700 15px/16px var(--font-text); opacity: 0; text-shadow: none !important; }
+.chat-community:hover .chat-cdel, .chat-cdel:focus-visible { opacity: 1; }
+.chat-community:hover { background: rgba(58, 42, 160, 0.07); }
+.chat-cmd-community .chat-input { border-color: #3a2aa0; }

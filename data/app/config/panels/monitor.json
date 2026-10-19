@@ -1,0 +1,45 @@
+{
+ "title": "monitor.title",
+ "frame": "metal",
+ "anchor": {
+  "left": 12,
+  "top": 440
+ },
+ "size": {
+  "w": 312,
+  "h": 126
+ },
+ "visible": true,
+ "text": {
+  "heading": "monitor.heading",
+  "agents": "monitor.agents",
+  "feed": "monitor.feed",
+  "checker": "monitor.checker",
+  "load": "monitor.load",
+  "live": "monitor.live",
+  "offline": "monitor.offline",
+  "idle": "monitor.idle",
+  "running": "monitor.running",
+  "paused": "monitor.paused",
+  "since": "monitor.since",
+  "ci": "ci.label",
+  "ci_passed": "ci.word_passed",
+  "ci_failed": "ci.word_failed",
+  "ci_running": "ci.word_running",
+  "ci_cancelled": "ci.word_cancelled",
+  "ci_none": "ci.word_none",
+  "ci_unknown": "ci.word_unknown"
+ },
+ "tips": {
+  "agents": "monitor_agents",
+  "feed": "monitor_feed",
+  "checker": "monitor_checker",
+  "ci": "monitor_ci"
+ },
+ "icons": {
+  "agents": "interface/icons/inv_misc_gear_01.png",
+  "feed": "interface/icons/spell_nature_lightning.png",
+  "checker": "interface/icons/inv_misc_eye_01.png",
+  "ci": "interface/icons/inv_gizmo_02.png"
+ }
+}

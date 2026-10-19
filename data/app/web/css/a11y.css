@@ -1,0 +1,28 @@
+/* Accessibility (V-033): visible keyboard focus, the hidden live region for screen readers, readable chat colours on parchment,
+   and the in-app Reduce motion setting. Loaded last so it wins. */
+
+/* keyboard focus: a gold ring with a dark halo (visible on dark metal and on light parchment); mouse clicks show no ring */
+#ui button:focus-visible, #ui input:focus-visible, #ui select:focus-visible, #ui textarea:focus-visible, #ui a:focus-visible,
+#ui [tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid var(--gold) !important; outline-offset: 1px; box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.75) !important;
+}
+#ui .panel:focus { outline: none; }                  /* a window gets focus when it opens (so Tab starts inside it); no ring around it */
+
+/* text only screen readers get (the aria-live region in js/a11y.js) */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* chat colours on parchment, checked against #d9c79f (the light end of the scroll texture) at WCAG AA 4.5:1 for text.
+   Same hue, only darker where it was short (tests/test_a11y.py recomputes the ratios). */
+.frame-scroll .chat-system { color: #6a4a00; }       /* 4.87 */
+.frame-scroll .chat-agent { color: #1f347a; }        /* 6.89 */
+.frame-scroll .chat-verifier { color: #8a2c00; }     /* 5.17 */
+.frame-scroll .chat-whisper { color: #8f1d8a; }      /* was #a0209a, 3.98 -> 4.66 */
+.frame-scroll .chat-community { color: #3a2aa0; }    /* V-036 party chat, indigo (not the helpers' navy): 6.25 */
+.frame-scroll .chat-offline { color: #9b1b10; }      /* 4.93 */
+.frame-scroll .chat-empty { color: #634f34; }        /* was #6b5638, 4.19 -> 4.68 */
+.frame-scroll .chat-time { opacity: 1; color: #614f33; }   /* was the line colour at 60 % (2.4-3.7) -> 4.72 */
+.frame-scroll input::placeholder { color: rgba(60, 40, 20, 0.85); }   /* was 0.65 (3.62) -> 5.89 */
+
+/* Reduce motion (Options > Workshop, or the system setting): no pulsing raid frames */
+.va-reduced-motion .raid-needs { animation: none; box-shadow: 0 0 8px 2px rgba(255, 209, 0, 0.7); }
+.va-reduced-motion .toast .spark { display: none; }

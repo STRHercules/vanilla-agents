@@ -1,0 +1,14 @@
+{
+  "name": "vanilla-agents-local",
+  "owner": {
+    "name": "Vanilla Agents"
+  },
+  "description": "Local marketplace for the Vanilla Agents plugin in this folder.",
+  "plugins": [
+    {
+      "name": "vanilla-agents",
+      "source": "./",
+      "description": "Shows your Claude Code sessions as heroes in the Vanilla Agents inn: session hooks for the event feed and the Vanilla Agents tools (quests, progress, requests)."
+    }
+  ]
+}

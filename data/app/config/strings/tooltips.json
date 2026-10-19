@@ -1,0 +1,1054 @@
+{
+  "esc_unavailable": {
+    "title": "Not available",
+    "body": "The game has this button, but Vanilla Agents has nothing behind it yet."
+  },
+  "esc_project_add": {
+    "title": "Add project",
+    "body": "Type the folder of a git project above, then click here. The program finds out what kind of project it is, sets up its own checks and a private trusted folder for it, and opens it.",
+    "use": "Needs a folder that already has git saves."
+  },
+  "route_fast": {
+    "title": "Fast route",
+    "body": "The change was small and did not touch the checker or its tests, so only the quick checks ran. The hidden checks were skipped on purpose.",
+    "use": "Press Verify now again after a bigger change to get the full route."
+  },
+  "route_full": {
+    "title": "Full route",
+    "body": "Every check ran, including the hidden ones. This route is used for big changes, build files, the checker's own code, or whenever the program is unsure.",
+    "use": "Nothing to do; this is the careful route."
+  },
+  "aura_approved": {
+    "title": "Plan approved",
+    "body": "A buff. You looked at the plan for this quest and said yes before the work counted.",
+    "use": "Nothing to do; it is on record in the chat log."
+  },
+  "quest_approve": {
+    "title": "Approve plan",
+    "body": "Click to record that you agree with this quest's plan. It goes in the chat log and stays after a restart.",
+    "use": "Click to approve."
+  },
+  "quest_tier_yes": {
+    "title": "Yes",
+    "body": "You agree. The quest goes ahead and the decision is written in the chat log.",
+    "use": "Click to say yes."
+  },
+  "quest_tier_change": {
+    "title": "Change it",
+    "body": "You want this quest done differently. It goes back to needing your yes, and a Claude session is asked to change it.",
+    "use": "Click, then tell the Claude session what to change."
+  },
+  "quest_tier_explain": {
+    "title": "Explain it more",
+    "body": "Not clear yet? A note goes to the chat log. The next Claude session you start will see it and answer under the quest.",
+    "use": "Click to ask."
+  },
+  "quest_tier_never": {
+    "title": "Never done by itself",
+    "body": "Sending work out, publishing, spending real money and deleting outside the project are never approved automatically. It is a label and a gate on the automatic yes, not a lock on what a helper can do: only you decide.",
+    "use": "Click Yes only if you really want it."
+  },
+  "quest_tier_auto": {
+    "title": "Auto-approved",
+    "body": "Small, low risk and inside the plan, so it went ahead without asking. It is on record in the chat log.",
+    "use": "Press Undo the yes any time until the quest is done."
+  },
+  "quest_tier_veto": {
+    "title": "Undo the yes",
+    "body": "Takes back the automatic yes. This works until the quest is done; work a helper already started is not stopped by this button.",
+    "use": "Click to undo."
+  },
+  "aura_auto": {
+    "title": "Auto-approved",
+    "body": "A buff. Small, low-risk quests went ahead on their own because they are inside the plan you approved. The number is how many.",
+    "use": "Open the Quest Log (L) to undo one."
+  },
+  "quest_approved": {
+    "title": "Plan approved",
+    "body": "You approved this quest's plan. It is on record in the chat log.",
+    "use": "Nothing to do."
+  },
+  "quest_sent_back": {
+    "title": "Sent back",
+    "body": "The checker did not accept this work and sent it back. This is the evidence it found: the test that failed and what it saw. Hidden checks never show their details.",
+    "use": "Fix the work, then press Verify now again."
+  },
+  "player": {
+    "title": "The Controller",
+    "body": "This is vanilla-agents itself. It hands out jobs and checks that the work is really finished."
+  },
+  "health": {
+    "title": "Quests done",
+    "body": "How many jobs the checker has confirmed are really done, out of all the jobs it knows about.",
+    "use": "Fills up as more quests are completed."
+  },
+  "mana": {
+    "title": "Mana",
+    "body": "How much of your usage allowance is already spent. When it runs out, work waits until it refills.",
+    "use": "The number on the bar is the part already used."
+  },
+  "target": {
+    "title": "Target",
+    "body": "The helper you are looking at right now. Click a helper in the workshop to target it."
+  },
+  "quest_new": {
+    "title": "A new quest",
+    "body": "A new job that nobody has started yet.",
+    "use": "The gold ! means it is waiting for a helper."
+  },
+  "quest_progress": {
+    "title": "Quest in progress",
+    "body": "A helper is working on this job right now."
+  },
+  "quest_ready": {
+    "title": "Ready to hand in",
+    "body": "The helper says it is finished. Now the checker looks at it to be sure.",
+    "use": "The gold ? means it is ready for checking."
+  },
+  "quest_done": {
+    "title": "Quest complete",
+    "body": "The checker looked at the work and confirmed it really is done."
+  },
+  "quest_failed": {
+    "title": "Quest failed",
+    "body": "The checker looked at the work and it was not good enough. A helper will have to try again."
+  },
+  "quest_blocked": {
+    "title": "Out of range",
+    "body": "This job is stuck and waiting for something, often for you to say yes."
+  },
+  "objective": {
+    "title": "Objective",
+    "body": "One thing the checker must see before it believes the job is done. A check mark means it saw it.",
+    "use": "Green check = passed. Red cross = failed. Grey dot = not checked yet."
+  },
+  "portrait": {
+    "title": "Helper portrait",
+    "body": "This helper's hero in the inn. Click a hero in the inn, or a raid frame, to look at another one."
+  },
+  "pass_rate": {
+    "title": "Pass rate",
+    "body": "Out of the jobs this helper finished, how many the checker accepted."
+  },
+  "tools": {
+    "title": "Tools used",
+    "body": "The things this helper has used so far, like reading or changing files. The number is how many times."
+  },
+  "chat": {
+    "title": "Chat window",
+    "body": "A running diary of everything that happens, written in plain words. System messages are yellow, helpers are blue, the checker is orange."
+  },
+  "verify": {
+    "title": "Verify now",
+    "body": "Asks the checker to run the real tests on your game code right now and tell you if the work is really finished. It takes a while (about 15 minutes for the full test).",
+    "use": "Click or press 1 (or V). A yellow bar fills while it checks."
+  },
+  "pause": {
+    "title": "Pause",
+    "body": "Puts the checker on hold so Verify now refuses to start until you resume. Anything already running finishes by itself.",
+    "use": "Click or press 2 (or Z). Press again to resume."
+  },
+  "resume": {
+    "title": "Resume",
+    "body": "Takes the checker off hold so Verify now works again.",
+    "use": "Click or press 2 (or Z)."
+  },
+  "cast": {
+    "title": "Checking",
+    "body": "The checker is running a test. The bar shows roughly how far along it is; the real end time can differ."
+  },
+  "agent": {
+    "title": "A helper",
+    "body": "One helper sitting at its desk. Click it to see its character sheet.",
+    "use": "Typing means it is working. Resting means it is waiting."
+  },
+  "spell_default": {
+    "title": "A check",
+    "body": "One thing the checker can test about your project. Each check says yes or no.",
+    "use": "Click to run Verify now."
+  },
+  "spell_cargo_test": {
+    "title": "Run the game's tests",
+    "body": "Runs every automatic test in the game code. If they all pass, the code still does what it did before.",
+    "use": "Click to run Verify now. It takes about 15 minutes."
+  },
+  "item_empty": {
+    "title": "Empty slot",
+    "body": "Nothing here yet. Finished reports and changed files fill the bag."
+  },
+  "raid_frame": {
+    "title": "Helper frame",
+    "body": "One small frame for each helper. The bar shows how many of its quests the checker has passed. Little icons show what is true right now.",
+    "use": "Click a frame to look at that helper."
+  },
+  "talent_tab": {
+    "title": "Talent trees",
+    "body": "Tools: what this helper used, one rank per use (5 at most). Trust: what it may do without asking you, from the tiers of its quests. Results: what the checker said about its work."
+  },
+  "talent_tool": {
+    "title": "Tool talent",
+    "body": "Each use of this tool is one rank. The tree shows at most 5 ranks."
+  },
+  "talent_never": {
+    "title": "Never by itself",
+    "body": "Quests of this helper that touch something sensitive. They never start without your own click."
+  },
+  "talent_ask": {
+    "title": "Asks you first",
+    "body": "Quests of this helper that wait for your yes before they count."
+  },
+  "talent_auto": {
+    "title": "Starts by itself",
+    "body": "Quests of this helper that are in the approved plan, small and low risk, so they start without asking."
+  },
+  "talent_yours": {
+    "title": "You said yes",
+    "body": "Quests of this helper you approved yourself."
+  },
+  "talent_passed": {
+    "title": "Quests passed",
+    "body": "Quests of this helper the checker confirmed as really done."
+  },
+  "talent_failed": {
+    "title": "Quests failed",
+    "body": "Quests of this helper the checker sent back."
+  },
+  "talent_checks": {
+    "title": "Checks passed",
+    "body": "Hidden checks that passed on the quests this helper handed in last."
+  },
+  "talent_ready": {
+    "title": "Waiting for you",
+    "body": "Quests of this helper that are ready to hand in and wait for your approval."
+  },
+  "talent_footer": {
+    "title": "Respec",
+    "body": "This window only shows what happened. What a helper may do without asking is set by Claude's own permissions, changed in Claude itself, not here."
+  },
+  "flight_point": {
+    "title": "Flight point",
+    "body": "A project this program knows.",
+    "use": "Click to fly there (open this project)."
+  },
+  "flight_here": {
+    "title": "You are here",
+    "body": "The project that is open now."
+  },
+  "auction_tab": {
+    "title": "Bounty Board",
+    "body": "Bounties: new quests no helper has taken yet. Taken: quests a helper is on, and who."
+  },
+  "auction_row": {
+    "title": "Bounty",
+    "body": "Colour shows the size: grey unknown, green small, blue medium, purple big. Risk says whether it touches something sensitive."
+  },
+  "auction_post": {
+    "title": "Post a bounty",
+    "body": "Adds a new quest with your title and the reason in plain words. A helper can take it from the board.",
+    "use": "Click to post."
+  },
+  "loot_need": {
+    "title": "Need (Approve)",
+    "body": "Approve this quest: you are happy with what was handed in.",
+    "use": "Click to approve."
+  },
+  "loot_greed": {
+    "title": "Greed (Change)",
+    "body": "Ask for a change: write a short note and the helper gets it.",
+    "use": "Click to write a note."
+  },
+  "loot_pass": {
+    "title": "Pass",
+    "body": "Hide this roll until the window is reloaded. Nothing is decided; the quest stays in the quest log."
+  },
+  "loot_timer": {
+    "title": "Roll timer",
+    "body": "The roll hides by itself when the bar runs out. Nothing is decided automatically."
+  },
+  "raid_group": {
+    "title": "Same quest",
+    "body": "These helpers are working on the same quest."
+  },
+  "aura_running": {
+    "title": "Running",
+    "body": "A buff. This is working right now.",
+    "use": "It goes away when the work stops."
+  },
+  "aura_paused": {
+    "title": "On hold",
+    "body": "A debuff. Checking is paused, so finished work waits.",
+    "use": "Press Resume on the action bar to let checks run again."
+  },
+  "aura_failed": {
+    "title": "Failed",
+    "body": "A debuff. The checker looked at the work and it did not pass. The number is how many quests failed.",
+    "use": "Open the Quest Log (L) to see which one."
+  },
+  "aura_blocked": {
+    "title": "Stuck",
+    "body": "A debuff. A quest cannot go on, so it is out of range for now. The number is how many.",
+    "use": "Open the Quest Log (L) to see why."
+  },
+  "aura_verified": {
+    "title": "Verified",
+    "body": "A buff. Every quest here has passed the checker.",
+    "use": "Nothing to do; this is the good ending."
+  },
+  "aura_lease": {
+    "title": "Holding a lock",
+    "body": "A buff. A helper has reserved something so nobody else changes it at the same time. The number is how many are held.",
+    "use": "A lock is let go when its time runs out."
+  },
+  "idea_goal": {
+    "title": "The goal",
+    "body": "One or two sentences on what this project is for. vanilla-agents checks work against this, not only against the tests.",
+    "use": "Open the file to change it: IDEA.md in the project's folder under the work folder."
+  },
+  "idea_non_goals": {
+    "title": "Not building",
+    "body": "Things this project should not do. Work that drifts into these is a sign something went off track."
+  },
+  "idea_done_means": {
+    "title": "Done means",
+    "body": "What must be true for the project to count as finished."
+  },
+  "idea_out_of_scope": {
+    "title": "Hands off",
+    "body": "Files or folders agents should not change. If a change touches one, the checker runs the full route and notes an intent check in the chat log."
+  },
+  "idea_approved": {
+    "title": "Idea approved",
+    "body": "You approved this exact text. It is on record in the chat log.",
+    "use": "Nothing to do."
+  },
+  "idea_unapproved": {
+    "title": "Draft",
+    "body": "The program wrote this from the project's own docs. It is only a draft until you approve it.",
+    "use": "Read it, fix IDEA.md if needed, then click Approve the Idea."
+  },
+  "idea_changed": {
+    "title": "Idea changed",
+    "body": "The text is not what you approved. Someone edited IDEA.md.",
+    "use": "Read it again, then approve it if it is right."
+  },
+  "idea_approve": {
+    "title": "Approve the Idea",
+    "body": "Records that this goal, these limits and this definition of done are right. It goes in the chat log and the plan's items appear in the quest log.",
+    "use": "Click to approve."
+  },
+  "quest_details": {
+    "title": "Technical details",
+    "body": "",
+    "use": "This is the original wording from the project's notes."
+  },
+  "quest_needs_plain": {
+    "title": "Needs plain words",
+    "body": "This quest still uses technical words. Add a plain sentence for it in the project's quests.json, or add the word to the glossary.",
+    "use": "Ask Claude to fill it in."
+  },
+  "idea_needs_plain": {
+    "title": "Quests that need plain words",
+    "body": "These quests still use technical words nobody explained. Ask Claude to write plain sentences for them (project quests.json) or add the words to glossary.json.",
+    "use": "Nothing to click."
+  },
+  "idea_draft": {
+    "title": "Draft the Idea",
+    "body": "Writes a first draft from the project's README and notes. No guessing by a model; it only copies headings and lists.",
+    "use": "Click to draft."
+  },
+  "jukebox": {
+    "title": "The jukebox",
+    "body": "The workshop's music box. It plays the game's own music from where it stands, and its lights and lightning dance to the beat.",
+    "use": "Click it (or press J) to play or pause. Press K for the next song."
+  },
+  "monitor_agents": {
+    "title": "Builder engine load",
+    "body": "How many helpers are working right now, out of all helpers in the inn."
+  },
+  "monitor_feed": {
+    "title": "Environment sync",
+    "body": "LIVE while the window receives events from your Claude sessions; OFFLINE when the connection to the program dropped. The small number is seconds since the last event."
+  },
+  "monitor_checker": {
+    "title": "Status",
+    "body": "What the checker is doing: ON = ready, CHECKING = a check is running, PAUSED = you paused it."
+  },
+  "char_xp": {
+    "title": "Experience",
+    "body": "Actions this helper took. Every 10 actions is one level, like experience in the game."
+  },
+  "char_rate": {
+    "title": "Pass rate",
+    "body": "How many of this helper's finished quests passed the checker."
+  },
+  "timeline": {
+    "title": "Task timeline",
+    "body": "What this helper did before, what it is doing now, and the next quest waiting."
+  },
+  "force_play": {
+    "title": "Force Play",
+    "body": "Run the checker now on the current work, without waiting.",
+    "use": "Use: same as Verify now."
+  },
+  "step_back": {
+    "title": "Step Backward",
+    "body": "Look at the previous helper."
+  },
+  "step_forward": {
+    "title": "Step Forward",
+    "body": "Look at the next helper."
+  },
+  "chat_filter": {
+    "title": "Filter",
+    "body": "Show every line, or only the helpers, the system or the checker."
+  },
+  "panel_close": {
+    "title": "Close",
+    "body": "Hide this window. Its hotkey opens it again."
+  },
+  "hearth": {
+    "title": "Hearthstone",
+    "body": "Calls everyone home: pauses the checker and whispers every helper to finish the step they are on, then stop and wait for you.",
+    "use": "Click twice, or press 6 twice (the second one confirms). Resume with Pause."
+  },
+  "gossip_portrait": {
+    "title": "Helper",
+    "body": "The helper you are talking to. Its face, name and job."
+  },
+  "gossip_greeting": {
+    "title": "What it says",
+    "body": "The helper tells you in plain words what it is doing right now and how many checks pass."
+  },
+  "gossip_work": {
+    "title": "What are you working on?",
+    "body": "Its last few steps and the checks its quest must pass.",
+    "use": "Click to ask."
+  },
+  "gossip_changes": {
+    "title": "Show me your changes",
+    "body": "The files this helper changed.",
+    "use": "Click to see them."
+  },
+  "gossip_explain": {
+    "title": "Explain this quest",
+    "body": "Asks the helper to explain its quest in plain words before going on.",
+    "use": "Click to ask for an explanation."
+  },
+  "gossip_change": {
+    "title": "I want something changed",
+    "body": "Tell the helper what should be different about its quest.",
+    "use": "Click, type what you want, then Send."
+  },
+  "gossip_verify": {
+    "title": "Run the checks",
+    "body": "Asks the trusted checker to test the work now.",
+    "use": "Click to start the checks."
+  },
+  "gossip_whisper": {
+    "title": "Whisper",
+    "body": "A private message to this helper. It reads it at its next step.",
+    "use": "Click, type, then Send."
+  },
+  "gossip_bye": {
+    "title": "Goodbye",
+    "body": "Close this window.",
+    "use": "Click to close."
+  },
+  "gossip_thread": {
+    "title": "Whispers",
+    "body": "Your private messages with this helper, and messages you sent to everyone. Newest at the bottom."
+  },
+  "chat_input": {
+    "title": "Chat line",
+    "body": "Type /w and a helper's name to whisper to it, or /p to talk to every helper.",
+    "use": "Press Enter to start typing, Enter again to send."
+  },
+  "inspect_slot": {
+    "title": "Changed file",
+    "body": "One file that differs from the last commit. Its colour tells how big the change is: grey small, green medium, blue large, purple huge. The letter: M changed, A added, D deleted, ? new and not in git yet.",
+    "use": "Click to see its lines."
+  },
+  "inspect_filter": {
+    "title": "One helper's gear",
+    "body": "Only the changed files this helper touched are listed."
+  },
+  "inspect_show_all": {
+    "title": "Show all",
+    "body": "List every changed file in the project again.",
+    "use": "Click to remove the filter."
+  },
+  "inspect_diff": {
+    "title": "The change",
+    "body": "Green lines were added, red lines were removed, grey lines are unchanged context. The numbers are line numbers in the old and new file."
+  },
+  "replay_slider": {
+    "title": "Time machine",
+    "body": "Every event the inn has seen, oldest on the left. The whole window shows the inn as it was right after the event you pick.",
+    "use": "Drag to travel back in time."
+  },
+  "replay_play": {
+    "title": "Play / pause",
+    "body": "Step through the events one after another, as if it were happening again.",
+    "use": "Click to play or pause."
+  },
+  "replay_speed": {
+    "title": "Speed",
+    "body": "How many events each step jumps: 1, 4 or 16.",
+    "use": "Click to change the speed."
+  },
+  "replay_live": {
+    "title": "Back to live",
+    "body": "Stop looking at the past and show what is happening now. While you look at the past, live changes wait.",
+    "use": "Click to return."
+  },
+  "replay_when": {
+    "title": "When",
+    "body": "The time of the last chat line at the event you are looking at."
+  },
+  "mail_button": {
+    "title": "Mailbox",
+    "body": "Letters from the checker, the innkeeper and your heroes. The number shows how many you have not read yet.",
+    "use": "Click to open the mailbox."
+  },
+  "mail_letter": {
+    "title": "Letter",
+    "body": "Click to read it. Letters you have not read yet glow."
+  },
+  "mail_back": {
+    "title": "Back",
+    "body": "Go back to the list of letters."
+  },
+  "mail_delete": {
+    "title": "Delete",
+    "body": "Throw this letter away. It is only hidden in this browser; nothing in the project changes."
+  },
+  "ach_player_title": {
+    "title": "Title",
+    "body": "The title of your newest achievement. Open the achievements window to see them all."
+  },
+  "meter_tab_rate": {
+    "title": "Actions per minute",
+    "body": "How many actions each helper took per minute, counted over the last few minutes while this window was open in the browser."
+  },
+  "meter_tab_total": {
+    "title": "Total actions",
+    "body": "Every action each helper took since it sat down."
+  },
+  "meter_tab_passed": {
+    "title": "Quests passed",
+    "body": "How many quests of each helper passed the checker, and how many were checked in all."
+  },
+  "meter_tab_cost": {
+    "title": "Cost",
+    "body": "Each helper's session cost in dollars as Claude Code estimates it (list prices; your real bill can differ), and dollars per minute of session time. Needs the status line bridge (setup --statusline)."
+  },
+  "meter_tab_log": {
+    "title": "Combat log",
+    "body": "The checker's lines and the helpers' tool lines from the chat, with the time each one happened."
+  },
+  "party_host": {
+    "title": "Host a party",
+    "body": "Opens a party hub on this PC (port 8940). Everyone with the invite link can join, see the shared plan and your helpers' names and what they do. Never your code or files.",
+    "use": "Send the link to friends on the same network (or over a VPN like Tailscale)."
+  },
+  "party_join": {
+    "title": "Join a party",
+    "body": "Joins a friend's party: your helpers walk around in their inn and theirs in yours, and you plan the work together.",
+    "use": "Paste the link and press Join."
+  },
+  "party_agree": {
+    "title": "Agree to the plan",
+    "body": "When everyone in the party agrees to the same version, the plan locks and the items are split fairly between you. Any change asks everyone again.",
+    "use": "Your part becomes quests in your quest log; you still approve them."
+  },
+  "party_take": {
+    "title": "Take this item",
+    "body": "Moves an item that nobody has started to you.",
+    "use": "Only after the plan is agreed."
+  },
+  "party_item": {
+    "title": "Plan item",
+    "body": "Size decides how the work is split. Proposed by a person or by their Claude.",
+    "use": ""
+  },
+  "help_diag": {
+    "title": "Save diagnostics",
+    "body": "Writes a small text file to your Desktop that helps someone find a problem. Read it first; it holds no keys, code or quest text.",
+    "use": "Click, then attach the file when you ask for help."
+  },
+  "gossip_follow": {
+    "title": "Follow me",
+    "body": "An idle helper walks after you around the inn until you say stop or it gets a job.",
+    "use": "Just for fun: it does not change the helper's work."
+  },
+  "gossip_rest": {
+    "title": "Take a break",
+    "body": "An idle helper goes to sit down for a minute and a half.",
+    "use": "Only in the inn; Claude itself is not paused (use Hearth for that)."
+  },
+  "gossip_wake": {
+    "title": "Are you still there?",
+    "body": "Whispers the helper to answer when it can. Useful for a helper that went quiet (a ghost).",
+    "use": "The answer comes back as a pink whisper."
+  },
+  "party_reach": {
+    "title": "Who can join",
+    "body": "Only this PC: the hub listens on 127.0.0.1, nobody else can reach it (for trying it out). My network: friends on your Wi-Fi or VPN can join with the link."
+  },
+  "party_renew": {
+    "title": "New invite link",
+    "body": "Makes a new invite link. The old link stops working; people already in the party stay in."
+  },
+  "party_kick": {
+    "title": "Remove from the party",
+    "body": "Takes this person out of the party. Their key stops working, their unstarted items go back to the plan, and the invite link is renewed so the old one cannot bring them back.",
+    "use": "Click twice to confirm."
+  },
+  "chat_search": {
+    "title": "Search the chat",
+    "body": "Shows only the lines that contain these words (any case) and marks them."
+  },
+  "zones_travel": {
+    "title": "Travel here",
+    "body": "Moves your inn to this building. The window reloads with its music, light and picture; your helpers walk in again."
+  },
+  "zones_remember": {
+    "title": "A zone for each project",
+    "body": "When this is ticked, opening this project later takes you straight to this inn, so every project gets its own themed room."
+  },
+  "zones_photo": {
+    "title": "Inside the inn",
+    "body": "A picture taken the first time you opened this inn. It stays on your PC, in your assets folder (places/photos)."
+  },
+  "zones_tour": {
+    "title": "Picture tour",
+    "body": "Visits every inn that has no picture yet, takes one of the inside and brings you back here. It takes a few seconds per inn; the pictures stay on your PC."
+  },
+  "chat_tab_general": {
+    "title": "General",
+    "body": "Everything that happens: your helpers, the checker and the system, and your whispers."
+  },
+  "chat_tab_community": {
+    "title": "Community",
+    "body": "Chat with the other people in your party. Only people read this tab: it never goes to Claude or any helper.",
+    "use": "Click to open. Type here, or /c message from any tab."
+  },
+  "chat_community_delete": {
+    "title": "Delete message",
+    "body": "Only the host can do this. The message disappears for everyone in the party."
+  },
+  "guide_search": {
+    "title": "Search the guide",
+    "body": "Type a word, like quest, pause or party. Only topics with that word stay in the list.",
+    "use": "Esc in the box clears it."
+  },
+  "guide_open": {
+    "title": "Open it",
+    "body": "Opens the window this topic is about, so you can try it right away."
+  },
+  "guide_setting": {
+    "title": "Show in Options",
+    "body": "Opens the Options window at this setting and marks it."
+  },
+  "help_guide": {
+    "title": "Feature guide",
+    "body": "Every feature of Vanilla Agents and how to use it, in plain words, with a search box.",
+    "use": "Click to open the guide."
+  },
+  "esc_guide": {
+    "title": "Guide",
+    "body": "Every feature of Vanilla Agents and how to use it, in plain words."
+  },
+  "settings_guide": {
+    "title": "What do these settings do?",
+    "body": "Opens the guide at the Settings chapter: every option, what it does and when to change it."
+  },
+  "setting_VA_Building": {
+    "title": "Building",
+    "body": "Where your helpers work. Each building has its own furniture, music and look. Changing it reloads the page.",
+    "use": "Change it when you want a different place to work in."
+  },
+  "setting_VA_TimeOfDay": {
+    "title": "Time of day",
+    "body": "The light in the building. Auto follows your clock.",
+    "use": "Pick day, dusk or night to keep one look all the time."
+  },
+  "setting_VA_Music": {
+    "title": "Building music",
+    "body": "On: the jukebox plays music that fits the building. Off: it plays every song you baked.",
+    "use": "Turn it off for more variety."
+  },
+  "setting_VA_Quality": {
+    "title": "Render quality",
+    "body": "How sharp the inn is drawn. Lower is smoother on slow PCs; High adds smooth edges.",
+    "use": "Lower it when the inn feels slow or jerky."
+  },
+  "setting_VA_FpsCap": {
+    "title": "Frame rate cap",
+    "body": "The most pictures per second the inn draws. A cap saves battery and keeps fans quiet.",
+    "use": "Pick 30 on a laptop, no cap for the smoothest picture."
+  },
+  "setting_VA_MaxHelpers": {
+    "title": "Helpers in the building",
+    "body": "How many helpers walk around in the inn. Everyone still shows in the raid frames.",
+    "use": "Lower it when the inn is crowded or slow."
+  },
+  "setting_VA_ReducedMotion": {
+    "title": "Reduce motion",
+    "body": "Stops emotes, sparks, camera sway, errands and the pulsing raid frame. Starts out like your system setting.",
+    "use": "Turn it on if movement on screen bothers you."
+  },
+  "setting_character": {
+    "title": "Choose Character",
+    "body": "Pick the hero you walk around as in the inn. Only the 3D inn uses it.",
+    "use": "Change it whenever you like; it is remembered."
+  },
+  "setting_sound": {
+    "title": "Sound",
+    "body": "Master volume, mute, and which sound plays for each event, each with its own volume and a Test button.",
+    "use": "Open it when a sound is too loud or you want a different one."
+  },
+  "setting_game": {
+    "title": "A World of Warcraft option",
+    "body": "This option comes from the game itself and is kept for the look. It is saved, but Vanilla Agents does not use it."
+  },
+  "setting_game_sound": {
+    "title": "Sound (used by Vanilla Agents)",
+    "body": "This game option is wired to the window: it changes the volume or switches all sounds on or off.",
+    "use": "Same as the master volume and mute in the Sound window."
+  },
+  "setting_sound_master": {
+    "title": "Master volume and mute",
+    "body": "How loud every sound is. Mute everything silences the window.",
+    "use": "Turn it down if the sounds are too loud."
+  },
+  "setting_sound_helpers": {
+    "title": "Helpers (extra Claude workers)",
+    "body": "Kept for starting extra Claude workers from the window. This version does not start any, so it changes nothing yet."
+  },
+  "setting_sound_event": {
+    "title": "Sound for this event",
+    "body": "Pick the sound, its volume and whether it plays. Test plays it once.",
+    "use": "Switch off the ones you do not want to hear."
+  },
+  "gossip_resurrect": {
+    "title": "Resurrect",
+    "body": "Opens a new terminal on this PC running Claude Code with this helper's own conversation (claude --resume), in the folder it worked in. Only you can do this; helpers cannot.",
+    "use": "The helper wakes up in the inn when the session answers."
+  },
+  "gossip_resurrect_cmd": {
+    "title": "Command to type",
+    "body": "No terminal could be opened from here. Open a terminal yourself and type this line; it goes to the helper's folder and resumes its conversation."
+  },
+  "raid_menu_talk": {
+    "title": "Talk",
+    "body": "Opens the talk window for this helper."
+  },
+  "raid_resurrect": {
+    "title": "Resurrect",
+    "body": "Opens a new terminal running this helper's Claude session again (claude --resume) in the folder it worked in. Greyed out when the session id is not known.",
+    "use": "Watch for the golden light in the inn."
+  },
+  "raid_left": {
+    "title": "Went home",
+    "body": "This helper's Claude session ended. It stays here for a while so you can bring it back.",
+    "use": "Right-click: Resurrect."
+  },
+  "inspect_place": {
+    "title": "Branch and worktree",
+    "body": "The git branch this helper works on. A worktree is a second copy of the project folder with its own branch: helpers in different worktrees never touch each other's files."
+  },
+  "meter_tab_tokens": {
+    "title": "Tokens",
+    "body": "How many tokens each helper wrote per minute lately (Claude's answers and code), counted from Claude Code's own session files on this PC."
+  },
+  "help_phone_open": {
+    "title": "Phone link",
+    "body": "Opens Options > Phone: switch on Phone access and scan the QR code with your phone."
+  },
+  "help_notify_open": {
+    "title": "Notifications",
+    "body": "Opens Options > Notifications: Discord, Slack, ntfy or a webhook."
+  },
+  "phonelink_toggle": {
+    "title": "Phone access",
+    "body": "Off: only this PC can open the window. On: devices on your home network can open the phone page, but only with the secret link below; without it they see nothing.",
+    "use": "Switch it off again when you are done."
+  },
+  "phonelink_qr": {
+    "title": "Phone link (QR code)",
+    "body": "Point your phone's camera at it to open the phone page with your key. Anyone who scans it can approve, pause and run checks."
+  },
+  "phonelink_link": {
+    "title": "Phone link",
+    "body": "The address of the phone page with your secret key at the end. Do not post it anywhere."
+  },
+  "notifyhub_discord": {
+    "title": "Discord",
+    "body": "Posts the message in a Discord channel through a webhook link you make in the channel's settings."
+  },
+  "notifyhub_slack": {
+    "title": "Slack",
+    "body": "Posts the message in Slack through an incoming webhook link."
+  },
+  "notifyhub_ntfy": {
+    "title": "ntfy",
+    "body": "Sends a push message to the ntfy app on your phone. Anyone who knows the topic name can read it, so make it hard to guess."
+  },
+  "notifyhub_webhook": {
+    "title": "Webhook",
+    "body": "Sends a small JSON message to any address you give, for your own tools."
+  },
+  "notifyhub_events": {
+    "title": "What to tell you",
+    "body": "Tick the moments this channel should tell you about. The same message is sent at most once a minute."
+  },
+  "notifyhub_test": {
+    "title": "Send test",
+    "body": "Sends one test message now with what is filled in above (saved or not)."
+  },
+  "notifyhub_save": {
+    "title": "Save",
+    "body": "Keeps these settings in your own settings file on this PC. Sending starts at once."
+  },
+  "chatreply_discord": {
+    "title": "Replies from Discord",
+    "body": "Vanilla Agents reads this Discord channel with your bot every few seconds and acts on messages from the people on your allow list.",
+    "use": "Use: type @Name message, /p message or status in the channel."
+  },
+  "chatreply_slack": {
+    "title": "Replies from Slack",
+    "body": "Vanilla Agents reads this Slack channel with your app's bot token every few seconds and acts on messages from the people on your allow list.",
+    "use": "Use: type @Name message, /p message or status in the channel."
+  },
+  "chatreply_ntfy": {
+    "title": "Replies from ntfy",
+    "body": "Vanilla Agents reads this ntfy topic every few seconds. Only messages that start with your passphrase and a colon count; replies are posted to the same topic.",
+    "use": "Use: send pw123: status from the ntfy app."
+  },
+  "chatreply_token": {
+    "title": "Bot token",
+    "body": "The bot's secret. It is kept in your settings file on this PC, sent only to Discord or Slack, and never shown here again in full. Leave the field empty to keep the saved one."
+  },
+  "chatreply_channel": {
+    "title": "Channel id",
+    "body": "Which channel is read and answered. Only this one channel."
+  },
+  "chatreply_allow": {
+    "title": "Who may command",
+    "body": "User ids whose messages are obeyed. Everyone else in the channel is ignored and only counted in the status line."
+  },
+  "chatreply_passphrase": {
+    "title": "Passphrase",
+    "body": "ntfy has no accounts, so a command must start with this word and a colon. Anyone who knows the topic can read the replies, so pick a hard-to-guess topic too."
+  },
+  "chatreply_poll": {
+    "title": "Read every",
+    "body": "How often the channel is read, from 5 to 120 seconds. When the service asks to slow down, Vanilla Agents waits as long as it says."
+  },
+  "chatreply_pause": {
+    "title": "Allow pause / resume",
+    "body": "Lets the people on your allow list pause and resume the checker from chat. Off unless you tick it. Approving is never possible from chat."
+  },
+  "chatreply_test": {
+    "title": "Test",
+    "body": "Reads the channel once with what is typed here and posts a short hello there. Nothing is saved."
+  },
+  "chatreply_forget": {
+    "title": "Forget",
+    "body": "Removes the saved secret from your settings file when you press Save."
+  },
+  "chatreply_save": {
+    "title": "Save",
+    "body": "Keeps these settings in your own settings file. A switched-on service starts listening right away, from now on (older messages are never acted on)."
+  },
+  "chatreply_status": {
+    "title": "Status",
+    "body": "Where it listens, when the last command came, how many messages from other people were ignored, and the last problem in plain words."
+  },
+  "contest_item": {
+    "title": "The quest up for grabs",
+    "body": "Several helpers each made their own fix for this quest. Compare them here and pick one, like rolling for loot in a group.",
+    "use": "The colour is the quest's size."
+  },
+  "contest_row": {
+    "title": "One helper's fix",
+    "body": "Who made it, what they say it does, how many files and lines it changes, and what the checker said about it."
+  },
+  "contest_check": {
+    "title": "Check this one",
+    "body": "Runs the project's checks on this helper's branch (its last saved commit), the same checks Verify runs. Your own quest log and run history stay as they are.",
+    "use": "One check at a time; uncommitted work in their folder is not included."
+  },
+  "contest_show": {
+    "title": "Show changes",
+    "body": "Opens the Inspect window with what this helper's branch changed since it left the base branch. Nothing is changed by looking."
+  },
+  "contest_need": {
+    "title": "Need",
+    "body": "Pick this fix as the winner. The helper is told to merge it into the base branch, the others are thanked, and the competition ends.",
+    "use": "Only you can pick; helpers cannot."
+  },
+  "contest_pass": {
+    "title": "Pass",
+    "body": "Hide this fix from the list for now. Nothing is sent to the helper."
+  },
+  "contest_stop": {
+    "title": "Stop competing",
+    "body": "End the competition without picking a fix. The quest goes on as a normal quest."
+  },
+  "contest_log": {
+    "title": "The roll",
+    "body": "Just for fun: the numbers are dice like in a group loot roll, and your pick always rolls highest. The pick itself is your choice, not luck."
+  },
+  "quest_compete": {
+    "title": "Let several helpers try",
+    "body": "Let 2 to 4 helpers each make their own fix for this quest on their own branch. You compare them in the Need or Greed window and pick the best one.",
+    "use": "Needs an open git project."
+  },
+  "quest_compete_roll": {
+    "title": "Roll for the winner",
+    "body": "Opens the Need or Greed window with every fix sent for this quest."
+  },
+  "integ_github": {
+    "title": "Import from GitHub",
+    "body": "Shows this project's open GitHub issues and pull requests as bounties on the Bounty Board, refreshed every few minutes, and its latest CI runs in the quest log. Nothing becomes a quest by itself."
+  },
+  "integ_mode": {
+    "title": "Sign in with",
+    "body": "The gh command uses the sign-in you already made with gh auth login, so no token is stored here. A token is for PCs without gh."
+  },
+  "integ_token": {
+    "title": "GitHub token",
+    "body": "A fine-grained personal access token with read-only access to issues, pull requests and actions. Kept in your settings file, sent only to GitHub, never shown again in full."
+  },
+  "integ_labels": {
+    "title": "Only these labels",
+    "body": "Import only open issues with one of these labels (up to 5, separated by commas). Empty imports every open issue."
+  },
+  "integ_prs": {
+    "title": "Pull requests",
+    "body": "Which open pull requests to bring in: the ones waiting for your review, assigned to you, opened by you, or all of them."
+  },
+  "integ_host": {
+    "title": "Enterprise host",
+    "body": "Only for GitHub Enterprise Server whose name does not contain github, e.g. git.mycompany.com. Leave empty for github.com."
+  },
+  "integ_minutes": {
+    "title": "Refresh every",
+    "body": "How often switched-on imports look for new and closed items (1 to 1440 minutes). CI is looked at every 2 minutes."
+  },
+  "integ_refresh": {
+    "title": "Refresh now",
+    "body": "Looks for new and closed items right away. Closed ones leave the Bounty Board; quests already made from them stay."
+  },
+  "integ_test": {
+    "title": "Test",
+    "body": "Signs in with what is typed here and says who you are. Imports nothing and saves nothing."
+  },
+  "integ_import": {
+    "title": "Import from file",
+    "body": "Pick a CSV export from Jira or Linear. Open rows become bounties; finished rows are skipped. A new file from the same tool replaces the last one."
+  },
+  "integ_linear": {
+    "title": "Linear by API key",
+    "body": "Optional: fetches your open Linear issues every few minutes with a personal API key, instead of importing a file by hand."
+  },
+  "integ_jira": {
+    "title": "Jira Cloud by API token",
+    "body": "Optional: fetches open Jira issues every few minutes with your e-mail and an API token from id.atlassian.com."
+  },
+  "integ_forget": {
+    "title": "Forget",
+    "body": "Removes the saved token or key from your settings file when you press Save."
+  },
+  "integ_save": {
+    "title": "Save",
+    "body": "Keeps these settings in your own settings file on this PC. Switched-on imports start within a minute."
+  },
+  "auction_source": {
+    "title": "Where it comes from",
+    "body": "Show bounties from every source, or only from GitHub, Jira or Linear."
+  },
+  "auction_link": {
+    "title": "Open link",
+    "body": "Opens the issue or pull request on its own site, in your browser."
+  },
+  "auction_make": {
+    "title": "Make it a quest",
+    "body": "Turns this proposal into a normal quest in the quest log, with the link in its why. You still approve it there as usual before a helper may finish it."
+  },
+  "auction_hide": {
+    "title": "Hide",
+    "body": "Takes this proposal off the board for good. Nothing changes on GitHub, Jira or Linear."
+  },
+  "auction_imported": {
+    "title": "Imported proposal",
+    "body": "Work found on GitHub, Jira or Linear. Helpers cannot see or take it until you make it a quest."
+  },
+  "auction_settings": {
+    "title": "Integrations",
+    "body": "Opens Options > Integrations: switch GitHub on, import a Jira or Linear file."
+  },
+  "quest_ci": {
+    "title": "CI",
+    "body": "The latest GitHub Actions runs of this branch, for information. The quest is still checked by your own checker; a red CI line is a hint to look, not a block."
+  },
+  "monitor_ci": {
+    "title": "CI",
+    "body": "GitHub Actions on this branch: PASSED, FAILED, RUNNING. Read-only; shown when GitHub import is on and the project has workflows."
+  },
+  "addons_install": {
+    "title": "Install from .zip",
+    "body": "Pick an addon zip from your PC. It is checked before anything is written and starts switched off.",
+    "use": "Only install addons from people you trust: an addon can do anything the window can."
+  },
+  "addons_browse": {
+    "title": "Browse the Workshop",
+    "body": "Lists the Vanilla Agents addons in the Open Vanilla Workshop. This is the only time addons go online, and only when you click."
+  },
+  "addons_reload": {
+    "title": "Reload window",
+    "body": "Starts the window again so enabled addons load and disabled ones stop."
+  },
+  "addons_toggle": {
+    "title": "Enabled",
+    "body": "Whether this addon starts with the window. The change takes effect after Reload window."
+  },
+  "addons_remove": {
+    "title": "Remove",
+    "body": "Moves the addon to the .removed folder inside the addons folder. Nothing is deleted; move it back to restore it."
+  },
+  "addons_package": {
+    "title": "Package for the Workshop",
+    "body": "Makes <id>-<version>.zip and a catalogue entry <id>.yml in the addons/.packages folder, ready to send to the Open Vanilla Workshop."
+  },
+  "addons_replace": {
+    "title": "Replace",
+    "body": "Puts the new addon in place of the installed one with the same id. The old one is moved to the .removed folder."
+  },
+  "addons_trust": {
+    "title": "Addons are trusted code",
+    "body": "Permissions are what an addon says about itself, so you can decide. They are not a lock: every addon runs with the window's full power."
+  },
+  "setting_addons": {
+    "title": "AddOns",
+    "body": "Opens the AddOns window: your own scripts that run in this window. Switch them on or off, install, remove or package them for the Workshop.",
+    "use": "Open it to add a sign or helper script, or to switch one off that misbehaves."
+  },
+  "needs": {
+    "title": "Needs you",
+    "body": "Goes to the next helper with a gold \"!\": one waiting for your OK, a question or something to type. Its talk window opens so you can answer. The number shows how many are waiting.",
+    "use": "Click or press 3. Press again for the next one."
+  },
+  "quests": {
+    "title": "Quest log",
+    "body": "Opens or closes the quest log: every quest, what it needs from you, and Approve.",
+    "use": "Click or press 4 (or L)."
+  },
+  "changes": {
+    "title": "Changes",
+    "body": "Opens or closes Inspect: the files your helpers changed, with every line added and removed.",
+    "use": "Click or press 5 (or N)."
+  }
+}

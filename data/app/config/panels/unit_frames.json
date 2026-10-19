@@ -1,0 +1,32 @@
+{
+ "frame": "metal",
+ "anchor": {
+  "left": 12,
+  "top": 12
+ },
+ "size": {
+  "w": 312,
+  "h": 126
+ },
+ "visible": true,
+ "text": {
+  "player_name": "unit.player_name",
+  "target_none": "unit.target_none",
+  "health": "unit.health",
+  "mana": "unit.mana",
+  "mana_unknown": "unit.mana_unknown",
+  "paused": "unit.paused",
+  "mana_plan": "unit.mana_plan",
+  "mana_week": "unit.mana_week"
+ },
+ "tips": {
+  "player": "player",
+  "health": "health",
+  "mana": "mana",
+  "target": "target"
+ },
+ "icons": {
+  "player": "interface/icons/inv_misc_gear_01.png",
+  "target": "interface/icons/inv_misc_eye_01.png"
+ }
+}

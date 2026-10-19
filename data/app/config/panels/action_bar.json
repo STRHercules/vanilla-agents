@@ -1,0 +1,67 @@
+{
+ "frame": "dialog",
+ "anchor": {
+  "bottom": 12,
+  "center_x": true
+ },
+ "size": {
+  "w": 540,
+  "h": 112
+ },
+ "visible": true,
+ "text": {
+  "resume": "action.resume",
+  "hearth_again": "action.hearth_again",
+  "nobody": "action.nobody"
+ },
+ "slots": [
+  {
+   "id": "verify",
+   "label": "action.verify",
+   "icon": "interface/icons/inv_potion_54.png",
+   "tip": "verify",
+   "key": "1"
+  },
+  {
+   "id": "pause",
+   "label": "action.pause",
+   "icon": "interface/icons/inv_misc_bag_08.png",
+   "tip": "pause",
+   "key": "2"
+  },
+  {
+   "id": "needs",
+   "label": "action.needs",
+   "icon": "interface/icons/inv_misc_questionmark.png",
+   "tip": "needs",
+   "key": "3"
+  },
+  {
+   "id": "quests",
+   "label": "action.quests",
+   "icon": "interface/icons/inv_misc_book_09.png",
+   "tip": "quests",
+   "key": "4"
+  },
+  {
+   "id": "changes",
+   "label": "action.changes",
+   "icon": "interface/icons/inv_misc_spyglass_02.png",
+   "tip": "changes",
+   "key": "5"
+  },
+  {
+   "id": "hearth",
+   "label": "action.hearth",
+   "icon": "interface/icons/inv_misc_rune_01.png",
+   "tip": "hearth",
+   "key": "6"
+  }
+ ],
+ "tips": {
+  "resume": "resume"
+ },
+ "icons": {
+  "resume": "interface/icons/inv_potion_54.png"
+ }
+}

@@ -1,0 +1,52 @@
+/* V-038..V-041: worktree line, Resurrect (raid menu, went-home frames, revive glow), Options > Phone and Notifications */
+
+/* raid frames: a helper that went home stays as a grey frame for a while; a revived one glows gold for a moment */
+.raid-left { opacity: 0.5; filter: grayscale(1); border-style: dashed; }
+.raid-left .bar { opacity: 0.4; }
+.raid-revive { animation: raid-revive 3s ease-out; }
+@keyframes raid-revive {
+  0% { box-shadow: 0 0 0 0 rgba(255, 231, 160, 0); background: rgba(255, 231, 160, 0.55); }
+  25% { box-shadow: 0 0 14px 4px rgba(255, 231, 160, 0.9); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 231, 160, 0); background: rgba(0, 0, 0, 0.35); }
+}
+.va-reduced-motion .raid-revive { animation: none; box-shadow: 0 0 8px 2px rgba(255, 231, 160, 0.8); }
+.raid-menu { position: fixed; z-index: 9000; min-width: 132px; padding: 6px; background: rgba(0, 0, 0, 0.92); border: 1px solid #8a7a5a;
+  border-radius: 4px; box-shadow: 0 2px 10px #000; display: flex; flex-direction: column; gap: 1px; }
+.raid-menu-title { font-size: 13px; padding: 0 6px 4px; border-bottom: 1px solid #3a2e20; margin-bottom: 2px; }
+.raid-menu-item { background: none; border: 0; color: var(--white); font: inherit; font-size: 12.5px; text-align: left; padding: 3px 6px; cursor: pointer; border-radius: 2px; }
+.raid-menu-item:hover:not(:disabled), .raid-menu-item:focus-visible { background: rgba(255, 209, 0, 0.18); color: var(--gold); }
+.raid-menu-item:disabled { color: var(--grey); cursor: default; }
+
+/* talk window: where it works, and the command to copy when no terminal could be opened */
+.gossip-place { color: #4a2e08; font-style: italic; margin-bottom: 2px; }
+.gossip-cmd { display: block; margin-top: 4px; padding: 4px 6px; font: 11.5px/1.35 ui-monospace, Consolas, monospace; color: #1a1006;
+  background: rgba(255, 250, 235, 0.75); border: 1px solid #8a6a40; user-select: all; overflow-wrap: anywhere; }
+
+/* inspect header: branch / other checkout */
+.ins-head { flex-wrap: wrap; }
+.ins-place { flex: 1 0 100%; color: var(--grey); margin-top: -2px; }
+.ins-all { white-space: nowrap; }
+.ins-place.orange { color: #ff9f40; }
+
+/* Options > Phone / Notifications */
+.vas { display: flex; flex-direction: column; gap: 6px; padding: 2px 4px 10px; }
+.vas-p { font-size: 13px; line-height: 1.4; color: var(--white); }
+.vas-warn { font-size: 12.5px; line-height: 1.35; padding: 4px 8px; border-left: 3px solid var(--red); background: rgba(255, 48, 48, 0.08); }
+.vas-toggle .ws-label { font-size: 13px; }
+.vas-phone { display: flex; gap: 14px; align-items: flex-start; margin-top: 6px; }
+.vas-qr { flex: none; image-rendering: pixelated; border: 4px solid #8a7a5a; border-radius: 2px; background: #fff; }
+.vas-side { display: flex; flex-direction: column; gap: 8px; min-width: 0; align-items: flex-start; }
+.vas-link { font: 12px/1.35 ui-monospace, Consolas, monospace; color: var(--white); background: #000; border: 1px solid #5a4630; padding: 6px; overflow-wrap: anywhere; user-select: all; }
+.vas-ch { border: 1px solid #3a2e20; background: rgba(0, 0, 0, 0.3); padding: 6px 8px; display: flex; flex-direction: column; gap: 3px; }
+.vas-chhead { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+.vas-chdesc { line-height: 1.3; }
+.vas-input { flex: 1; min-width: 0; font-size: 12px; }
+.vas-flabel { flex: 0 0 70px; }
+.vas-events { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 10px; padding: 2px 6px; }
+.vas-ev { display: flex; align-items: center; gap: 5px; color: var(--white); cursor: pointer; }
+.vas-foot { display: flex; align-items: center; gap: 10px; padding: 2px 6px 0; }
+.vas-result { min-width: 0; }
+.vas-save { align-self: flex-start; margin-top: 4px; }
+
+/* Help (F1): Phone link / Notifications buttons */
+.hp-phone { display: flex; gap: 8px; margin: 4px 0 2px; }

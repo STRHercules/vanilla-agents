@@ -1,0 +1,41 @@
+{
+ "title": "map.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 30
+ },
+ "size": {
+  "w": 820,
+  "h": 530
+ },
+ "visible": false,
+ "hotkey": "world_map",
+ "text": {
+  "empty": "map.empty",
+  "problem_not_git": "map.problem_not_git",
+  "count": "map.count",
+  "files": "map.files",
+  "files_lines": "map.files_lines",
+  "touched": "map.touched",
+  "never": "map.never",
+  "state_line": "map.state_line",
+  "use_undiscovered": "map.use_undiscovered",
+  "use_explored": "map.use_explored",
+  "use_cleared": "map.use_cleared",
+  "edited": "map.edited",
+  "here": "map.here",
+  "detail_empty": "map.detail_empty",
+  "legend_edited": "map.legend_edited",
+  "legend_here": "map.legend_here",
+  "legend_heroes": "map.legend_heroes",
+  "hero_file": "map.hero_file",
+  "hero_seen": "map.hero_seen",
+  "hero_working": "map.hero_working",
+  "hero_idle": "map.hero_idle"
+ },
+ "icons": {
+  "parchment": "interface/stationery/stationery_tb1.png",
+  "fog": "interface/stationery/stationery_og1.png"
+ }
+}

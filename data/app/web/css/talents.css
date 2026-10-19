@@ -1,0 +1,35 @@
+/* Talents (T): vanilla TalentFrame look - tree art in four pieces, square talents with a rank badge, tabs under the tree. */
+[data-panel="talents"] .panel-body { gap: 5px; }
+.tal-head[hidden], .tal-tree[hidden], .tal-tabs[hidden] { display: none; }
+.tal-head { display: flex; align-items: center; gap: 8px; flex: none; }
+.tal-face { width: 40px; height: 40px; flex: none; border-radius: 50%; overflow: hidden; border: 2px solid #9a7a40; background: radial-gradient(#3b2e1e, #120c06); box-shadow: 0 0 0 1px #000, inset 0 0 4px #000; }
+.tal-pic { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tal-who { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.tal-name { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tal-points { color: var(--white); }
+.tal-tree { position: relative; flex: none; width: 100%; aspect-ratio: 320 / 384; overflow: hidden; border: 1px solid #000; box-shadow: 0 0 0 1px #5a5a60, inset 0 0 18px #000; background: #000; }
+.tal-bg { position: absolute; display: block; pointer-events: none; }
+.tal-bg-tl { left: 0; top: 0; width: 80%; height: 66.667%; }
+.tal-bg-tr { left: 80%; top: 0; width: 20%; height: 66.667%; }
+.tal-bg-bl { left: 0; top: 66.667%; width: 80%; height: 33.333%; }
+.tal-bg-br { left: 80%; top: 66.667%; width: 20%; height: 33.333%; }
+.tal-tree::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)); pointer-events: none; }
+.tal-grid { position: absolute; z-index: 1; left: 18px; right: 18px; top: 18px; bottom: 34px; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 62px; justify-items: center; align-items: start; }
+.tal-cell { position: relative; width: 40px; height: 40px; }
+.tal-slot { position: relative; width: 40px; height: 40px; border: 1px solid #1eff00; border-radius: 3px; box-shadow: 0 0 0 1px #000, 0 2px 5px rgba(0, 0, 0, 0.8); background: #000; }
+.tal-slot .tal-icon { width: 100%; height: 100%; display: block; border-radius: 2px; }
+.tal-max { border-color: var(--gold); }
+.tal-off { border-color: #6a6a6a; }
+.tal-off .tal-icon { filter: grayscale(1) brightness(0.6); }
+.tal-rank { position: absolute; right: -12px; bottom: -12px; width: 30px; height: 30px; background-size: 100% 100%; display: flex; align-items: center; justify-content: center; }
+.tal-rank span { font-size: 10px; line-height: 1; color: #1eff00; text-shadow: 1px 1px 0 #000; }
+.tal-max .tal-rank span { color: var(--gold); }
+.tal-off .tal-rank span { color: #9d9d9d; }
+.tal-cell:hover .tal-slot { box-shadow: 0 0 0 1px #000, 0 0 8px rgba(255, 209, 0, 0.7); }
+.tal-empty { position: absolute; z-index: 1; left: 24px; right: 24px; top: 40%; text-align: center; color: var(--white); }
+.tal-label { position: absolute; z-index: 1; left: 0; right: 0; bottom: 8px; text-align: center; color: var(--gold); font-size: 13px; }
+.tal-tabs, .ah-tabs { display: flex; gap: 4px; flex: none; }
+.tal-tab { height: 24px; padding: 0 14px; border: 1px solid #5a5a60; border-top: 0; border-radius: 0 0 6px 6px; background: linear-gradient(180deg, #17171a, #2b2b31); color: #b8a060; font-family: inherit; font-size: 12px; cursor: pointer; }
+.tal-tab:hover { color: var(--gold); }
+.tal-tab-on { background: linear-gradient(180deg, #2b2b31, #45454c); color: var(--gold); border-color: #a8884a; height: 27px; margin-top: -3px; }
+.tal-foot { flex: none; color: #b0b0b0; text-align: center; line-height: 1.3; padding: 0 6px; }

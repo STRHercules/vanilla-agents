@@ -1,0 +1,41 @@
+{
+ "title": "spellbook.title",
+ "frame": "metal",
+ "anchor": {
+  "center_x": true,
+  "top": 150
+ },
+ "size": {
+  "w": 420,
+  "h": 220
+ },
+ "visible": false,
+ "hotkey": "spellbook",
+ "text": {
+  "empty": "spellbook.empty",
+  "count": "spellbook.count",
+  "never": "spellbook.never",
+  "took": "spellbook.took",
+  "last": "spellbook.last",
+  "running": "spellbook.running",
+  "not_registered": "spellbook.not_registered",
+  "paused": "spellbook.paused",
+  "problem": "spellbook.problem"
+ },
+ "tips": {
+  "default": "spell_default"
+ },
+ "icons": {
+  "default": "interface/icons/spell_holy_holybolt.png"
+ },
+ "spells": [
+  {
+   "id": "cargo_test",
+   "icon": "interface/icons/spell_nature_lightning.png"
+  }
+ ],
+ "options": {
+  "columns": 2,
+  "slots": 4
+ }
+}

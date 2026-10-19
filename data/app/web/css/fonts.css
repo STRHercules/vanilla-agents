@@ -1,0 +1,37 @@
+/* Readable text everywhere: a rounded sans (Nunito, bundled in /fonts, SIL OFL - see fonts/OFL-Nunito.txt; Arial Rounded when it is
+   installed and Nunito is not) with a light emboss and a thin black stroke. Window titles, toasts and the loading screen keep the game's
+   Friz Quadrata (--font-body). Loaded after skin.css so it wins. */
+@font-face { font-family: "Nunito"; src: url("/fonts/nunito-latin-600-normal.woff2") format("woff2"); font-weight: 400 600; font-display: block; }
+@font-face { font-family: "Nunito"; src: url("/fonts/nunito-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: block; }
+@font-face { font-family: "Nunito"; src: url("/fonts/nunito-latin-800-normal.woff2") format("woff2"); font-weight: 800 900; font-display: block; }
+:root {
+  --font-text: "Nunito", "Arial Rounded MT Bold", "Arial Rounded MT", Arial, sans-serif;
+  /* on dark frames: thin black outline + a soft drop below (raised) */
+  --text-dark: -0.6px -0.6px 0 rgba(0, 0, 0, 0.9), 0.6px -0.6px 0 rgba(0, 0, 0, 0.9), -0.6px 0.6px 0 rgba(0, 0, 0, 0.9), 0.6px 0.6px 0 rgba(0, 0, 0, 0.9), 0 1.6px 1.2px rgba(0, 0, 0, 0.75);
+  /* on parchment: a lighter outline and a pale highlight under each letter (pressed into the paper) */
+  --text-paper: -0.5px -0.5px 0 rgba(0, 0, 0, 0.45), 0.5px -0.5px 0 rgba(0, 0, 0, 0.45), -0.5px 0.5px 0 rgba(0, 0, 0, 0.45), 0.5px 0.5px 0 rgba(0, 0, 0, 0.45), 0 1.2px 0 rgba(255, 246, 220, 0.75);
+}
+body, button, input, select, textarea { font-family: var(--font-text); font-weight: 700; }
+body { font-size: var(--text-px, 14px); letter-spacing: 0.15px; }
+#ui, #ui .shadow, .panel-body { text-shadow: var(--text-dark); }
+.frame-parchment .panel-body, .frame-parchment .panel-body *, .frame-scroll .panel-body, .frame-scroll .panel-body *, .frame-scroll .chat-line, .frame-parchment .shadow { text-shadow: var(--text-paper); }
+.panel-title, .toast-text, .loading-label, .loading-tip, .ws-title, .ws-group, .gossip-name { font-family: var(--font-body); font-weight: normal; }
+.small { font-size: var(--small-px, 12px); }
+
+/* sizes nobody has to squint at */
+.bar-text { font-size: 11px; line-height: 13px; font-weight: 800; }
+.raid-frame .bar-text { font-size: 10px; line-height: 10px; }
+.raid-name { font-size: 12.5px; }
+.mon-label { font-size: 12.5px; } .mon-val { font-size: 11px; font-weight: 800; }
+.chat-filter, .ws-select, .chat-input { font-size: 12.5px; font-weight: 700; }
+.frame-parchment .quest-title { font-size: 12.5px; letter-spacing: 0.4px; text-shadow: 0 1px 0 rgba(255, 246, 220, 0.8) !important; }
+.btn, .wow-btn { font-size: 12px; font-weight: 800; }
+.quest-approve { font-size: 11.5px; padding: 0 7px; }
+input::placeholder { color: rgba(60, 40, 20, 0.65); text-shadow: none; }
+
+/* chat: bigger, roomier, every line embossed */
+.chat-line { font-size: 14px; line-height: 1.4; margin-bottom: 3px; font-weight: 700; }
+.chat-input { height: 24px; padding: 0 8px; font-size: 13px; text-shadow: none; color: #2a1a08; }
+.chat-hint { font-size: 12.5px; }
+
+/* action bar: laid out in skin.css (V-052), buttons and their names inside the black well of the frame */

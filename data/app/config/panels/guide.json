@@ -1,0 +1,30 @@
+{
+ "title": "guide.title",
+ "frame": "parchment",
+ "anchor": {
+  "center_x": true,
+  "top": 56
+ },
+ "size": {
+  "w": 880,
+  "h": 640
+ },
+ "visible": false,
+ "text": {
+  "search": "guide.ui_search",
+  "no_match": "guide.ui_no_match",
+  "open": "guide.ui_open",
+  "setting": "guide.ui_setting",
+  "need_helper": "guide.ui_need_helper",
+  "keys": "guide.ui_keys",
+  "results": "guide.ui_results"
+ },
+ "tips": {
+  "search": "guide_search",
+  "open": "guide_open",
+  "setting": "guide_setting"
+ },
+ "icons": {
+  "book": "interface/icons/inv_misc_book_09.png"
+ }
+}

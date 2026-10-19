@@ -1,0 +1,19 @@
+{
+ "frame": "metal",
+ "anchor": {
+  "bottom": 122,
+  "center_x": true
+ },
+ "size": {
+  "w": 280,
+  "h": 44
+ },
+ "visible": false,
+ "text": {
+  "casting": "cast.casting",
+  "done": "cast.done"
+ },
+ "tips": {
+  "cast": "cast"
+ }
+}

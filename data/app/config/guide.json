@@ -1,0 +1,1232 @@
+{
+ "chapters": [
+  {
+   "id": "start",
+   "title": "guide.ch_start",
+   "topics": [
+    {
+     "id": "what",
+     "title": "guide.what",
+     "body": [
+      "guide.what_1",
+      "guide.what_2",
+      "guide.what_3"
+     ]
+    },
+    {
+     "id": "setup",
+     "title": "guide.setup",
+     "body": [
+      "guide.setup_1",
+      "guide.setup_2",
+      "guide.setup_3"
+     ]
+    },
+    {
+     "id": "launch",
+     "title": "guide.launch",
+     "body": [
+      "guide.launch_1",
+      "guide.launch_2",
+      "guide.launch_3"
+     ]
+    },
+    {
+     "id": "first",
+     "title": "guide.first",
+     "body": [
+      "guide.first_1",
+      "guide.first_2",
+      "guide.first_3"
+     ],
+     "keys": [
+      "quest_log",
+      "esc_menu",
+      "help"
+     ]
+    },
+    {
+     "id": "project",
+     "title": "guide.project",
+     "body": [
+      "guide.project_1",
+      "guide.project_2",
+      "guide.project_3",
+      "guide.project_4"
+     ],
+     "panel": "esc_menu"
+    },
+    {
+     "id": "help_window",
+     "title": "guide.help_window",
+     "body": [
+      "guide.help_window_1",
+      "guide.help_window_2",
+      "guide.help_window_3"
+     ],
+     "keys": [
+      "help"
+     ],
+     "panel": "help"
+    }
+   ]
+  },
+  {
+   "id": "inn",
+   "title": "guide.ch_inn",
+   "topics": [
+    {
+     "id": "move",
+     "title": "guide.move",
+     "body": [
+      "guide.move_1",
+      "guide.move_2",
+      "guide.move_3",
+      "guide.move_4"
+     ]
+    },
+    {
+     "id": "emotes",
+     "title": "guide.emotes",
+     "body": [
+      "guide.emotes_1",
+      "guide.emotes_2",
+      "guide.emotes_3",
+      "guide.emotes_4"
+     ],
+     "setting": "character"
+    },
+    {
+     "id": "select",
+     "title": "guide.select",
+     "body": [
+      "guide.select_1",
+      "guide.select_2",
+      "guide.select_3"
+     ]
+    },
+    {
+     "id": "laptops",
+     "title": "guide.laptops",
+     "body": [
+      "guide.laptops_1",
+      "guide.laptops_2",
+      "guide.laptops_3"
+     ]
+    },
+    {
+     "id": "errands",
+     "title": "guide.errands",
+     "body": [
+      "guide.errands_1",
+      "guide.errands_2",
+      "guide.errands_3",
+      "guide.errands_4",
+      "guide.errands_5"
+     ]
+    },
+    {
+     "id": "ghosts",
+     "title": "guide.ghosts",
+     "body": [
+      "guide.ghosts_1",
+      "guide.ghosts_2",
+      "guide.ghosts_3"
+     ]
+    },
+    {
+     "id": "resurrect",
+     "title": "guide.resurrect",
+     "body": [
+      "guide.resurrect_1",
+      "guide.resurrect_2",
+      "guide.resurrect_3"
+     ]
+    },
+    {
+     "id": "minimap",
+     "title": "guide.minimap",
+     "body": [
+      "guide.minimap_1",
+      "guide.minimap_2",
+      "guide.minimap_3"
+     ]
+    },
+    {
+     "id": "jukebox",
+     "title": "guide.jukebox",
+     "body": [
+      "guide.jukebox_1",
+      "guide.jukebox_2"
+     ],
+     "keys": [
+      "jukebox",
+      "jukebox_next"
+     ],
+     "setting": "VA_Music"
+    },
+    {
+     "id": "views",
+     "title": "guide.views",
+     "body": [
+      "guide.views_1",
+      "guide.views_2",
+      "guide.views_3"
+     ],
+     "setting": "VA_Quality"
+    }
+   ]
+  },
+  {
+   "id": "heroes",
+   "title": "guide.ch_heroes",
+   "topics": [
+    {
+     "id": "who",
+     "title": "guide.who",
+     "body": [
+      "guide.who_1",
+      "guide.who_2",
+      "guide.who_3"
+     ]
+    },
+    {
+     "id": "raid",
+     "title": "guide.raid",
+     "body": [
+      "guide.raid_1",
+      "guide.raid_2",
+      "guide.raid_3"
+     ],
+     "panel": "raid_frames"
+    },
+    {
+     "id": "needs",
+     "title": "guide.needs",
+     "body": [
+      "guide.needs_1",
+      "guide.needs_2",
+      "guide.needs_3",
+      "guide.needs_4"
+     ]
+    },
+    {
+     "id": "auras",
+     "title": "guide.auras",
+     "body": [
+      "guide.auras_1",
+      "guide.auras_2"
+     ]
+    },
+    {
+     "id": "clash",
+     "title": "guide.clash",
+     "body": [
+      "guide.clash_1",
+      "guide.clash_2",
+      "guide.clash_3"
+     ]
+    },
+    {
+     "id": "worktrees",
+     "title": "guide.worktrees",
+     "body": [
+      "guide.worktrees_1",
+      "guide.worktrees_2"
+     ]
+    },
+    {
+     "id": "mana",
+     "title": "guide.mana",
+     "body": [
+      "guide.mana_1",
+      "guide.mana_2",
+      "guide.mana_3"
+     ]
+    },
+    {
+     "id": "charsheet",
+     "title": "guide.charsheet",
+     "body": [
+      "guide.charsheet_1",
+      "guide.charsheet_2",
+      "guide.charsheet_3"
+     ],
+     "keys": [
+      "character_sheet"
+     ],
+     "panel": "character_sheet"
+    },
+    {
+     "id": "talents",
+     "title": "guide.talents",
+     "body": [
+      "guide.talents_1",
+      "guide.talents_2",
+      "guide.talents_3"
+     ],
+     "keys": [
+      "talents"
+     ],
+     "panel": "talents"
+    },
+    {
+     "id": "inspect",
+     "title": "guide.inspect",
+     "body": [
+      "guide.inspect_1",
+      "guide.inspect_2",
+      "guide.inspect_3"
+     ],
+     "keys": [
+      "inspect"
+     ],
+     "panel": "inspect"
+    }
+   ]
+  },
+  {
+   "id": "quests",
+   "title": "guide.ch_quests",
+   "topics": [
+    {
+     "id": "quest",
+     "title": "guide.quest",
+     "body": [
+      "guide.quest_1",
+      "guide.quest_2"
+     ]
+    },
+    {
+     "id": "questlog",
+     "title": "guide.questlog",
+     "body": [
+      "guide.questlog_1",
+      "guide.questlog_2",
+      "guide.questlog_3"
+     ],
+     "keys": [
+      "quest_log"
+     ],
+     "panel": "quest_log"
+    },
+    {
+     "id": "approve",
+     "title": "guide.approve",
+     "body": [
+      "guide.approve_1",
+      "guide.approve_2",
+      "guide.approve_3"
+     ]
+    },
+    {
+     "id": "tiers",
+     "title": "guide.tiers",
+     "body": [
+      "guide.tiers_1",
+      "guide.tiers_2",
+      "guide.tiers_3"
+     ]
+    },
+    {
+     "id": "loot",
+     "title": "guide.loot",
+     "body": [
+      "guide.loot_1",
+      "guide.loot_2",
+      "guide.loot_3"
+     ]
+    },
+    {
+     "id": "compete",
+     "title": "guide.compete",
+     "body": [
+      "guide.compete_1",
+      "guide.compete_2",
+      "guide.compete_3",
+      "guide.compete_4",
+      "guide.compete_5",
+      "guide.compete_6"
+     ],
+     "panel": "contest"
+    },
+    {
+     "id": "bounty",
+     "title": "guide.bounty",
+     "body": [
+      "guide.bounty_1",
+      "guide.bounty_2"
+     ],
+     "keys": [
+      "auction"
+     ],
+     "panel": "auction"
+    },
+    {
+     "id": "idea",
+     "title": "guide.idea",
+     "body": [
+      "guide.idea_1",
+      "guide.idea_2",
+      "guide.idea_3"
+     ],
+     "keys": [
+      "idea"
+     ],
+     "panel": "idea"
+    },
+    {
+     "id": "dailies",
+     "title": "guide.dailies",
+     "body": [
+      "guide.dailies_1",
+      "guide.dailies_2"
+     ]
+    },
+    {
+     "id": "away",
+     "title": "guide.away",
+     "body": [
+      "guide.away_1",
+      "guide.away_2",
+      "guide.away_3"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "checks",
+   "title": "guide.ch_checks",
+   "topics": [
+    {
+     "id": "checker",
+     "title": "guide.checker",
+     "body": [
+      "guide.checker_1",
+      "guide.checker_2",
+      "guide.checker_3"
+     ]
+    },
+    {
+     "id": "verify",
+     "title": "guide.verify",
+     "body": [
+      "guide.verify_1",
+      "guide.verify_2"
+     ],
+     "keys": [
+      "verify"
+     ]
+    },
+    {
+     "id": "pause",
+     "title": "guide.pause",
+     "body": [
+      "guide.pause_1",
+      "guide.pause_2"
+     ],
+     "keys": [
+      "pause"
+     ]
+    },
+    {
+     "id": "hearth",
+     "title": "guide.hearth",
+     "body": [
+      "guide.hearth_1",
+      "guide.hearth_2"
+     ]
+    },
+    {
+     "id": "route",
+     "title": "guide.route",
+     "body": [
+      "guide.route_1",
+      "guide.route_2"
+     ]
+    },
+    {
+     "id": "castbar",
+     "title": "guide.castbar",
+     "body": [
+      "guide.castbar_1",
+      "guide.castbar_2"
+     ],
+     "panel": "cast_bar"
+    },
+    {
+     "id": "spellbook",
+     "title": "guide.spellbook",
+     "body": [
+      "guide.spellbook_1",
+      "guide.spellbook_2"
+     ],
+     "keys": [
+      "spellbook"
+     ],
+     "panel": "spellbook"
+    },
+    {
+     "id": "backpack",
+     "title": "guide.backpack",
+     "body": [
+      "guide.backpack_1",
+      "guide.backpack_2"
+     ],
+     "keys": [
+      "backpack"
+     ],
+     "panel": "backpack"
+    },
+    {
+     "id": "worldmap",
+     "title": "guide.worldmap",
+     "body": [
+      "guide.worldmap_1",
+      "guide.worldmap_2",
+      "guide.worldmap_3",
+      "guide.worldmap_4",
+      "guide.worldmap_5"
+     ],
+     "keys": [
+      "world_map"
+     ],
+     "panel": "world_map"
+    }
+   ]
+  },
+  {
+   "id": "talk",
+   "title": "guide.ch_talk",
+   "topics": [
+    {
+     "id": "gossip",
+     "title": "guide.gossip",
+     "body": [
+      "guide.gossip_1",
+      "guide.gossip_2",
+      "guide.gossip_3"
+     ],
+     "panel": "gossip"
+    },
+    {
+     "id": "follow",
+     "title": "guide.follow",
+     "body": [
+      "guide.follow_1",
+      "guide.follow_2",
+      "guide.follow_3"
+     ]
+    },
+    {
+     "id": "whispers",
+     "title": "guide.whispers",
+     "body": [
+      "guide.whispers_1",
+      "guide.whispers_2",
+      "guide.whispers_3"
+     ]
+    },
+    {
+     "id": "chatline",
+     "title": "guide.chatline",
+     "body": [
+      "guide.chatline_1",
+      "guide.chatline_2",
+      "guide.chatline_3"
+     ],
+     "keys": [
+      "chat"
+     ]
+    },
+    {
+     "id": "chat",
+     "title": "guide.chat",
+     "body": [
+      "guide.chat_1",
+      "guide.chat_2",
+      "guide.chat_3"
+     ],
+     "panel": "chat"
+    },
+    {
+     "id": "mailbox",
+     "title": "guide.mailbox",
+     "body": [
+      "guide.mailbox_1",
+      "guide.mailbox_2",
+      "guide.mailbox_3"
+     ],
+     "keys": [
+      "mailbox"
+     ],
+     "panel": "mailbox"
+    }
+   ]
+  },
+  {
+   "id": "windows",
+   "title": "guide.ch_windows",
+   "topics": [
+    {
+     "id": "win_basics",
+     "title": "guide.win_basics",
+     "body": [
+      "guide.win_basics_1",
+      "guide.win_basics_2",
+      "guide.win_basics_3"
+     ]
+    },
+    {
+     "id": "unitframes",
+     "title": "guide.unitframes",
+     "body": [
+      "guide.unitframes_1",
+      "guide.unitframes_2"
+     ],
+     "panel": "unit_frames"
+    },
+    {
+     "id": "monitor",
+     "title": "guide.monitor",
+     "body": [
+      "guide.monitor_1",
+      "guide.monitor_2"
+     ],
+     "panel": "monitor"
+    },
+    {
+     "id": "actionbar",
+     "title": "guide.actionbar",
+     "body": [
+      "guide.actionbar_1",
+      "guide.actionbar_2"
+     ],
+     "panel": "action_bar"
+    },
+    {
+     "id": "meters",
+     "title": "guide.meters",
+     "body": [
+      "guide.meters_1",
+      "guide.meters_2",
+      "guide.meters_3"
+     ],
+     "keys": [
+      "meters"
+     ],
+     "panel": "meters"
+    },
+    {
+     "id": "tokens",
+     "title": "guide.tokens",
+     "body": [
+      "guide.tokens_1",
+      "guide.tokens_2"
+     ],
+     "panel": "meters",
+     "keys": [
+      "meters"
+     ]
+    },
+    {
+     "id": "achievements",
+     "title": "guide.achievements",
+     "body": [
+      "guide.achievements_1",
+      "guide.achievements_2"
+     ],
+     "keys": [
+      "achievements"
+     ],
+     "panel": "achievements"
+    },
+    {
+     "id": "replay",
+     "title": "guide.replay",
+     "body": [
+      "guide.replay_1",
+      "guide.replay_2",
+      "guide.replay_3"
+     ],
+     "keys": [
+      "replay"
+     ],
+     "panel": "replay"
+    },
+    {
+     "id": "flight",
+     "title": "guide.flight",
+     "body": [
+      "guide.flight_1",
+      "guide.flight_2"
+     ],
+     "keys": [
+      "flight_map"
+     ],
+     "panel": "flight_map"
+    },
+    {
+     "id": "escmenu",
+     "title": "guide.escmenu",
+     "body": [
+      "guide.escmenu_1",
+      "guide.escmenu_2"
+     ],
+     "keys": [
+      "esc_menu"
+     ],
+     "panel": "esc_menu"
+    },
+    {
+     "id": "guide_window",
+     "title": "guide.guide_window",
+     "body": [
+      "guide.guide_window_1",
+      "guide.guide_window_2"
+     ],
+     "panel": "guide"
+    }
+   ]
+  },
+  {
+   "id": "party",
+   "title": "guide.ch_party",
+   "topics": [
+    {
+     "id": "party",
+     "title": "guide.party",
+     "body": [
+      "guide.party_1",
+      "guide.party_2"
+     ],
+     "keys": [
+      "party"
+     ],
+     "panel": "party"
+    },
+    {
+     "id": "hosting",
+     "title": "guide.hosting",
+     "body": [
+      "guide.hosting_1",
+      "guide.hosting_2",
+      "guide.hosting_3"
+     ]
+    },
+    {
+     "id": "plan",
+     "title": "guide.plan",
+     "body": [
+      "guide.plan_1",
+      "guide.plan_2",
+      "guide.plan_3"
+     ]
+    },
+    {
+     "id": "community",
+     "title": "guide.community",
+     "body": [
+      "guide.community_1",
+      "guide.community_2",
+      "guide.community_3",
+      "guide.community_4"
+     ]
+    },
+    {
+     "id": "party_shares",
+     "title": "guide.party_shares",
+     "body": [
+      "guide.party_shares_1",
+      "guide.party_shares_2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "zones",
+   "title": "guide.ch_zones",
+   "topics": [
+    {
+     "id": "zones",
+     "title": "guide.zones",
+     "body": [
+      "guide.zones_1",
+      "guide.zones_2",
+      "guide.zones_3",
+      "guide.zones_4",
+      "guide.zones_5"
+     ],
+     "setting": "VA_Building",
+     "panel": "zones",
+     "keys": [
+      "zones"
+     ]
+    },
+    {
+     "id": "buildings",
+     "title": "guide.buildings",
+     "body": [
+      "guide.buildings_1",
+      "guide.buildings_2"
+     ]
+    },
+    {
+     "id": "own_building",
+     "title": "guide.own_building",
+     "body": [
+      "guide.own_building_1",
+      "guide.own_building_2",
+      "guide.own_building_3"
+     ]
+    },
+    {
+     "id": "timeofday",
+     "title": "guide.timeofday",
+     "body": [
+      "guide.timeofday_1"
+     ],
+     "setting": "VA_TimeOfDay"
+    }
+   ]
+  },
+  {
+   "id": "claude",
+   "title": "guide.ch_claude",
+   "topics": [
+    {
+     "id": "hooks",
+     "title": "guide.hooks",
+     "body": [
+      "guide.hooks_1",
+      "guide.hooks_2",
+      "guide.hooks_3"
+     ]
+    },
+    {
+     "id": "tools",
+     "title": "guide.tools",
+     "body": [
+      "guide.tools_1",
+      "guide.tools_2",
+      "guide.tools_3"
+     ]
+    },
+    {
+     "id": "plugin",
+     "title": "guide.plugin",
+     "body": [
+      "guide.plugin_1",
+      "guide.plugin_2"
+     ]
+    },
+    {
+     "id": "statusline",
+     "title": "guide.statusline",
+     "body": [
+      "guide.statusline_1",
+      "guide.statusline_2",
+      "guide.statusline_3"
+     ]
+    },
+    {
+     "id": "background",
+     "title": "guide.background",
+     "body": [
+      "guide.background_1",
+      "guide.background_2"
+     ]
+    },
+    {
+     "id": "answers",
+     "title": "guide.answers",
+     "body": [
+      "guide.answers_1",
+      "guide.answers_2"
+     ]
+    },
+    {
+     "id": "reconnect",
+     "title": "guide.reconnect",
+     "body": [
+      "guide.reconnect_1",
+      "guide.reconnect_2"
+     ]
+    },
+    {
+     "id": "phone",
+     "title": "guide.phone",
+     "body": [
+      "guide.phone_1",
+      "guide.phone_2",
+      "guide.phone_3",
+      "guide.phone_4"
+     ]
+    },
+    {
+     "id": "notifications",
+     "title": "guide.notifications",
+     "body": [
+      "guide.notifications_1",
+      "guide.notifications_2",
+      "guide.notifications_3",
+      "guide.notifications_4"
+     ]
+    },
+    {
+     "id": "chatreplies",
+     "title": "guide.chatreplies",
+     "body": [
+      "guide.chatreplies_1",
+      "guide.chatreplies_2",
+      "guide.chatreplies_3",
+      "guide.chatreplies_4"
+     ]
+    },
+    {
+     "id": "integrations",
+     "title": "guide.integrations",
+     "body": [
+      "guide.integrations_1",
+      "guide.integrations_2",
+      "guide.integrations_3",
+      "guide.integrations_4"
+     ]
+    },
+    {
+     "id": "ci",
+     "title": "guide.ci",
+     "body": [
+      "guide.ci_1",
+      "guide.ci_2"
+     ]
+    },
+    {
+     "id": "jira_linear",
+     "title": "guide.jira_linear",
+     "body": [
+      "guide.jira_linear_1",
+      "guide.jira_linear_2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "settings",
+   "title": "guide.ch_settings",
+   "topics": [
+    {
+     "id": "options",
+     "title": "guide.options",
+     "body": [
+      "guide.options_1",
+      "guide.options_2",
+      "guide.options_3"
+     ],
+     "panel": "game_settings"
+    },
+    {
+     "id": "game_options",
+     "title": "guide.game_options",
+     "body": [
+      "guide.game_options_1",
+      "guide.game_options_2"
+     ]
+    },
+    {
+     "id": "set_building",
+     "title": "guide.set_building",
+     "body": [
+      "guide.set_building_1",
+      "guide.set_building_2"
+     ],
+     "setting": "VA_Building"
+    },
+    {
+     "id": "set_time",
+     "title": "guide.set_time",
+     "body": [
+      "guide.set_time_1",
+      "guide.set_time_2"
+     ],
+     "setting": "VA_TimeOfDay"
+    },
+    {
+     "id": "set_music",
+     "title": "guide.set_music",
+     "body": [
+      "guide.set_music_1"
+     ],
+     "setting": "VA_Music"
+    },
+    {
+     "id": "set_quality",
+     "title": "guide.set_quality",
+     "body": [
+      "guide.set_quality_1",
+      "guide.set_quality_2"
+     ],
+     "setting": "VA_Quality"
+    },
+    {
+     "id": "set_fps",
+     "title": "guide.set_fps",
+     "body": [
+      "guide.set_fps_1",
+      "guide.set_fps_2"
+     ],
+     "setting": "VA_FpsCap"
+    },
+    {
+     "id": "set_helpers",
+     "title": "guide.set_helpers",
+     "body": [
+      "guide.set_helpers_1",
+      "guide.set_helpers_2"
+     ],
+     "setting": "VA_MaxHelpers"
+    },
+    {
+     "id": "set_motion",
+     "title": "guide.set_motion",
+     "body": [
+      "guide.set_motion_1",
+      "guide.set_motion_2"
+     ],
+     "setting": "VA_ReducedMotion"
+    },
+    {
+     "id": "set_character",
+     "title": "guide.set_character",
+     "body": [
+      "guide.set_character_1"
+     ],
+     "setting": "character"
+    },
+    {
+     "id": "set_addons",
+     "title": "guide.set_addons",
+     "body": [
+      "guide.set_addons_1"
+     ],
+     "panel": "addons",
+     "setting": "addons"
+    },
+    {
+     "id": "sound",
+     "title": "guide.sound",
+     "body": [
+      "guide.sound_1",
+      "guide.sound_2",
+      "guide.sound_3"
+     ],
+     "panel": "sound_menu",
+     "setting": "sound"
+    },
+    {
+     "id": "files",
+     "title": "guide.files",
+     "body": [
+      "guide.files_1",
+      "guide.files_2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "privacy",
+   "title": "guide.ch_privacy",
+   "topics": [
+    {
+     "id": "local",
+     "title": "guide.local",
+     "body": [
+      "guide.local_1",
+      "guide.local_2"
+     ]
+    },
+    {
+     "id": "windowkey",
+     "title": "guide.windowkey",
+     "body": [
+      "guide.windowkey_1",
+      "guide.windowkey_2"
+     ]
+    },
+    {
+     "id": "owner",
+     "title": "guide.owner",
+     "body": [
+      "guide.owner_1",
+      "guide.owner_2"
+     ]
+    },
+    {
+     "id": "addons",
+     "title": "guide.addons",
+     "body": [
+      "guide.addons_1",
+      "guide.addons_2",
+      "guide.addons_3"
+     ],
+     "panel": "addons"
+    },
+    {
+     "id": "addon_share",
+     "title": "guide.addon_share",
+     "body": [
+      "guide.addon_share_1",
+      "guide.addon_share_2"
+     ],
+     "panel": "addons"
+    },
+    {
+     "id": "backups",
+     "title": "guide.backups",
+     "body": [
+      "guide.backups_1"
+     ]
+    },
+    {
+     "id": "a11y",
+     "title": "guide.a11y",
+     "body": [
+      "guide.a11y_1",
+      "guide.a11y_2",
+      "guide.a11y_3"
+     ],
+     "setting": "VA_ReducedMotion"
+    }
+   ]
+  },
+  {
+   "id": "trouble",
+   "title": "guide.ch_trouble",
+   "topics": [
+    {
+     "id": "rebake",
+     "title": "guide.rebake",
+     "body": [
+      "guide.rebake_1",
+      "guide.rebake_2"
+     ],
+     "panel": "help"
+    },
+    {
+     "id": "no_helpers",
+     "title": "guide.no_helpers",
+     "body": [
+      "guide.no_helpers_1",
+      "guide.no_helpers_2",
+      "guide.no_helpers_3"
+     ],
+     "setting": "VA_MaxHelpers"
+    },
+    {
+     "id": "empty_inn",
+     "title": "guide.empty_inn",
+     "body": [
+      "guide.empty_inn_1"
+     ]
+    },
+    {
+     "id": "offline",
+     "title": "guide.offline",
+     "body": [
+      "guide.offline_1"
+     ]
+    },
+    {
+     "id": "slow",
+     "title": "guide.slow",
+     "body": [
+      "guide.slow_1",
+      "guide.slow_2"
+     ],
+     "setting": "VA_Quality"
+    },
+    {
+     "id": "no3d",
+     "title": "guide.no3d",
+     "body": [
+      "guide.no3d_1",
+      "guide.no3d_2"
+     ]
+    },
+    {
+     "id": "diagnostics",
+     "title": "guide.diagnostics",
+     "body": [
+      "guide.diagnostics_1",
+      "guide.diagnostics_2"
+     ],
+     "panel": "help"
+    },
+    {
+     "id": "uninstall",
+     "title": "guide.uninstall",
+     "body": [
+      "guide.uninstall_1",
+      "guide.uninstall_2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "keys",
+   "title": "guide.ch_keys",
+   "topics": [
+    {
+     "id": "keys_windows",
+     "title": "guide.keys_windows",
+     "body": [
+      "guide.keys_windows_1"
+     ],
+     "keys": [
+      "quest_log",
+      "character_sheet",
+      "spellbook",
+      "backpack",
+      "world_map",
+      "idea",
+      "inspect",
+      "replay",
+      "talents",
+      "flight_map",
+      "auction",
+      "mailbox",
+      "achievements",
+      "meters",
+      "party",
+      "zones"
+     ]
+    },
+    {
+     "id": "keys_actions",
+     "title": "guide.keys_actions",
+     "body": [
+      "guide.keys_actions_1"
+     ],
+     "keys": [
+      "chat",
+      "esc_menu",
+      "help",
+      "verify",
+      "pause",
+      "jukebox",
+      "jukebox_next"
+     ]
+    },
+    {
+     "id": "keys_moving",
+     "title": "guide.keys_moving",
+     "body": [
+      "guide.keys_moving_1",
+      "guide.keys_moving_2",
+      "guide.keys_moving_3"
+     ]
+    }
+   ]
+  }
+ ]
+}
