@@ -5,6 +5,13 @@ Vanilla Agents runs on your PC. Nothing leaves it except what you start yourself
 - **The window and its server** answer only this PC (127.0.0.1), unless you switch on Phone access (below). Every change needs the key in the window's own address.
 - **Claude Code hooks and the Vanilla Agents tools** write events (tool names, file paths, short command lines, quest text) to a
   feed file in `%USERPROFILE%\.vanilla-agents`. They are read by this program only.
+- **Codex sessions** (V-053/V-056, automatic and read-only): Vanilla Agents reads Codex's own JSONL rollout files in
+  `%CODEX_HOME%\sessions` (default `%USERPROFILE%\.codex\sessions`) and the Codex app's live SQLite history
+  (`state_*.sqlite`, `thread_history_*.sqlite` in the Codex home) to show Codex helpers. Only the session id, folder, branch, model,
+  turn start/end, token counts and tool names/item types become events. Prompts, answers, reasoning, tool arguments, source code,
+  terminal output, thread titles, previews and `item_json` are never selected, stored, logged or sent anywhere. Read positions for the
+  JSONL files are kept in `%USERPROFILE%\.vanilla-agents\work\codex-offsets.json`; the SQLite files are opened read-only.
+  Codex settings and sessions are never modified. See docs/CODEX.md.
 - **Party** (only if you host or join): your name, your helpers' names, roles, working/idle and a one-line activity, the shared
   plan and its statuses travel to the party's host over your network. Never code, files, keys or approvals. Leaving stops it.
 - **Community chat** (Chat window, Community tab, only in a party) is for the people in the party only. What you write travels to
@@ -33,7 +40,8 @@ Vanilla Agents runs on your PC. Nothing leaves it except what you start yourself
   links are kept per project in `%USERPROFILE%\.vanilla-agents\work\integrations`, and a CSV file you import is read once and not kept.
   Tokens and keys stay in your settings file and are sent only to their own service; they are never shown back in full, logged, put
   in error messages or in diagnostics. Helpers (Claude) never see imported items until you make one a quest. See docs/INTEGRATIONS.md.
-- **Resurrect** opens a terminal on this PC with `claude --resume`; nothing is sent anywhere by Vanilla Agents.
+- **Resurrect** opens a terminal on this PC with `claude --resume` or `codex resume` for that helper; nothing is sent anywhere by
+  Vanilla Agents.
 - **Diagnostics** (Help > Save diagnostics) writes a text file to your Desktop; it is sent nowhere. Read it before sharing it.
 - **Game art and sound** are baked from your own copy of the game into `%USERPROFILE%\.vanilla-agents\assets` and stay there.
 - **Addons** (AddOns window, V-051) are your own scripts in `<assets>/addons`; they run in the window with its full power, so only

@@ -838,6 +838,16 @@
      ]
     },
     {
+     "id": "codex",
+     "title": "guide.codex",
+     "body": [
+      "guide.codex_1",
+      "guide.codex_2",
+      "guide.codex_3",
+      "guide.codex_4"
+     ]
+    },
+    {
      "id": "answers",
      "title": "guide.answers",
      "body": [

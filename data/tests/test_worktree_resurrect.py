@@ -204,6 +204,28 @@ class Plans(unittest.TestCase):
         self.assertIn("No terminal", str(e.exception))
         self.assertEqual(resurrect.copy_command(SID, 'C:\\a "b"', "win32"), 'cd /d "C:\\a b" && claude --resume ' + SID)
 
+    def test_codex_plans_and_commands(self):
+        win = resurrect.plan(SID, "C:\\p", "win32", self.which("codex"), provider="codex")
+        self.assertEqual(win, [["cmd", "/c", "start", "", "cmd", "/k", os.path.abspath("/usr/bin/codex"), "resume", SID]])
+        mac = resurrect.plan(SID, '/Users/me/my "odd" dir', "darwin", self.which("codex"), provider="codex")[0]
+        self.assertEqual(mac[0], "osascript")
+        self.assertIn("resume " + SID, mac[2])
+        self.assertIn("do script", mac[2])
+        lin = resurrect.plan(SID, "/p", "linux", self.which("codex", "gnome-terminal", "xterm"), provider="codex")
+        self.assertEqual(lin, [["/usr/bin/gnome-terminal", "--", os.path.abspath("/usr/bin/codex"), "resume", SID],
+                               ["/usr/bin/xterm", "-e", os.path.abspath("/usr/bin/codex"), "resume", SID]])
+        self.assertEqual(resurrect.copy_command(SID, "/p", "linux", provider="codex"), "cd /p && codex resume " + SID)
+        with self.assertRaises(resurrect.ResurrectError) as e:
+            resurrect.plan(SID, "/p", "linux", self.which("xterm"), provider="codex")
+        self.assertIn("codex resume", e.exception.command)
+        with self.assertRaises(resurrect.ResurrectError):
+            resurrect.plan(SID, "/p", "linux", self.which("codex", "xterm"), provider="other")
+
+    def test_provider_of_helper_ids(self):
+        self.assertEqual(resurrect.provider_of({"id": "codex-0199c3a1-7b2"}), "codex")
+        self.assertEqual(resurrect.provider_of({"id": "claude-0b5f0c3e"}), "claude")
+        self.assertEqual(resurrect.provider_of(None), "claude")
+
     def test_runner_gets_argument_lists_and_the_folder(self):
         calls = []
         with tempfile.TemporaryDirectory() as d:
@@ -237,7 +259,7 @@ class Endpoint(unittest.TestCase):
         self.feed = os.path.join(self.tmp.name, "feed.jsonl")
         self.ctx = server.Ctx(cfg, self.feed, None, assets_dir=self.tmp.name, settings_file=os.path.join(self.tmp.name, "s.json"), watch=False)
         self.calls = []
-        self.ctx.resurrect_opts = {"platform": "linux", "which": lambda n: "/bin/" + n if n in ("claude", "xterm") else None,
+        self.ctx.resurrect_opts = {"platform": "linux", "which": lambda n: "/bin/" + n if n in ("claude", "codex", "xterm") else None,
                                    "runner": lambda argv, cwd: self.calls.append((argv, cwd))}
         self.srv = server.make_server(self.ctx, "127.0.0.1", 0)
         self.port = self.srv.server_address[1]
@@ -273,6 +295,15 @@ class Endpoint(unittest.TestCase):
         st, r = self.post({"agent": "transcript-only"})
         self.assertEqual((st, r["ok"]), (200, False))            # no session id: a plain error, nothing started
         self.assertEqual(len(self.calls), 1)
+
+    def test_codex_helper_resumes_with_codex(self):
+        f = Feed(self.feed)
+        f.append("agent_started", agent="codex-0199c3a1", data={"role": "Codex"})
+        f.append("agent_place", agent="codex-0199c3a1", data={"session": SID, "cwd": self.tmp.name})
+        st, r = self.post({"agent": "codex-0199c3a1"})
+        self.assertEqual((st, r.get("ok")), (200, True), r)
+        self.assertEqual(self.calls, [(["/bin/xterm", "-e", os.path.abspath("/bin/codex"), "resume", SID], self.tmp.name)])
+        self.assertEqual(r["command"], resurrect.copy_command(SID, self.tmp.name, "linux", provider="codex"))
 
 
 if __name__ == "__main__":

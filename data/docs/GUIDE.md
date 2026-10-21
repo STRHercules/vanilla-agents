@@ -141,17 +141,17 @@ Candles, lanterns and chandeliers glow and flicker softly, brightest at night. H
 
 A helper that has been quiet for 15 minutes turns into a ghost. It comes back to life as soon as it works again.
 
-When a Claude session ends, its helper walks home and leaves the inn.
+When a session ends, its helper walks home and leaves the inn.
 
-A grey dots sign over a head means Claude's service stopped that session, for example at a usage limit or after an error. The helper looks dazed until it acts again.
+A grey dots sign over a head means its AI service stopped that session, for example at a usage limit or after an error. The helper looks dazed until it acts again.
 
 ### Resurrecting a helper
 
-A helper whose Claude session went quiet becomes a ghost; one whose session ended goes home and shows as a grey frame for two hours.
+A helper whose session went quiet becomes a ghost; one whose session ended goes home and shows as a grey frame for two hours.
 
-Talk to it and pick Resurrect, or right-click its raid frame. A new terminal opens with claude --resume in the helper's folder, and the helper rises in a golden light when it comes back.
+Talk to it and pick Resurrect, or right-click its raid frame. A new terminal opens with claude --resume (or codex resume for a Codex helper) in the helper's folder, and the helper rises in a golden light when it comes back.
 
-No terminal or no claude command on this PC? The talk window shows the exact command to copy into one yourself.
+No terminal, or the helper's command is missing from this PC? The talk window shows the exact command to copy into one yourself.
 
 ### Minimap
 
@@ -187,9 +187,9 @@ There is also a photo mode for showcase pictures. It is a tool for developers an
 
 ### Who the helpers are
 
-Every Claude Code session is one helper. It gets a name, a race and a look that stay the same.
+Every Claude Code or Codex CLI session is one helper. It gets a name, a race and a look that stay the same.
 
-Sessions with the hooks show up right away. Without hooks, Vanilla Agents still finds sessions by reading Claude's own session files, with less detail.
+Claude sessions with the hooks show up right away. Without hooks, Vanilla Agents still finds Claude sessions in Claude's own files; Codex CLI sessions are found in Codex's files, with less detail.
 
 Background sessions that Claude runs on its own also appear, marked as background.
 
@@ -571,9 +571,9 @@ Keys: `U` Damage Meter
 
 ### Tokens per minute
 
-The damage meter (U) has a Tokens tab: how many words (tokens) each helper's Claude writes per minute, read from its own conversation file.
+The damage meter (U) has a Tokens tab: how many words (tokens) each helper writes per minute, read from its own conversation file.
 
-It counts Claude's answers only, not what you send it. The Cost tab next to it needs the status line bridge.
+It counts the helper's answers only, not what you send it. The Cost tab next to it needs the Claude status line bridge.
 
 Keys: `U` Damage Meter
 
@@ -754,6 +754,16 @@ It powers the real mana bars, the plan limit on the player frame and the Cost ta
 If the claude command is installed, the window asks it every 15 seconds which sessions are running, and shows the ones the hooks have not reported yet.
 
 They are marked as background, and they still show when they wait for you or fail.
+
+### Codex CLI sessions
+
+Codex CLI sessions appear in the inn too. Vanilla Agents reads Codex's own session files, read-only; no hooks or extra setup are needed.
+
+Select the project the session works in. Claude Code and Codex helpers share the inn; a Codex helper is marked Codex and its id starts with codex-.
+
+Only turn start and end, tool names, model and token counts are read. Prompts, answers, reasoning, tool arguments and terminal output are never stored or sent anywhere.
+
+To give Codex the same quest tools, run connect-codex-mcp.cmd once and restart Codex. Resurrect opens codex resume for a Codex helper and claude --resume for a Claude one.
 
 ### How helpers answer you
 

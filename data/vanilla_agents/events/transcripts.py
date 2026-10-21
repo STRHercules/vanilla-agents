@@ -37,6 +37,17 @@ def find_project_dir(project_path, root):
     return None
 
 
+def project_dir(project_path, root):
+    """The Claude projects sub-folder for a project, existing or not: a Claude session may start after the project was opened.
+    The watcher then finds the files as soon as the folder appears (V-053 tandem)."""
+    found = find_project_dir(project_path, root)
+    if found is not None:
+        return found
+    p = str(project_path)
+    name = claude_dir_name(p) if re.match(r"^[A-Za-z]:[\\/]", p) else claude_dir_name(os.path.abspath(p))
+    return Path(root) / name
+
+
 def default_root():
     return Path.home() / ".claude" / "projects"
 

@@ -2,8 +2,12 @@ import os
 import sys
 import tempfile
 import unittest
+import urllib.request
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from unittest.mock import patch
 
 from vanilla_agents.app import launch
+from vanilla_agents.app import server as app_server
 from vanilla_agents.app.config import ROOT, load_all
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -26,6 +30,8 @@ class Launch(unittest.TestCase):
         self.assertIn("--user-data-dir=~/.vanilla-agents/work/chrome-profile", cmd)
         app = load_all()["app"]
         self.assertTrue(app["browser_profile_dir"].startswith(os.path.expanduser("~/.vanilla-agents/work")))
+        with patch.dict(os.environ, {"VANILLA_BROWSER_DEBUG_PORT": "9223"}):
+            self.assertIn("--remote-debugging-port=9223", launch.build_cmd("c.exe", "http://x/", "P", 1, 2))
 
     def test_no_browser_gives_plain_error(self):
         with self.assertRaises(RuntimeError) as e:
@@ -36,6 +42,26 @@ class Launch(unittest.TestCase):
         with open(os.path.join(os.path.dirname(ROOT), "vanilla-agents.cmd")) as f:
             text = f.read()
         self.assertIn("vanilla_agents.app.server --open", text)
+
+    def test_serving_starts_before_the_window(self):
+        class H(BaseHTTPRequestHandler):
+            def do_GET(self):
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(b"ok")
+
+            def log_message(self, *args):
+                pass
+
+        srv = ThreadingHTTPServer(("127.0.0.1", 0), H)
+        t = app_server.start_serving(srv)
+        try:
+            with urllib.request.urlopen("http://127.0.0.1:%d/" % srv.server_address[1], timeout=5) as r:
+                self.assertEqual(r.read(), b"ok")
+        finally:
+            srv.shutdown()
+            srv.server_close()
+            t.join(5)
 
 
 class Shortcut(unittest.TestCase):

@@ -20,8 +20,12 @@ def find_browser(env=os.environ, exists=os.path.isfile):
 
 
 def build_cmd(exe, url, profile_dir, width, height):
-    return [exe, "--app=" + url, "--user-data-dir=" + str(profile_dir), "--window-size=%d,%d" % (width, height),
-            "--autoplay-policy=no-user-gesture-required", "--no-first-run", "--no-default-browser-check"]
+    cmd = [exe, "--app=" + url, "--user-data-dir=" + str(profile_dir), "--window-size=%d,%d" % (width, height),
+           "--autoplay-policy=no-user-gesture-required", "--no-first-run", "--no-default-browser-check"]
+    debug = os.environ.get("VANILLA_BROWSER_DEBUG_PORT", "")
+    if debug.isdigit():          # developer hook: inspect the real window with Chrome DevTools (local only)
+        cmd += ["--remote-debugging-address=127.0.0.1", "--remote-debugging-port=" + debug]
+    return cmd
 
 
 def open_window(url, cfg_app, find=find_browser, popen=subprocess.Popen):

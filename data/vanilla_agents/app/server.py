@@ -3,6 +3,7 @@
 Every POST needs the right Host, Origin, a JSON content type and the per-launch key (D-381)."""
 import argparse
 import hmac
+import http.client
 import json
 import subprocess
 import os
@@ -15,7 +16,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from ..contracts import VanillaError
-from ..events import transcripts
+from ..events import codex, codex_db, transcripts
 from ..events.feed import Feed
 from ..storage import layout
 from ..onboard import setup as onboarding
@@ -133,17 +134,27 @@ class Ctx:
             self.bg.start(self.stop)
 
     def watch(self, project):
-        """(Re)start the read-only transcript watcher for the project's Claude session folder. Starts nothing if there is none."""
+        """(Re)start the read-only Claude transcript and Codex session watchers for the project (V-053).
+        Both run together; a Claude folder that does not exist yet is watched for when the session starts. Nothing starts without
+        a selected project."""
         if self._watch_stop:
             self._watch_stop.set()
         self._watch_stop = None
-        a = self.cfg["app"]
-        d = transcripts.find_project_dir(project, a.get("transcripts_dir") or transcripts.default_root()) if project else None
-        if d is None:
+        if not project:
             return
+        a = self.cfg["app"]
         self._watch_stop = threading.Event()
-        w = transcripts.TranscriptWatcher(Feed(self.feed_path), d, a)
+        feed = Feed(self.feed_path)
+        d = transcripts.project_dir(project, a.get("transcripts_dir") or transcripts.default_root())
+        w = transcripts.TranscriptWatcher(feed, d, a)      # also when the folder does not exist yet: Claude may start later
         threading.Thread(target=w.run, args=(self._watch_stop,), daemon=True).start()
+        if codex.enabled(a):
+            managed = set()
+            dbw = codex_db.CodexDbWatcher(feed, project, a, managed=managed)
+            dbw.refresh_ids()      # before the JSONL watcher: the app's SQLite history owns these sessions (V-056)
+            threading.Thread(target=dbw.run, args=(self._watch_stop,), daemon=True).start()
+            cw = codex.CodexWatcher(feed, project, a, skip_sessions=managed)
+            threading.Thread(target=cw.run, args=(self._watch_stop,), daemon=True).start()
 
     def _detect(self):
         """D-418: at most every 30 s, mark open quests that a commit names and a passing Verify covers as done by another session."""
@@ -442,7 +453,9 @@ class Handler(BaseHTTPRequestHandler):
                 if a is None:
                     raise ValueError("there is no helper called %s" % body["agent"])
                 try:
-                    return self._send(200, resurrect.resurrect(a.get("session"), a.get("cwd"), **ctx.resurrect_opts))
+                    opts = dict(ctx.resurrect_opts)
+                    opts.setdefault("provider", resurrect.provider_of(a))      # V-053: codex-<id> resumes with `codex resume`
+                    return self._send(200, resurrect.resurrect(a.get("session"), a.get("cwd"), **opts))
                 except resurrect.ResurrectError as e:
                     return self._send(200, {"ok": False, "error": str(e), "command": e.command})
             if call == "/api/phone":         # V-040: switch phone access on/off (saved; the listener opens/closes now)
@@ -604,6 +617,29 @@ def make_server(ctx, host="127.0.0.1", port=0):
     raise OSError("no free port near %d: %s" % (port, last))
 
 
+def start_serving(srv, ready_path="/api/config", ready_timeout=5.0):
+    """Accept requests on the bound socket; call this BEFORE opening the window. Chrome asks for dozens of JS modules at once, and a
+    bound-but-not-yet-serving socket refuses them (the window then sits on 'Loading...' / a black screen or a failed dynamic import).
+    Waits until the server has answered one real request, so the accept loop is definitely running. Returns the thread."""
+    t = threading.Thread(target=srv.serve_forever, name="serve", daemon=True)
+    t.start()
+    host, port = srv.server_address[:2]
+    deadline = time.monotonic() + ready_timeout
+    while time.monotonic() < deadline:
+        try:
+            c = http.client.HTTPConnection(host, port, timeout=0.5)
+            try:
+                c.request("GET", ready_path)
+                r = c.getresponse()
+                r.read()
+                return t
+            finally:
+                c.close()
+        except (OSError, http.client.HTTPException):
+            time.sleep(0.02)
+    return t
+
+
 def fake_verifier(cfg):
     """Demo verifier for --fake-verify: waits a few seconds, then passes. Never touches the repo or cargo."""
     def run(req):
@@ -651,6 +687,7 @@ def main(argv=None):
     if a.show_key:
         print("Your window key link (keep it private; it lets whoever has it approve things): %s#k=%s" % (url, ctx.key))
     started = time.monotonic()
+    serving = start_serving(srv)      # V-053: accept the window's JS requests before Chrome starts asking for them
     if a.open:
         try:
             proc = launch.open_window(url + "#k=" + ctx.key, cfg["app"])      # the key travels in the address fragment: never sent to the server, never in a response
@@ -658,7 +695,8 @@ def main(argv=None):
         except RuntimeError as e:
             print(e)
     try:
-        srv.serve_forever()
+        while serving.is_alive():
+            time.sleep(0.5)
     except KeyboardInterrupt:
         pass
     finally:

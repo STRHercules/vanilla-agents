@@ -45,6 +45,8 @@ class W(unittest.TestCase):
         (root / "C--x-My-Proj").mkdir()
         self.assertEqual(T.find_project_dir(r"c:\x\my proj", root).name, "C--x-My-Proj")
         self.assertIsNone(T.find_project_dir(r"C:\nope", root))
+        self.assertEqual(T.project_dir(r"C:\nope", root), root / "C--nope")       # watched before the folder exists
+        self.assertEqual(T.project_dir(r"c:\x\my proj", root).name, "C--x-My-Proj")
 
     def test_mapping_and_incremental(self):
         self.f.write_bytes(line({"type": "user", "message": {"content": "SECRET TEXT"}}))

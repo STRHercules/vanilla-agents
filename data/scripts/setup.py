@@ -55,6 +55,7 @@ def main(argv=None):
             print("Stopped: '%s' did not finish. Nothing else was changed." % " ".join(cmd[1:]))
             return 1
     print("Done. Start it with vanilla-agents.cmd (or the Desktop shortcut).")
+    print("Using Codex CLI? Its sessions show up automatically; run python scripts/install_codex_mcp.py (connect-codex-mcp.cmd on Windows) once to give it the same quest tools.")
     return 0
 
 

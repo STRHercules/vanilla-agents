@@ -3,7 +3,9 @@
 Owner: the owner (non-coder). Every helper reads this before touching the app. If a change conflicts with it, stop and ask.
 
 ## 1. What the program is
-A Windows program (double-click icon, own window, no browser chrome). You point it at a project folder. It shows, live and in plain language, what vanilla-agents and the Claude sessions are doing. The whole program is the WoW 1.12 interface; the project is the game.
+A Windows program (double-click icon, own window, no browser chrome). You point it at a
+project folder. It shows, live and in plain language, what vanilla-agents and the Claude and Codex sessions are doing. The whole
+program is the WoW 1.12 interface; the project is the game.
 
 ## 2. Metaphor map (do not reinvent; extend this table)
 | WoW thing | Hotkey | Shows |

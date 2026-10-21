@@ -5,8 +5,8 @@ quests; a quest counts as done only after the trusted verifier's hidden checks p
 (3.10+) + plain JS browser UI (vendored three.js). Deterministic core: SQLite state, state machines, claims ledger,
 evidence store, hash-chained audit events.
 
-**Layout** (the repository root only holds the launchers `setup.cmd`, `vanilla-agents.cmd`, `demo.cmd`, plus README and CLAUDE.md; everything below is in `data/`, and every command runs from `data/`)
-- `vanilla_agents/` - engine (`storage.py`, `ledger.py`, `durable/`, `verify/`), the app server (`app/`), event feed and Claude hooks (`events/`), project onboarding (`onboard/`), game-data readers and the baker (`assets/`: `mpq.py`, `dbc.py`, `blp.py`, `m2v.py`, `wmo.py`, `character.py`, `export.py`, `gltf.py`, `settings.py`, `bake.py`).
+**Layout** (the repository root only holds the launchers `setup.cmd`, `vanilla-agents.cmd`, `demo.cmd`, `connect-codex-mcp.cmd`, plus README and CLAUDE.md; everything below is in `data/`, and every command runs from `data/`)
+- `vanilla_agents/` - engine (`storage.py`, `ledger.py`, `durable/`, `verify/`), the app server (`app/`), event feed, Claude hooks and the read-only Codex watcher (`events/`), project onboarding (`onboard/`), game-data readers and the baker (`assets/`: `mpq.py`, `dbc.py`, `blp.py`, `m2v.py`, `wmo.py`, `character.py`, `export.py`, `gltf.py`, `settings.py`, `bake.py`).
 - `app/config/*.json` - every visible text and setting (validated by `vanilla_agents/app/schema.py` + `check_app.py`; documented row by row in `docs/CHANGE-GUIDE.md`, enforced by a test).
 - `app/web/` - the UI (`js/panels/*` one file per panel, `workshop3d/` the 3D inn/office).
 - `scripts/` - hook entry (`claude_hook.py`), installer (`install_hooks.py`), setup, demo feed, onboarding, phone decisions.
@@ -15,7 +15,7 @@ evidence store, hash-chained audit events.
 **Test:** `python -W error::ResourceWarning -m unittest discover -s tests -t .` (all must pass; game-data tests run when `data_dir` is set). JS has no unit tests: `node --input-type=module --check < file.js` (plain `node --check` misses some module errors) and look at it in a browser.
 **Game data:** never in git. `data_dir` (WoW 1.12 Data folder) and `assets_dir` (default `~/.vanilla-agents/assets`) come from `vanilla.local.json`. Re-bake with `python -m vanilla_agents.assets bake [step]`.
 
-**Working on another project while Vanilla Agents runs?** Use its MCP tools (`list_quests`, `start_quest`, `report_progress`, `quest_ready`, `pending_requests`, `answer_request`): see `docs/INTEGRATION.md`.
+**Working on another project while Vanilla Agents runs?** Use its MCP tools (`list_quests`, `start_quest`, `report_progress`, `quest_ready`, `pending_requests`, `answer_request`): see `docs/INTEGRATION.md`. Codex CLI sessions appear automatically; `connect-codex-mcp.cmd` gives Codex the same tools (see `docs/CODEX.md`).
 
 **Rules**
 1. Standard library only for Python. No new dependency without the owner's OK.

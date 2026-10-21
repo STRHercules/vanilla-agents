@@ -23,6 +23,16 @@
   "transcript_recent_minutes": 120,
   "transcript_max_agents": 8,
   "transcript_context_tokens": 250000,
+  "codex": {
+    "enabled": true,
+    "sessions_dir": "",
+    "db_dir": "",
+    "offsets_path": "~/.vanilla-agents/work/codex-offsets.json",
+    "poll_seconds": 2,
+    "idle_minutes": 10,
+    "recent_minutes": 120,
+    "max_agents": 8
+  },
   "projects_path": "~/.vanilla-agents/work/projects.json",
   "trusted_root": "~/.vanilla-agents/trusted",
   "ideas_root": "~/.vanilla-agents/work/projects",

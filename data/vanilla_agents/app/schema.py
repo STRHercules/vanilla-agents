@@ -69,6 +69,7 @@ APP = {"host": "str", "port": "int", "assets_dir": "str", "data_dir": "str", "fe
        "sse_check_seconds": "num", "sse_keepalive_seconds": "num", "settings_path": "str", "window": {"width": "int", "height": "int"}, "browser_profile_dir": "str",
        "transcripts_dir": "str", "transcript_offsets_path": "str", "transcript_poll_seconds": "num", "transcript_idle_minutes": "num",
        "transcript_recent_minutes": "num", "transcript_max_agents": "int", "transcript_context_tokens": "int",
+       "codex": {"enabled": "bool", "sessions_dir": "str", "db_dir": "str", "offsets_path": "str", "poll_seconds": "num", "idle_minutes": "num", "recent_minutes": "num", "max_agents": "int"},
        "projects_path": "str", "trusted_root": "str", "ideas_root": "str", "verify_work_root": "str", "verify_min_free_bytes": "int", "verify_check_seconds": {"*": "num"}, "verify_default_seconds": "num",
        "verify_fake_seconds": "num", "approvals_path": "str", "approvals_max_tasks": "int", "approvals_max_projects": "int", "plan_approval_required": "bool", "tiers": {"enabled": "bool", "ask_sizes": ["str"], "risky_words": ["str"], "never": {"*": ["str"]}}, "route": {"max_fast_files": "int", "max_fast_lines": "int", "full_paths": ["str"], "trusted_paths": ["str"]}, "runs_path": "str", "runs_max_bytes": "int", "runs_api_limit": "int",
        "daily": {"enabled": "bool", "quests": [{"title": "str", "why": "str", "at": "str", "days": ["str"]}]},

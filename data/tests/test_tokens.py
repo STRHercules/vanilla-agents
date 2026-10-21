@@ -10,6 +10,7 @@ from vanilla_agents.app.config import load_all
 from vanilla_agents.app.state import Folder
 from vanilla_agents.events import transcripts as T
 from vanilla_agents.events.feed import Feed
+from vanilla_agents.events.redact_util import clean
 
 SID = "0b5f0c3e-1b7a-4c1e-9d2c-7e1f5a9c0d11"
 
@@ -51,7 +52,8 @@ class Watch(unittest.TestCase):
             evs = feed.read_since(0)
             place = [e for e in evs if e.type == "agent_place"]
             self.assertEqual(len(place), 1)
-            self.assertEqual((place[0].data["session"], place[0].data["cwd"]), (SID, d))
+            self.assertEqual(place[0].data["session"], SID)
+            self.assertEqual(place[0].data["cwd"], clean(d))     # the feed hides the PC user's name in paths
             toks = [e.data["tokens_out"] for e in evs if e.type == "session_stats"]
             self.assertEqual(toks, [100, 200])
 

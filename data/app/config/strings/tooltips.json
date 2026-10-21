@@ -367,7 +367,7 @@
   },
   "monitor_feed": {
     "title": "Environment sync",
-    "body": "LIVE while the window receives events from your Claude sessions; OFFLINE when the connection to the program dropped. The small number is seconds since the last event."
+    "body": "LIVE while the window receives events from your AI sessions; OFFLINE when the connection to the program dropped. The small number is seconds since the last event."
   },
   "monitor_checker": {
     "title": "Status",
@@ -733,7 +733,7 @@
   },
   "gossip_resurrect": {
     "title": "Resurrect",
-    "body": "Opens a new terminal on this PC running Claude Code with this helper's own conversation (claude --resume), in the folder it worked in. Only you can do this; helpers cannot.",
+    "body": "Opens a new terminal on this PC running this helper's own AI session again (claude --resume or codex resume), in the folder it worked in. Only you can do this; helpers cannot.",
     "use": "The helper wakes up in the inn when the session answers."
   },
   "gossip_resurrect_cmd": {
@@ -746,12 +746,12 @@
   },
   "raid_resurrect": {
     "title": "Resurrect",
-    "body": "Opens a new terminal running this helper's Claude session again (claude --resume) in the folder it worked in. Greyed out when the session id is not known.",
+    "body": "Opens a new terminal running this helper's AI session again (claude --resume or codex resume) in the folder it worked in. Greyed out when the session id is not known.",
     "use": "Watch for the golden light in the inn."
   },
   "raid_left": {
     "title": "Went home",
-    "body": "This helper's Claude session ended. It stays here for a while so you can bring it back.",
+    "body": "This helper's session ended. It stays here for a while so you can bring it back.",
     "use": "Right-click: Resurrect."
   },
   "inspect_place": {

@@ -1,6 +1,7 @@
-// V-039: Resurrect (talk window and raid frame right-click): the server opens a new terminal running `claude --resume <session>` in the
-// folder that session worked in (POST /api/resurrect, the owner's own click; never something a helper can do). When the session shows up
-// again (same helper id, or a new helper in the same folder within 10 minutes) the inn and the raid frame play a short revive effect.
+// V-039/V-053: Resurrect (talk window and raid frame right-click): the server opens a new terminal running `claude --resume <session>`
+// or `codex resume <session>` in the folder that session worked in (POST /api/resurrect, the owner's own click; never something a helper
+// can do). When the session shows up again (same helper id, or a new helper in the same folder within 10 minutes) the inn and the raid
+// frame play a short revive effect.
 
 const WAIT_MS = 10 * 60 * 1000;
 
@@ -39,6 +40,6 @@ export function justRevived(ctx, id, seen, maxAge = 8000) {
   return true;
 }
 
-// helpers whose Claude session can be resumed: quiet for 15 minutes (a ghost) or gone home, with a known session id
+// helpers whose AI session can be resumed: quiet for 15 minutes (a ghost) or gone home, with a known session id
 export const isGhost = (a) => !!a && a.state !== 'working' && quietFor(a) > 15 * 60;
 export const canResurrect = (a) => !!a && !!a.session && (a.left !== undefined || isGhost(a));

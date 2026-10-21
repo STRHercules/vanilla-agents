@@ -1,6 +1,6 @@
 # Vanilla Agents
 
-**Your AI coding helpers as heroes in a cosy inn.** Every Claude Code session walks into the Goldshire Inn, sits at a laptop and works through quests: your tasks. You roam the inn freely as your own character; a quest only counts as done after hidden checks verify it.
+**Your AI coding helpers as heroes in a cosy inn.** Every Claude Code or Codex CLI session walks into the Goldshire Inn, sits at a laptop and works through quests: your tasks. You roam the inn freely as your own character; a quest only counts as done after hidden checks verify it.
 
 ![Vanilla Agents: helpers at their laptops in the inn](media/agents_hero.webp)
 
@@ -21,7 +21,9 @@
 
 1. Install Python 3.10 or newer (python.org; tick "Add to PATH").
 2. Drag your WoW 1.12 `Data` folder onto `setup.cmd`. It bakes the art on your PC (about a minute), connects Claude Code, and puts a shortcut on the Desktop.
-3. Double-click **Vanilla Agents**. Start any Claude Code session: it shows up in the inn.
+3. Double-click **Vanilla Agents**. Start any Claude Code or Codex CLI session: it shows up in the inn.
+
+Codex sessions are followed read-only from Codex's own session files; `connect-codex-mcp.cmd` optionally gives Codex the same quest tools. See `data/docs/CODEX.md`.
 
 Just looking? `demo.cmd` plays six pretend helpers, no agents needed.
 

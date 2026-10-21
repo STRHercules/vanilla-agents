@@ -50,7 +50,7 @@ export function build(ctx, panel) {
     a.play().catch(() => {});
   }
 
-  // a helper that went home (V-039) is still someone to talk to: Resurrect brings its Claude session back
+  // a helper that went home (V-039) is still someone to talk to: Resurrect brings its session back
   const agentOf = (s) => (s && (s.agents.find((a) => a.id === agent) || (s.departed || []).find((a) => a.id === agent))) || null;
   const place = (a) => (a && a.branch ? t(a.worktree ? 'place_wt' : 'place', { branch: a.branch, worktree: a.worktree || '' }) : '');
   const questOf = (s, a) => (s && s.tasks.find((q) => q.id === (a && a.task))) || null;
@@ -79,7 +79,7 @@ export function build(ctx, panel) {
     draw(true);
   }
 
-  // V-039: a new terminal resumes this helper's Claude session (the owner's click only)
+  // V-039/V-053: a new terminal resumes this helper's AI session (the owner's click only)
   async function doResurrect() {
     note = ''; noteBad = false; copyCmd = '';
     try {

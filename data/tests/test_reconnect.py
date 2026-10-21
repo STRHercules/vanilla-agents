@@ -40,8 +40,10 @@ class Reconnect(unittest.TestCase):
         self.write(self.desktop, {"mcpServers": {install_mcp.NAME: {"command": "python", "args": [os.path.join(OLD, "vanilla_mcp.py")]}, "other": {"command": "x"}}})
         self.assertEqual(self.run_it(), 0)
         s = self.read(self.settings)
-        self.assertNotIn(OLD, json.dumps(s))
-        self.assertIn(os.path.join(install_hooks.ROOT, "scripts", install_hooks.MARK), json.dumps(s))
+        cmds = [h["command"] for evs in s["hooks"].values() for e in evs for h in e.get("hooks", [])]
+        current = os.path.join(install_hooks.ROOT, "scripts", install_hooks.MARK)
+        self.assertFalse(any(OLD in c for c in cmds), cmds)
+        self.assertTrue(any(current in c for c in cmds), cmds)
         self.assertEqual(s["hooks"]["Other"][0]["hooks"][0]["command"], "keep me")
         d = self.read(self.desktop)
         self.assertEqual(d["mcpServers"][install_mcp.NAME]["args"], [install_mcp.SERVER])
